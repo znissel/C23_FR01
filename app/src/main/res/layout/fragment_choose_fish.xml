@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                app:title="@string/select_fish"
+                app:title="@string/deteksi_ikan"
                 app:titleCentered="true"
                 app:titleTextAppearance="@style/Text.SemiBold.Big"
                 app:titleTextColor="@color/blue" />

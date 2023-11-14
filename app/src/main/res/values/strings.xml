@@ -103,7 +103,7 @@
     <string name="rate_filter">Penilaian</string>
     <string name="distance_filter">Jarak</string>
     <string name="apply">Terapkan</string>
-    <string name="fish_type">Jenis Ikan</string>
+    <string name="fish_type">Pilih Jenis Ikan</string>
     <string name="select_type">Pilih Bagian</string>
     <string name="eye">Mata</string>
     <string name="gill">Insang</string>
@@ -186,4 +186,9 @@
     <string name="critics_suggestion">Kritik dan Saran</string>
     <string name="email_subject">Fishku - Customer Support</string>
     <string name="email_fishku">admin@fishku.com</string>
+
+    <string name="faq_fishku"> FAQ </string>
+    <string name="toko_terdekat"> Toko Terdekat </string>
+    <string name="deteksi_ikan"> Deteksi Ikan</string>
+    <string name="title_activity_set_location">SetLocationActivity</string>
 </resources>

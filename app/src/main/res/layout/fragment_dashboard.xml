@@ -135,13 +135,78 @@
             app:layout_constraintTop_toTopOf="@id/loading_best_product" />
 
         <TextView
+            android:id="@+id/tv_toko"
+            style="@style/Text.Regular.Header"
+            android:layout_width="wrap_content"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:text="@string/toko_terdekat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_best_product" />
+
+        <TextView
+            android:id="@+id/btn_show_all_toko"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:text="@string/lihat_semua"
+            android:textAppearance="@style/Text.Regular.Subheader"
+            app:layout_constraintBottom_toBottomOf="@id/tv_toko"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_toko" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_toko"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_toko"
+            tools:listitem="@layout/item_fish_product" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/loading_toko_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="12dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_toko">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/item_card_placeholder" />
+
+                    <include layout="@layout/item_card_placeholder" />
+
+                    <include layout="@layout/item_card_placeholder" />
+
+                    <include layout="@layout/item_card_placeholder" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <TextView
             android:id="@+id/tv_recommendation"
             style="@style/Text.Regular.Header"
             android:layout_width="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
             android:text="@string/recommendation"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_best_product" />
+            app:layout_constraintTop_toBottomOf="@id/rv_toko" />
 
         <TextView
             android:id="@+id/btn_show_all_recommendation"
@@ -197,6 +262,17 @@
                 </LinearLayout>
             </HorizontalScrollView>
         </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <TextView
+            android:id="@+id/tv_toko_product_empty"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="wrap_content"
+            android:text="@string/product_empty"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/loading_toko_product"
+            app:layout_constraintEnd_toEndOf="@id/loading_toko_product"
+            app:layout_constraintStart_toStartOf="@id/loading_toko_product"
+            app:layout_constraintTop_toTopOf="@id/loading_toko_product" />
 
         <TextView
             android:id="@+id/tv_recommend_product_empty"

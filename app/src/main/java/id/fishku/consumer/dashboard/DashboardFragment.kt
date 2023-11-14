@@ -29,6 +29,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     private val bestProductAdapter: DashboardAdapter by lazy { DashboardAdapter(::productItemClicked) }
     private val recommendationAdapter: DashboardAdapter by lazy { DashboardAdapter(::productItemClicked) }
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

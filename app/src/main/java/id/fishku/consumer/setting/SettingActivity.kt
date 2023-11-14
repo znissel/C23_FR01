@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
 import id.fishku.consumer.auth.AuthActivity
 import id.fishku.consumer.databinding.ActivitySettingBinding
+import id.fishku.consumer.faq.FaqActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -39,6 +40,7 @@ class SettingActivity : AppCompatActivity() {
         binding.btnLogout.setOnClickListener { logoutHandler() }
         binding.btnCriticsSuggestion.setOnClickListener { sendEmail(this) }
         binding.btnSupportFishku.setOnClickListener { supportFishku() }
+        binding.btnFaq.setOnClickListener { faqFishku() }
     }
 
     private fun logoutHandler() {
@@ -93,6 +95,11 @@ class SettingActivity : AppCompatActivity() {
                 )
             )
         }
+    }
+
+    private fun faqFishku() {
+        val intent = Intent(this, FaqActivity::class.java)
+        this.startActivity(intent)
     }
 
     private fun inAppReview() {
