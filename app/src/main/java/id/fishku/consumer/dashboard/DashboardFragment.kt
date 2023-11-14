@@ -113,7 +113,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     private fun setupCart() {
         val menuItem = binding?.toolbarDashboard?.menu?.getItem(0)?.actionView
         val tvAmount = menuItem?.findViewById<TextView>(R.id.cart_badge)
-        dashboardViewModel.cart.observe(this) {
+        dashboardViewModel.cart.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {}
 

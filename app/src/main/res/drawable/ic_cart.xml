@@ -1,32 +1,11 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
     <path
-        android:pathData="M7.5 7.67V6.7c0-2.25 1.81-4.46 4.06-4.67 2.68-0.26 4.94 1.85 4.94 4.48v1.38"
-        android:strokeWidth="1.5"
-        android:strokeColor="#FF0C7DBF"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:strokeMiterLimit="10" />
-    <path
-        android:pathData="M9 22h6c4.02 0 4.74-1.61 4.95-3.57l0.75-6C20.97 9.99 20.27 8 16 8H8c-4.27 0-4.97 1.99-4.7 4.43l0.75 6C4.26 20.39 4.98 22 9 22Z"
-        android:strokeWidth="1.5"
-        android:strokeColor="#FF0C7DBF"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:strokeMiterLimit="10" />
-    <path
-        android:pathData="M15.5 12h0"
-        android:strokeWidth="2"
-        android:strokeColor="#FF0C7DBF"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round" />
-    <path
-        android:pathData="M8.5 12h0"
-        android:strokeWidth="2"
-        android:strokeColor="#FF0C7DBF"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round" />
+        android:fillColor="#FF0C7DBF"
+        android:pathData="M0.001,0.714C0.001,0.525 0.077,0.343 0.211,0.209C0.345,0.075 0.526,0 0.716,0H1.341C2.379,0 2.976,0.676 3.322,1.35C3.558,1.811 3.728,2.374 3.869,2.862H18.572C18.793,2.862 19.011,2.913 19.208,3.012C19.406,3.11 19.578,3.253 19.711,3.429C19.844,3.605 19.934,3.809 19.975,4.026C20.016,4.243 20.006,4.466 19.946,4.679L17.81,12.212C17.64,12.81 17.279,13.336 16.784,13.711C16.288,14.085 15.683,14.288 15.062,14.288H7.808C7.181,14.288 6.572,14.082 6.074,13.702C5.576,13.322 5.217,12.788 5.052,12.184L4.135,8.821C4.129,8.805 4.125,8.79 4.12,8.775L2.648,3.78L2.505,3.299C2.362,2.805 2.237,2.368 2.048,2.001C1.821,1.558 1.612,1.43 1.34,1.43H0.714C0.525,1.43 0.343,1.354 0.209,1.22C0.075,1.087 0,0.905 0,0.716L0.001,0.714ZM7.861,20C8.429,20 8.974,19.775 9.376,19.373C9.777,18.971 10.003,18.426 10.003,17.858C10.003,17.29 9.777,16.745 9.376,16.343C8.974,15.941 8.429,15.716 7.861,15.716C7.293,15.716 6.748,15.941 6.346,16.343C5.944,16.745 5.718,17.29 5.718,17.858C5.718,18.426 5.944,18.971 6.346,19.373C6.748,19.775 7.293,20 7.861,20ZM15.002,20C15.57,20 16.115,19.775 16.517,19.373C16.918,18.971 17.144,18.426 17.144,17.858C17.144,17.29 16.918,16.745 16.517,16.343C16.115,15.941 15.57,15.716 15.002,15.716C14.434,15.716 13.889,15.941 13.487,16.343C13.085,16.745 12.859,17.29 12.859,17.858C12.859,18.426 13.085,18.971 13.487,19.373C13.889,19.775 14.434,20 15.002,20Z"
+        tools:ignore="VectorPath" />
 </vector>
