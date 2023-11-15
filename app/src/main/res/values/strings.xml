@@ -129,10 +129,10 @@
     <string name="no_price">-</string>
     <string name="empty_order">Daftar kosong</string>
     <string name="title_invoice">Invoice</string>
-    <string name="kirim_pesan">Kirim pesan</string>
+    <string name="send_message">Kirim pesan</string>
     <string name="pesan">Pesan</string>
     <string name="daftar_pesan">Daftar Pesan</string>
-    <string name="pesan_terakhir">Pesan Terakhir</string>
+    <string name="last_message">Pesan Terakhir</string>
     <string name="time">Time</string>
     <string name="unread">0</string>
 
@@ -187,8 +187,7 @@
     <string name="email_subject">Fishku - Customer Support</string>
     <string name="email_fishku">admin@fishku.com</string>
 
-    <string name="faq_fishku"> FAQ </string>
-    <string name="toko_terdekat"> Toko Terdekat </string>
-    <string name="deteksi_ikan"> Deteksi Ikan</string>
+    <string name="nearest_store"> Toko Terdekat </string>
+    <string name="fish_detection"> Deteksi Ikan</string>
     <string name="title_activity_set_location">SetLocationActivity</string>
 </resources>

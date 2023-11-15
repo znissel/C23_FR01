@@ -52,7 +52,8 @@
             android:text="@string/address_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appbar_setting" />
+            app:layout_constraintTop_toBottomOf="@id/appbar_setting"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
         <TextView
             android:id="@+id/btn_password_setting"
@@ -68,7 +69,8 @@
             android:text="@string/account_security"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_address_setting" />
+            app:layout_constraintTop_toBottomOf="@id/btn_address_setting"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider_1"
@@ -93,7 +95,8 @@
             android:text="@string/haki"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider_1" />
+            app:layout_constraintTop_toBottomOf="@id/divider_1"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
         <TextView
             android:id="@+id/btn_know_fishku"
@@ -109,7 +112,8 @@
             android:text="@string/know_fishku"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_haki" />
+            app:layout_constraintTop_toBottomOf="@id/btn_haki"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
         <TextView
             android:id="@+id/btn_term_condition"
@@ -125,7 +129,8 @@
             android:text="@string/term_condition"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_know_fishku" />
+            app:layout_constraintTop_toBottomOf="@id/btn_know_fishku"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider_2"
@@ -136,7 +141,7 @@
             app:layout_constraintTop_toBottomOf="@id/btn_term_condition" />
 
         <TextView
-            android:id="@+id/btn_faq"
+            android:id="@+id/btn_faq_hapus"
             style="@style/Text.Medium"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
@@ -150,7 +155,8 @@
             android:text="@string/faq"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider_2" />
+            app:layout_constraintTop_toBottomOf="@id/divider_2"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
         <TextView
             android:id="@+id/btn_support_fishku"
@@ -166,7 +172,8 @@
             android:text="@string/support_fishku"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_faq" />
+            app:layout_constraintTop_toBottomOf="@id/btn_faq_hapus"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
         <TextView
             android:id="@+id/btn_critics_suggestion"
@@ -182,7 +189,8 @@
             android:text="@string/critics_suggestion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_support_fishku" />
+            app:layout_constraintTop_toBottomOf="@id/btn_support_fishku"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider_3"
@@ -196,18 +204,19 @@
             android:id="@+id/btn_logout"
             style="@style/Text.Medium"
             android:layout_height="50dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/bg_clickable"
             android:clickable="true"
             android:drawableStart="@drawable/ic_logout"
             android:drawablePadding="8dp"
-            android:layout_marginTop="8dp"
             android:focusable="true"
             android:gravity="center_vertical"
             android:paddingHorizontal="24dp"
             android:text="@string/logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider_3" />
+            app:layout_constraintTop_toBottomOf="@id/divider_3"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

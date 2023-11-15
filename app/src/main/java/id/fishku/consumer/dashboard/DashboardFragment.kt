@@ -27,8 +27,8 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     private val binding get() = _binding
     private val dashboardViewModel: DashboardViewModel by viewModels()
     private val bestProductAdapter: DashboardAdapter by lazy { DashboardAdapter(::productItemClicked) }
+    private val nearestStoreAdapter: DashboardAdapter by lazy { DashboardAdapter(::productItemClicked) }
     private val recommendationAdapter: DashboardAdapter by lazy { DashboardAdapter(::productItemClicked) }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,6 +74,29 @@ class DashboardFragment : Fragment(), View.OnClickListener {
 
         dashboardViewModel.getAllFish().observe(viewLifecycleOwner) {
             when (it) {
+                is Resource.Loading -> nearestStoreLoading(true)
+
+                is Resource.Success -> {
+                    nearestStoreLoading(false)
+                    if (!it.data.isNullOrEmpty()) {
+                        nearestStoreAdapter.submitList(it.data)
+                        setStoreAdapter()
+                    } else {
+                        binding?.tvNearestStoreEmpty?.visibility = View.VISIBLE
+                        binding?.loadingNearestStore?.visibility = View.INVISIBLE
+                        changeConstraint(true)
+                    }
+                }
+
+                is Resource.Error -> {
+                    nearestStoreLoading(true)
+                    it.message?.showMessage(requireContext())
+                }
+            }
+        }
+
+        dashboardViewModel.getAllFish().observe(viewLifecycleOwner) {
+            when (it) {
                 is Resource.Loading -> recommendProductLoading(true)
 
                 is Resource.Success -> {
@@ -100,6 +123,14 @@ class DashboardFragment : Fragment(), View.OnClickListener {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             setHasFixedSize(true)
             adapter = bestProductAdapter
+        }
+    }
+
+    private fun setStoreAdapter() {
+        binding?.rvNearestStore?.apply {
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+            setHasFixedSize(true)
+            adapter = nearestStoreAdapter
         }
     }
 
@@ -138,6 +169,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
         menuItem?.setOnClickListener(this)
         binding?.apply {
             btnShowAllBest.setOnClickListener(this@DashboardFragment)
+            btnShowAllStore.setOnClickListener(this@DashboardFragment)
             btnShowAllRecommendation.setOnClickListener(this@DashboardFragment)
         }
     }
@@ -174,10 +206,17 @@ class DashboardFragment : Fragment(), View.OnClickListener {
         when (v?.id) {
             R.id.btn_cart -> v.findNavController()
                 .navigate(R.id.action_navigation_dashboard_to_cartActivity)
+            /*R.id.btn_faq -> v.findNavController()
+                    .navigate(R.id.action_navigation_dashboard_to_faqActivity)*/
             R.id.btn_show_all_best -> {
                 val toSearchAcitivy =
                     DashboardFragmentDirections.actionNavigationDashboardToSearchActivity("")
                 binding?.root?.findNavController()?.navigate(toSearchAcitivy)
+            }
+            R.id.btn_show_all_store -> {
+                /*val toSearchAcitivy =
+                    DashboardFragmentDirections.actionNavigationDashboardToSearchActivity("")
+                binding?.root?.findNavController()?.navigate(toSearchAcitivy)*/
             }
             R.id.btn_show_all_recommendation -> {
                 val toSearchAcitivy =
@@ -188,6 +227,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     }
 
     private fun changeConstraint(isChange: Boolean) {
+        //masalah layout yang berantakan di sini kayaknya:
         val params =
             binding?.tvRecommendation?.layoutParams as ConstraintLayout.LayoutParams
         params.topToBottom = if (isChange) {
@@ -195,6 +235,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
         } else {
             binding?.rvBestProduct?.id!!
         }
+        binding?.tvNearestStore?.requestLayout()
         binding?.tvRecommendation?.requestLayout()
     }
 
@@ -209,6 +250,20 @@ class DashboardFragment : Fragment(), View.OnClickListener {
             binding?.apply {
                 loadingBestProduct.visibility = View.GONE
                 rvBestProduct.visibility = View.VISIBLE
+            }
+        }
+    }
+    private fun nearestStoreLoading(isLoading: Boolean) {
+        changeConstraint(isLoading)
+        if (isLoading) {
+            binding?.apply {
+                loadingNearestStore.visibility = View.VISIBLE
+                rvNearestStore.visibility = View.GONE
+            }
+        } else {
+            binding?.apply {
+                loadingNearestStore.visibility = View.GONE
+                rvNearestStore.visibility = View.VISIBLE
             }
         }
     }

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_dashboard_to_detailFishActivity"
             app:destination="@id/detailFishActivity" />
+        <!--<action
+            android:id="@+id/action_navigation_dashboard_to_faqActivity"
+            app:destination="@id/faqActivity" />-->
         <action
             android:id="@+id/action_navigation_dashboard_to_cartActivity"
             app:destination="@id/cartActivity" />
@@ -72,6 +75,11 @@
             android:defaultValue="0"
             app:argType="integer" />
     </activity>
+    <!--<activity
+        android:id="@+id/faqActivity"
+        android:name="id.fishku.consumer.faq.FaqActivity"
+        android:label="activity_faq"
+        tools:layout="@layout/activity_faq" />-->
     <activity
         android:id="@+id/cartActivity"
         android:name="id.fishku.consumer.cart.CartActivity"

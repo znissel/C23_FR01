@@ -65,7 +65,8 @@
             android:exported="false" />
         <activity
             android:name=".faq.FaqActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".setting.SettingActivity"
             android:exported="false"

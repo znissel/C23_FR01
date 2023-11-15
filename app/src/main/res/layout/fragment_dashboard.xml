@@ -54,9 +54,9 @@
             android:layout_margin="@dimen/activity_vertical_margin"
             android:contentDescription="@string/banner_discount"
             android:src="@drawable/img_banner"
+            app:layout_constraintBottom_toTopOf="@id/tv_best_product"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tv_best_product"
             app:layout_constraintTop_toBottomOf="@id/search_view_fish" />
 
         <TextView
@@ -135,27 +135,27 @@
             app:layout_constraintTop_toTopOf="@id/loading_best_product" />
 
         <TextView
-            android:id="@+id/tv_toko"
+            android:id="@+id/tv_nearest_store"
             style="@style/Text.Regular.Header"
             android:layout_width="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:text="@string/toko_terdekat"
+            android:text="@string/nearest_store"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_best_product" />
 
         <TextView
-            android:id="@+id/btn_show_all_toko"
+            android:id="@+id/btn_show_all_store"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:text="@string/lihat_semua"
             android:textAppearance="@style/Text.Regular.Subheader"
-            app:layout_constraintBottom_toBottomOf="@id/tv_toko"
+            app:layout_constraintBottom_toBottomOf="@id/tv_nearest_store"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_toko" />
+            app:layout_constraintTop_toTopOf="@id/tv_nearest_store" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_toko"
+            android:id="@+id/rv_nearest_store"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
@@ -164,18 +164,18 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_toko"
+            app:layout_constraintTop_toBottomOf="@id/tv_nearest_store"
             tools:listitem="@layout/item_fish_product" />
 
         <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/loading_toko_product"
+            android:id="@+id/loading_nearest_store"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="12dp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_toko">
+            app:layout_constraintTop_toBottomOf="@id/tv_nearest_store">
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -200,13 +200,24 @@
         </com.facebook.shimmer.ShimmerFrameLayout>
 
         <TextView
+            android:id="@+id/tv_nearest_store_empty"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="wrap_content"
+            android:text="@string/product_empty"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/loading_nearest_store"
+            app:layout_constraintEnd_toEndOf="@id/loading_nearest_store"
+            app:layout_constraintStart_toStartOf="@id/loading_nearest_store"
+            app:layout_constraintTop_toTopOf="@id/loading_nearest_store" />
+
+        <TextView
             android:id="@+id/tv_recommendation"
             style="@style/Text.Regular.Header"
             android:layout_width="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
             android:text="@string/recommendation"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_toko" />
+            app:layout_constraintTop_toBottomOf="@id/rv_nearest_store" />
 
         <TextView
             android:id="@+id/btn_show_all_recommendation"
@@ -262,17 +273,6 @@
                 </LinearLayout>
             </HorizontalScrollView>
         </com.facebook.shimmer.ShimmerFrameLayout>
-
-        <TextView
-            android:id="@+id/tv_toko_product_empty"
-            style="@style/Text.Medium.Medium"
-            android:layout_width="wrap_content"
-            android:text="@string/product_empty"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/loading_toko_product"
-            app:layout_constraintEnd_toEndOf="@id/loading_toko_product"
-            app:layout_constraintStart_toStartOf="@id/loading_toko_product"
-            app:layout_constraintTop_toTopOf="@id/loading_toko_product" />
 
         <TextView
             android:id="@+id/tv_recommend_product_empty"

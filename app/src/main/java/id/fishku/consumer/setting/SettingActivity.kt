@@ -40,7 +40,7 @@ class SettingActivity : AppCompatActivity() {
         binding.btnLogout.setOnClickListener { logoutHandler() }
         binding.btnCriticsSuggestion.setOnClickListener { sendEmail(this) }
         binding.btnSupportFishku.setOnClickListener { supportFishku() }
-        binding.btnFaq.setOnClickListener { faqFishku() }
+        binding.btnFaqHapus.setOnClickListener { faqFishku() }
     }
 
     private fun logoutHandler() {
