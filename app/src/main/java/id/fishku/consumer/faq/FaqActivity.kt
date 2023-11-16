@@ -14,9 +14,14 @@ class FaqActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setUpAction()
+        hideActionBar()
     }
 
     private fun setUpAction(){
         binding.toolbarFaq.setNavigationOnClickListener{ onBackPressedDispatcher.onBackPressed() }
+    }
+
+    private fun hideActionBar() {
+        supportActionBar?.hide()
     }
 }

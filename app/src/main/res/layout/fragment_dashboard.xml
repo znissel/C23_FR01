@@ -22,42 +22,81 @@
             app:layout_constraintTop_toTopOf="parent"
             app:liftOnScroll="true">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar_dashboard"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                app:menu="@menu/dashboard_menu"
-                app:title="@string/buy_fish"
-                app:titleCentered="true"
-                app:titleTextAppearance="@style/Text.SemiBold.Big"
-                app:titleTextColor="@color/blue" />
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/dashboardToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivFaq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_faq"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/dashboardToolbar"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view_fish"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/bg_search_view"
+                    app:defaultQueryHint="@string/search_hint"
+                    app:iconifiedByDefault="false"
+                    app:layout_constraintBottom_toBottomOf="@+id/dashboardToolbar"
+                    app:layout_constraintEnd_toStartOf="@+id/ivCart"
+                    app:layout_constraintStart_toEndOf="@+id/ivFaq"
+                    app:layout_constraintTop_toTopOf="@+id/dashboardToolbar"
+                    app:queryBackground="@android:color/transparent" />
+
+                <ImageView
+                    android:id="@+id/ivCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_cart"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_view_fish"
+        <Button
+            android:id="@+id/btnSetLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:background="@drawable/bg_search_view"
-            app:defaultQueryHint="@string/search_hint"
-            app:iconifiedByDefault="false"
+            android:text="Set Location"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appbar_dashboard"
-            app:queryBackground="@android:color/transparent" />
+            app:layout_constraintTop_toBottomOf="@+id/appbar_dashboard" />
 
         <ImageView
             android:id="@+id/iv_highlight_1"
-            android:layout_width="342dp"
+            android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_margin="@dimen/activity_vertical_margin"
             android:contentDescription="@string/banner_discount"
             android:src="@drawable/img_banner"
             app:layout_constraintBottom_toTopOf="@id/tv_best_product"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_view_fish" />
+            app:layout_constraintTop_toBottomOf="@+id/btnSetLocation" />
 
         <TextView
             android:id="@+id/tv_best_product"

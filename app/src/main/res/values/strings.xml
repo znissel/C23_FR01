@@ -190,4 +190,5 @@
     <string name="nearest_store"> Toko Terdekat </string>
     <string name="fish_detection"> Deteksi Ikan</string>
     <string name="title_activity_set_location">SetLocationActivity</string>
+    <string name="ikan_terkait">Ikan Terkait :</string>
 </resources>

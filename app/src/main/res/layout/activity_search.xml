@@ -45,18 +45,28 @@
             app:layout_constraintTop_toBottomOf="@id/appbar_search"
             app:queryBackground="@android:color/transparent" />
 
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:text= "@string/ikan_terkait"
+            style="@style/Text.SemiBold.Medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_view_fish" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
             android:clipToPadding="false"
+            android:paddingHorizontal="16dp"
             android:paddingVertical="10dp"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_view_fish"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:spanCount="2"
             tools:listitem="@layout/item_fish_product_grid" />
 

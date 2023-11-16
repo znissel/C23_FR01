@@ -22,6 +22,14 @@
         <action
             android:id="@+id/action_navigation_dashboard_to_cartActivity"
             app:destination="@id/cartActivity" />
+
+        <action
+            android:id="@+id/action_navigation_dashboard_to_faqActivity"
+            app:destination="@+id/faqActivity"/>
+        <action
+            android:id="@+id/action_navigation_dashboard_to_setLocationActivity"
+            app:destination="@id/setLocationActivity" />
+
     </fragment>
 
     <fragment
@@ -104,4 +112,18 @@
         android:name="id.fishku.consumer.livechat.LiveChatFragment"
         android:label="fragment_live_chat"
         tools:layout="@layout/fragment_live_chat" />
+
+
+
+    <activity
+        android:id="@+id/faqActivity"
+        android:name="id.fishku.consumer.faq.FaqActivity"
+        android:label="activity_faq"
+        tools:layout="@layout/activity_faq" />
+
+    <activity
+        android:id="@+id/setLocationActivity"
+        android:name="id.fishku.consumer.location.SetLocationActivity"
+        android:label="activity_set_location"
+        tools:layout="@layout/activity_set_location" />
 </navigation>

@@ -1,9 +1,12 @@
 package id.fishku.consumer.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +22,8 @@ import id.fishku.consumer.core.domain.model.Fish
 import id.fishku.consumer.core.ui.DashboardAdapter
 import id.fishku.consumer.core.utils.showMessage
 import id.fishku.consumer.databinding.FragmentDashboardBinding
+import id.fishku.consumer.faq.FaqActivity
+import id.fishku.consumer.location.SetLocationActivity
 
 @AndroidEntryPoint
 class DashboardFragment : Fragment(), View.OnClickListener {
@@ -46,6 +51,43 @@ class DashboardFragment : Fragment(), View.OnClickListener {
         setupAction()
         searchFish()
         setupCart()
+
+        //tambahan baru
+        faqAction()
+        setLocationAction()
+    }
+
+    //function baru intent faq
+    private fun faqAction() {
+        val faqButton = view?.findViewById<ImageView>(R.id.ivFaq)
+        // Set an OnClickListener for the Button
+        faqButton?.setOnClickListener {
+            // Create an Intent to start the FaqActivity
+            val intent = Intent(requireActivity(), FaqActivity::class.java)
+
+            // Optionally, you can pass data to the FaqActivity using extras
+            // intent.putExtra("key", "value")
+
+            // Start the FaqActivity
+            startActivity(intent)
+        }
+    }
+
+    //function baru intent locationset
+    private fun setLocationAction() {
+        val faqButton = view?.findViewById<Button>(R.id.btnSetLocation)
+
+        // Set an OnClickListener for the Button
+        faqButton?.setOnClickListener {
+            // Create an Intent to start the FaqActivity
+            val intent = Intent(requireActivity(), SetLocationActivity::class.java)
+
+            // Optionally, you can pass data to the FaqActivity using extras
+            // intent.putExtra("key", "value")
+
+            // Start the FaqActivity
+            startActivity(intent)
+        }
     }
 
     private fun setupData() {
@@ -143,7 +185,8 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setupCart() {
-        val menuItem = binding?.toolbarDashboard?.menu?.getItem(0)?.actionView
+        //perubahan binding.ivcart
+        val menuItem = binding?.ivCart
         val tvAmount = menuItem?.findViewById<TextView>(R.id.cart_badge)
         dashboardViewModel.cart.observe(viewLifecycleOwner) {
             when (it) {
@@ -165,7 +208,8 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setupAction() {
-        val menuItem = binding?.toolbarDashboard?.menu?.getItem(0)?.actionView
+        //perubahan binding.ivcart
+        val menuItem = binding?.ivCart
         menuItem?.setOnClickListener(this)
         binding?.apply {
             btnShowAllBest.setOnClickListener(this@DashboardFragment)
@@ -204,20 +248,29 @@ class DashboardFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_cart -> v.findNavController()
+            R.id.ivCart -> v.findNavController()
                 .navigate(R.id.action_navigation_dashboard_to_cartActivity)
-            /*R.id.btn_faq -> v.findNavController()
-                    .navigate(R.id.action_navigation_dashboard_to_faqActivity)*/
+
+            //Perubahan pada toolbar dan action intent di navigation
+            R.id.ivFaq -> v.findNavController()
+                .navigate(R.id.action_navigation_dashboard_to_faqActivity)
+
+            R.id.btnSetLocation -> v.findNavController()
+                .navigate(R.id.action_navigation_dashboard_to_setLocationActivity)
+            //sampai sini
+
             R.id.btn_show_all_best -> {
                 val toSearchAcitivy =
                     DashboardFragmentDirections.actionNavigationDashboardToSearchActivity("")
                 binding?.root?.findNavController()?.navigate(toSearchAcitivy)
             }
+
             R.id.btn_show_all_store -> {
                 /*val toSearchAcitivy =
                     DashboardFragmentDirections.actionNavigationDashboardToSearchActivity("")
                 binding?.root?.findNavController()?.navigate(toSearchAcitivy)*/
             }
+
             R.id.btn_show_all_recommendation -> {
                 val toSearchAcitivy =
                     DashboardFragmentDirections.actionNavigationDashboardToSearchActivity("")
@@ -253,6 +306,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
             }
         }
     }
+
     private fun nearestStoreLoading(isLoading: Boolean) {
         changeConstraint(isLoading)
         if (isLoading) {
