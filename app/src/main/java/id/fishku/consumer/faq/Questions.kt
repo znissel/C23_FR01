@@ -1,11 +1,12 @@
 package id.fishku.consumer.faq
 
-class Questions(var question: String, var answer: String) {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-    override fun toString(): String {
-        return "Questions{" +
-                "question='" + question + '\'' +
-                ", description='" + answer + '\'' +
-                '}'
-    }
+@Parcelize
+data class Questions(
+    val question: String,
+    val answer: String,
+    var expandable: Boolean = false
+) : Parcelable {
 }

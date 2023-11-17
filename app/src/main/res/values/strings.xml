@@ -181,7 +181,6 @@
     <string name="haki">Hak Kekayaan Intelektual</string>
     <string name="know_fishku">Kenali Fishku</string>
     <string name="term_condition">Syarat dan Ketentuan</string>
-    <string name="faq">FAQ</string>
     <string name="support_fishku">Support Fishku</string>
     <string name="critics_suggestion">Kritik dan Saran</string>
     <string name="email_subject">Fishku - Customer Support</string>
@@ -198,7 +197,18 @@
     <string name="fish_information"> Informasi Ikan </string>
     <string name="selected_fish"> Ikan Yang Dipilih </string>
 
-    //Fish Information Description
+    <!--Frequently Asked Questions-->
+    <string name="faq">FAQ</string>
+    <string-array name="data_questions">
+        <item>APA?</item>
+        <item>KENAPA?</item>
+    </string-array>
+    <string-array name="data_answer">
+        <item>PERCOBAAN 1</item>
+        <item>PERCOBAAN 2</item>
+    </string-array>
+
+    <!--Fish Information Description-->
     <string name="nutritional_value"> Kandungan Gizi </string>
     <string name="protein_desc"> Protein </string>
     <string name="Selenium_desc"> Selenium </string>
@@ -216,8 +226,9 @@
     <string name="Magnesium_value">Nilai Magnesium </string>
     <string name="Sodium_value">Nilai Sodium </string>
 
-    //Fish Recipe
+    <!--Fish Recipe-->
     <string name="fishpedia_menu"> Fishpedia </string>
     <string name="fish_recipe"> Rekomendasi Olahan </string>
     <string name="recipe_recomendation"> Rekomendasi Olahan Ikan </string>
+    <string name="question">Pertanyaan</string>
 </resources>

@@ -97,7 +97,7 @@
         <item name="android:textColor">@color/blue</item>
     </style>
 
-    //Fish Information
+    <!--Fish Information-->
 
     <style name="Fish_Description_Big">
         <item name="android:textSize">20sp</item>
