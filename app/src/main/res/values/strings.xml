@@ -195,4 +195,29 @@
     <string name="save_changes">Simpan Perubahan</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="fish_information"> Informasi Ikan </string>
+    <string name="selected_fish"> Ikan Yang Dipilih </string>
+
+    //Fish Information Description
+    <string name="nutritional_value"> Kandungan Gizi </string>
+    <string name="protein_desc"> Protein </string>
+    <string name="Selenium_desc"> Selenium </string>
+    <string name="VitB12_desc"> Vit B12 </string>
+    <string name="VitB6_desc"> Vit B6 </string>
+    <string name="ZatBesi_desc"> Zat Besi </string>
+    <string name="Magnesium_desc"> Magnesium </string>
+    <string name="Sodium_desc"> Sodium </string>
+
+    <string name="protein_value">Nilai Protein</string>
+    <string name="Selenium_value">Nilai Selenium </string>
+    <string name="VitB12_value">Nilai Vit B12 </string>
+    <string name="VitB6_value">Nilai Vit B6 </string>
+    <string name="ZatBesi_value">Nilai Zat Besi </string>
+    <string name="Magnesium_value">Nilai Magnesium </string>
+    <string name="Sodium_value">Nilai Sodium </string>
+
+    //Fish Recipe
+    <string name="fishpedia_menu"> Fishpedia </string>
+    <string name="fish_recipe"> Rekomendasi Olahan </string>
+    <string name="recipe_recomendation"> Rekomendasi Olahan Ikan </string>
 </resources>

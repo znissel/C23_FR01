@@ -97,6 +97,38 @@
         <item name="android:textColor">@color/blue</item>
     </style>
 
+    //Fish Information
+
+    <style name="Fish_Description_Big">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="Fish_Description_Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Fish_Description_Small">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Fish_Recipe_Medium_Bold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="Fish_Recipe_Medium">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
     <style name="Text.Medium.Medium">
         <item name="android:textSize">16sp</item>
     </style>

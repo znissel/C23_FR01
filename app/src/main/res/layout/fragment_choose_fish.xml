@@ -17,6 +17,7 @@
             android:id="@+id/appbar_choose_fish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -27,10 +28,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
+                app:menu="@menu/recipe_menu"
                 app:title="@string/fish_detection"
                 app:titleCentered="true"
                 app:titleTextAppearance="@style/Text.SemiBold.Big"
                 app:titleTextColor="@color/blue" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/grey_10" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
