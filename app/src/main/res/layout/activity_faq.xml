@@ -55,6 +55,16 @@
             app:layout_constraintStart_toStartOf="@id/iv_faq"
             app:layout_constraintTop_toTopOf="@id/iv_faq" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rv_faq"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/iv_faq"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
         <!--<TextView
             android:id="@+id/btn_address_setting"
             style="@style/Text.Medium"
@@ -70,8 +80,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appbar_faq" />-->
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

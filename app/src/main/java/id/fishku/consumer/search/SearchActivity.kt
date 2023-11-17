@@ -2,9 +2,13 @@ package id.fishku.consumer.search
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +25,10 @@ import id.fishku.consumer.detailfish.DetailFishActivity
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchBinding
+
+    //TAMBAHAN
+    private lateinit var toggle: ActionBarDrawerToggle
+
     private val searchAdapter: SearchAdapter by lazy { SearchAdapter(::productItemClicked) }
     private val searchViewModel: SearchViewModel by viewModels()
 
@@ -32,6 +40,9 @@ class SearchActivity : AppCompatActivity() {
         initSearch()
         setupData()
         searchFish()
+
+        //TAMBAHAN
+        setupToolbar()
         setupCart()
     }
 
@@ -61,6 +72,7 @@ class SearchActivity : AppCompatActivity() {
                         tvErrorSearch.visibility = View.GONE
                     }
                 }
+
                 is Resource.Success -> {
                     binding.loadingSearch.visibility = View.GONE
                     if (!it.data.isNullOrEmpty()) {
@@ -71,6 +83,7 @@ class SearchActivity : AppCompatActivity() {
                         isEmptyResult(true)
                     }
                 }
+
                 is Resource.Error -> {
                     binding.apply {
                         loadingSearch.visibility = View.GONE
@@ -106,8 +119,50 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+    //TAMBAHAN
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            true
+        } else {
+            val cartIntent = Intent(this, CartActivity::class.java)
+            startActivity(cartIntent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.dashboard_menu, menu)
+        return true
+    }
+    private fun setupToolbar(){
+        setSupportActionBar(binding.toolbarSearch)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+        }
+
+        //drawer
+        binding.apply {
+            toggle=ActionBarDrawerToggle(this@SearchActivity,drawerLayout,R.string.open,R.string.close)
+            drawerLayout.addDrawerListener(toggle)
+            toggle.syncState()
+
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+            navView.setNavigationItemSelectedListener {
+                when(it.itemId){
+                    R.id.location_filter -> {
+                        Toast.makeText(this@SearchActivity, R.string.filter, Toast.LENGTH_SHORT).show()
+                    }
+                    //buat item-item lain klu diklik
+                    //klu mau bentukannya kayak tombol mgkn bisa dgn nambah
+                    //itemShapeFillColor di xml NavigationView
+                }
+                true
+            }
+        }
+    }//TAMBAHAN - sampai sini
+
     private fun setupCart() {
-        val menuItem = binding.toolbarSearch.menu.getItem(0).actionView
+        val menuItem = binding.toolbarSearch.menu.findItem(R.id.btn_cart).actionView
 
         menuItem?.setOnClickListener {
             val cartIntent = Intent(this, CartActivity::class.java)

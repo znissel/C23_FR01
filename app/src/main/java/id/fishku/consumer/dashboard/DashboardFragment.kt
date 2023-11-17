@@ -75,7 +75,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
 
     //function baru intent locationset
     private fun setLocationAction() {
-        val faqButton = view?.findViewById<Button>(R.id.btnSetLocation)
+        val faqButton = view?.findViewById<Button>(R.id.btn_set_location)
 
         // Set an OnClickListener for the Button
         faqButton?.setOnClickListener {
@@ -255,7 +255,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
             R.id.ivFaq -> v.findNavController()
                 .navigate(R.id.action_navigation_dashboard_to_faqActivity)
 
-            R.id.btnSetLocation -> v.findNavController()
+            R.id.btn_set_location -> v.findNavController()
                 .navigate(R.id.action_navigation_dashboard_to_setLocationActivity)
             //sampai sini
 
@@ -280,15 +280,17 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     }
 
     private fun changeConstraint(isChange: Boolean) {
-        //masalah layout yang berantakan di sini kayaknya:
         val params =
             binding?.tvRecommendation?.layoutParams as ConstraintLayout.LayoutParams
-        params.topToBottom = if (isChange) {
-            binding?.loadingBestProduct?.id!!
-        } else {
-            binding?.rvBestProduct?.id!!
-        }
-        binding?.tvNearestStore?.requestLayout()
+
+        params.topToBottom =
+            if (isChange) {
+                binding?.loadingBestProduct?.id!!
+                binding?.loadingNearestStore?.id!!
+            } else {
+                binding?.rvBestProduct?.id!!
+                binding?.rvNearestStore?.id!!
+            }
         binding?.tvRecommendation?.requestLayout()
     }
 

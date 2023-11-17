@@ -2,12 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <!--<item
-        android:id="@+id/btn_faq"
-        android:icon="@drawable/ic_qmark"
-        android:title="@string/faq"
-        app:showAsAction="always"
-        tools:ignore="AlwaysShowAction" />-->
 
     <item
         android:id="@+id/btn_cart"

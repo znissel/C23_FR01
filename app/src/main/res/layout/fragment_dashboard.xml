@@ -41,11 +41,12 @@
                     android:id="@+id/ivFaq"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_faq"
+                    android:src="@drawable/ic_qmark"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/dashboardToolbar"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/faq" />
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/search_view_fish"
@@ -69,18 +70,19 @@
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/cart" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <Button
-            android:id="@+id/btnSetLocation"
+            android:id="@+id/btn_set_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:text="Set Location"
+            android:text="@string/set_location"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar_dashboard" />
@@ -96,7 +98,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSetLocation" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_set_location" />
 
         <TextView
             android:id="@+id/tv_best_product"
