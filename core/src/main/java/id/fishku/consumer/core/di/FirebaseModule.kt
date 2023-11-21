@@ -27,7 +27,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+import io.github.cdimascio.dotenv.dotenv
 
+val dotenv = dotenv()
+val serverClientId = dotenv["serverClientId"] ?: error("serverClientId is not set in .env")
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -65,7 +68,7 @@ class FirebaseModule {
     @Singleton
     fun provideGso(@ApplicationContext context: Context): GoogleSignInOptions =
         GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("735561181417-mlag98ls0phr5dhgro9ft0cmbrp3v7bk.apps.googleusercontent.com")
+            .requestIdToken(serverClientId)
             .requestEmail()
             .build()
 

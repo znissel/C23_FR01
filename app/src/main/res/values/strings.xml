@@ -64,7 +64,7 @@
     <string name="tpi_address">Jl. Sidik Harun, Ujungbatu III, Ujungbatu, Kec. Jepara, Kabupaten Jepara, Jawa Tengah</string>
     <string name="note">Catatan</string>
     <string name="add_note">Tambahkan catatan</string>
-    <string name="add_to_cart">Keranjang</string>
+    <string name="add_to_cart">Masukkan ke Keranjang</string>
     <string name="bagde_number">0</string>
     <string name="cart">Keranjang</string>
     <string name="title_cart">Keranjang</string>
@@ -152,7 +152,7 @@
     <string name="enter_no">Masukkan Nomor</string>
     <string name="title_enter_no">Daftar dengan nomor \nWhatsApp</string>
     <string name="wrong_no_format">Format nomor salah</string>
-    <string name="log_in_dengan_google">Log In dengan Google</string>
+    <string name="log_in_dengan_google">Masuk dengan Google</string>
     <string name="atau">atau</string>
     <string name="email_used">Email Sudah Digunakan</string>
     <string name="something_wrong">Terjadi kesalahan coba lagi</string>
