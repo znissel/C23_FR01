@@ -1,7 +1,11 @@
 package id.fishku.consumer.core.utils
 
+import io.github.cdimascio.dotenv.dotenv
+
+val dotenv = dotenv()
+
 object Constants {
-    const val OTP_TOKEN = "EABT18YJURFIBAFOmpq9ygiQqIKztREoZBEIJICwDDBBEjL7ex3oxB9cZBfiQMmbWb57LIvmkhaM7yjEZCKjmzSusEjKbbyjDmu65QFAuvyZBp2wshfcSjInCKMc5Mj7NRWxVRFLnQ06G6N4a15nKZAkMy6IcAkeXnbGyjtONwIwlSSWrZA7e59"
-    const val SERVER_KEY = "AAAAq0Lc6Ok:APA91bEvrOn5Lt5RBqWWIdaMIVVnlqkWU1v3WXcnc-auqQS9ZCG7WWtVtmSsHIEgFFE8toRNT-H7IfS_yeJXWPDR42UaPDjrwQsbNDAoo9Ev_WACSFEzxHsqXnWFyASFtunJP0CEXvPx"
+    val OTP_TOKEN = dotenv["OTP_TOKEN"] ?: error("OTP_TOKEN is not set in .env")
+    val SERVER_KEY = dotenv["SERVER_KEY"] ?: error("SERVER_KEY is not set in .env")
     const val CONTENT_TYPE = "application/json"
 }
