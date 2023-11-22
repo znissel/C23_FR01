@@ -80,9 +80,11 @@
         <Button
             android:id="@+id/btn_set_location"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/grey"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:text="@string/set_location"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar_dashboard" />
