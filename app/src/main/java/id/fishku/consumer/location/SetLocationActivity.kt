@@ -3,6 +3,7 @@ package id.fishku.consumer.location
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toolbar
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 
@@ -20,9 +21,10 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivitySetLocationBinding
 
+    private lateinit var toolbar: Toolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivitySetLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -30,6 +32,17 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        setUpAction()
+        hideActionBar()
+
+    }
+
+    private fun setUpAction() {
+        binding.toolbarSetLocation.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+    }
+    private fun hideActionBar() {
+        supportActionBar?.hide()
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
