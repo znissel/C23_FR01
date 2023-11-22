@@ -82,9 +82,6 @@ class DashboardFragment : Fragment(), View.OnClickListener {
             // Create an Intent to start the FaqActivity
             val intent = Intent(requireActivity(), SetLocationActivity::class.java)
 
-            // Optionally, you can pass data to the FaqActivity using extras
-            // intent.putExtra("key", "value")
-
             // Start the FaqActivity
             startActivity(intent)
         }
@@ -266,9 +263,9 @@ class DashboardFragment : Fragment(), View.OnClickListener {
             }
 
             R.id.btn_show_all_store -> {
-                /*val toSearchAcitivy =
+                val toSearchAcitivy =
                     DashboardFragmentDirections.actionNavigationDashboardToSearchActivity("")
-                binding?.root?.findNavController()?.navigate(toSearchAcitivy)*/
+                binding?.root?.findNavController()?.navigate(toSearchAcitivy)
             }
 
             R.id.btn_show_all_recommendation -> {

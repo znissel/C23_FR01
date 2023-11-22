@@ -7,4 +7,10 @@
         android:icon="@drawable/ic_recipe_fish"
         android:title="@string/fishpedia_menu"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/btn_fishRecipe"
+        android:icon="@drawable/ic_fish_recipe"
+        android:title="@string/fishpedia_menu"
+        app:showAsAction="always"/>
 </menu>
