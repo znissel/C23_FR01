@@ -32,6 +32,15 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider1"
+            android:layout_width="0dp"
+            android:layout_height="6dp"
+            app:dividerColor="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
 
         <TextView
             android:id="@+id/tv_reviewMaps"
@@ -60,9 +69,20 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:layout_marginTop="8dp"
-            android:text="Set Lokasi Anda"
+            android:text="@string/use_mylocation"
+            app:icon="@drawable/ic_my_location"
+            app:iconGravity="start"
             app:layout_constraintTop_toBottomOf="@+id/map"
             tools:layout_editor_absoluteX="16dp" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider2"
+            android:layout_width="0dp"
+            android:layout_height="6dp"
+            app:dividerColor="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_location" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_address"
