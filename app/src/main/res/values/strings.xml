@@ -237,4 +237,12 @@
 
     <!--Location-->
     <string name="appBar_location"> Tentukan Lokasi </string>
+    <string name="review_maps"> Pratinjau ALamat </string>
+    <string name="rincian_alamat"> Rincian Alamat </string>
+    <string name="full_name"> Nama Lengkap </string>
+    <string name="no_telp"> No Telepon </string>
+    <string name="hint_alamat"> Masukan Alamat </string>
+    <string name="hint_name"> Masukan Nama Lengkap </string>
+    <string name="hint_no_telp"> Masukan No Handphone </string>
+    <string name="save_adress"> Simpan Alamat </string>
 </resources>
