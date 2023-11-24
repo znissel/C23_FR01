@@ -23,6 +23,7 @@ import id.fishku.consumer.core.utils.showMessage
 import id.fishku.consumer.databinding.FragmentLoginBinding
 import id.fishku.consumer.main.MainActivity
 import id.fishku.consumer.otp.SendOTPActivity
+import id.fishku.consumer.otp.VerifyOTPActivity
 import id.fishku.consumer.services.FirebaseService
 import id.fishku.consumer.services.GenerateToken
 import javax.inject.Inject
@@ -61,7 +62,11 @@ class LoginFragment : Fragment(), View.OnClickListener {
         getTokenFcm()
         signGoogleResult()
         binding?.btnGoogleSign?.setOnClickListener {
-            signGoogleAuth()
+            /*SEMENTARA*/
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            startActivity(intent)
+
+            //signGoogleAuth()
         }
     }
 
@@ -95,7 +100,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
     private fun signGoogleResult() {
-        loginViewModel.user.observe(this) {
+        loginViewModel.user.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
                 }
@@ -109,7 +114,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
     private fun userLinked(emailLink: String?) {
-        loginViewModel.userLinked(emailLink!!).observe(this) {
+        loginViewModel.userLinked(emailLink!!).observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
