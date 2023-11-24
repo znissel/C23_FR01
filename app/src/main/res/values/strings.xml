@@ -14,9 +14,9 @@
     <string name="create_account">Buat Akun</string>
     <string name="enter_data">Masukkan data untuk membuat akun</string>
     <string name="register">Daftar</string>
-    <string name="login_here">Masuk disini</string>
+    <string name="login_here"><a href="signup">Masuk di sini</a></string>
     <string name="name">Nama</string>
-    <string name="phone_number">Nomer Telepon</string>
+    <string name="phone_number">Nomor Telepon</string>
     <string name="address">Alamat</string>
     <string name="agreement">Dengan melanjutkan, Anda menyetujui Persyaratan Layanan kami dan Kebijakan Privasi.</string>
     <string name="have_account">Sudah punya akun?</string>
@@ -254,4 +254,6 @@
     <string name="shop_location"> Lokasi Pasar Ikan </string>
     <string name="visit_store"> Kunjungi Toko </string>
     <string name="fish_avalilable"> Ikan Yang Tersedia </string>
+    <string name="account_register">Daftar Akun</string>
+    <string name="already_have_account">Sudah punya akun?</string>
 </resources>
