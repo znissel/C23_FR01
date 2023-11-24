@@ -20,7 +20,7 @@
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:contentDescription="@string/product_photo"
-        android:src="@color/grey_10"
+        android:src="@color/gray_10"
         app:layout_constraintStart_toEndOf="@+id/placeholder_checkbox_cart"
         app:layout_constraintTop_toTopOf="parent" />
 

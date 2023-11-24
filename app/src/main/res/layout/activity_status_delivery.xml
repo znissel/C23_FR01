@@ -32,7 +32,7 @@
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:dividerColor="@color/grey_10" />
+                app:dividerColor="@color/gray_10" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <TableLayout
@@ -147,7 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="6dp"
             android:layout_marginTop="8dp"
-            app:dividerColor="@color/grey" />
+            app:dividerColor="@color/gray" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_detail_order"

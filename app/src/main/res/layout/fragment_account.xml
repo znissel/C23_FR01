@@ -30,7 +30,7 @@
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:dividerColor="@color/grey_10" />
+            app:dividerColor="@color/gray_10" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -122,7 +122,7 @@
                         android:id="@+id/materialDivider3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:dividerColor="@color/grey_10"
+                        app:dividerColor="@color/gray_10"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -133,7 +133,7 @@
                         android:layout_height="40dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
-                        android:background="@drawable/stroke_button_grey"
+                        android:background="@drawable/stroke_button_gray"
                         android:drawableStart="@drawable/ic_google"
                         android:drawablePadding="16dp"
                         android:paddingStart="24dp"
