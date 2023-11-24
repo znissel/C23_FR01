@@ -7,7 +7,7 @@
     <string name="password">Kata sandi</string>
     <string name="forgot_password">Lupa kata sandi?</string>
     <string name="dont_have_account">Tidak punya akun?</string>
-    <string name="register_here">Daftar disini</string>
+    <string name="register_here"><a href="signup">Daftar di sini</a></string>
     <string name="email_cannot_be_empty">Email tidak boleh kosong</string>
     <string name="invalid_email_format">Format email tidak sesuai</string>
     <string name="password_cannot_be_empty">Password tidak boleh kosong</string>
@@ -152,7 +152,7 @@
     <string name="enter_no">Masukkan Nomor</string>
     <string name="title_enter_no">Daftar dengan nomor \nWhatsApp</string>
     <string name="wrong_no_format">Format nomor salah</string>
-    <string name="log_in_dengan_google">Masuk dengan Google</string>
+    <string name="log_in_with_google">Masuk dengan Google</string>
     <string name="atau">atau</string>
     <string name="email_used">Email Sudah Digunakan</string>
     <string name="something_wrong">Terjadi kesalahan coba lagi</string>
@@ -197,6 +197,8 @@
     <string name="close">Close</string>
     <string name="fish_information"> Informasi Ikan </string>
     <string name="selected_fish"> Ikan Yang Dipilih </string>
+    <string name="welcome">Selamat datang di Fishku!</string>
+    <string name="waves">Waves</string>
 
     <!--Frequently Asked Questions-->
     <string name="faq">FAQ</string>

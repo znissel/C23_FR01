@@ -18,7 +18,7 @@
             android:layout_height="300dp"
             android:contentDescription="@string/image_photo"
             android:scaleType="centerCrop"
-            android:src="@color/grey_10"
+            android:src="@color/gray_10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +44,7 @@
             android:background="@drawable/bg_text_placeholder"
             android:padding="8dp"
             android:text="@string/available_weight"
-            android:textColor="@color/grey_10"
+            android:textColor="@color/gray_10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_detail_placeholder" />
 
@@ -74,7 +74,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
-            android:src="@color/grey_10"
+            android:src="@color/gray_10"
             app:layout_constraintStart_toStartOf="@+id/tv_detail_placeholder1"
             app:layout_constraintTop_toBottomOf="@+id/edt_detail_placeholder1" />
 
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            app:dividerColor="@color/grey_10"
+            app:dividerColor="@color/gray_10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_detail_placeholder2" />
@@ -125,7 +125,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:dividerColor="@color/grey_10"
+            app:dividerColor="@color/gray_10"
             app:layout_constraintEnd_toEndOf="@id/materialDivider"
             app:layout_constraintStart_toStartOf="@id/materialDivider"
             app:layout_constraintTop_toBottomOf="@+id/tv_detail_placeholder6" />

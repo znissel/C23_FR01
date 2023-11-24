@@ -7,16 +7,22 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF333333</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey_10">#DADADA</color>
+    <color name="gray_10">#DADADA</color>
     <color name="blue">#0C7DBF</color>
     <color name="yellow">#FFDA2D</color>
     <color name="light_blue">#3D5A80</color>
-    <color name="grey">#F2F3F2</color>
+    <color name="gray">#F2F3F2</color>
     <color name="bg_button_color"> #F2F3F2 </color>
     <color name="bg_blue_nutrition"> #D6E6F3 </color>
     <color name="bg_blue_nutritioninfo"> #5D9BD0 </color>
     <color name="bg_text_setLocation"> #9A9A9A </color>
     <color name="btn_save_adrees"> #0E3F75 </color>
+    <!--tambahan-->
+    <color name="navy">#02366F</color>
+    <color name="light_gray">#F0F0F0</color>
+    <color name="neon_blue">#00D1FF</color>
+    <color name="neon_blue_15">#2600D1FF</color>
+
 
     <!-- Light Theme -->
     <color name="md_theme_light_primary">#00639A</color>

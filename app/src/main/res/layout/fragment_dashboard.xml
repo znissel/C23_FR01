@@ -82,7 +82,7 @@
             android:id="@+id/btn_set_location"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/gray"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:text="@string/set_location"
             app:icon="@drawable/ic_my_location"

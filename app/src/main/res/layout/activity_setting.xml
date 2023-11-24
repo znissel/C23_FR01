@@ -34,7 +34,7 @@
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:dividerColor="@color/grey_10" />
+                app:dividerColor="@color/gray_10" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
@@ -77,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="8dp"
             android:layout_marginTop="8dp"
-            app:dividerColor="@color/grey"
+            app:dividerColor="@color/gray"
             app:layout_constraintTop_toBottomOf="@id/btn_password_setting" />
 
         <TextView
@@ -137,7 +137,7 @@
             android:layout_width="match_parent"
             android:layout_height="8dp"
             android:layout_marginTop="8dp"
-            app:dividerColor="@color/grey"
+            app:dividerColor="@color/gray"
             app:layout_constraintTop_toBottomOf="@id/btn_term_condition" />
 
         <TextView
@@ -197,7 +197,7 @@
             android:layout_width="match_parent"
             android:layout_height="8dp"
             android:layout_marginTop="8dp"
-            app:dividerColor="@color/grey"
+            app:dividerColor="@color/gay"
             app:layout_constraintTop_toBottomOf="@id/btn_critics_suggestion" />
 
         <TextView

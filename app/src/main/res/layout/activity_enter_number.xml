@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/format"
-        android:textColor="@color/grey_10"
+        android:textColor="@color/gray_10"
         app:layout_constraintStart_toStartOf="@+id/tv_error"
         app:layout_constraintTop_toBottomOf="@+id/tv_error" />
 
