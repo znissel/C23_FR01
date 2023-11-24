@@ -12,7 +12,11 @@
     <color name="yellow">#FFDA2D</color>
     <color name="light_blue">#3D5A80</color>
     <color name="grey">#F2F3F2</color>
-    <color name="bg_button_color"> </color>
+    <color name="bg_button_color"> #F2F3F2 </color>
+    <color name="bg_blue_nutrition"> #D6E6F3 </color>
+    <color name="bg_blue_nutritioninfo"> #5D9BD0 </color>
+    <color name="bg_text_setLocation"> #9A9A9A </color>
+    <color name="btn_save_adrees"> #0E3F75 </color>
 
     <!-- Light Theme -->
     <color name="md_theme_light_primary">#00639A</color>

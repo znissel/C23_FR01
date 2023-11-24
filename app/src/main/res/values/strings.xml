@@ -186,11 +186,12 @@
     <string name="email_subject">Fishku - Customer Support</string>
     <string name="email_fishku">admin@fishku.com</string>
 
+    <!-- Add By FR01 -->
     <string name="nearest_store"> Toko Terdekat </string>
     <string name="fish_detection"> Deteksi Ikan</string>
     <string name="title_activity_set_location">SetLocationActivity</string>
     <string name="related_fish">Ikan Terkait :</string>
-    <string name="set_location">Pilih Lokasi</string>
+    <string name="set_location"> Pilih Lokasi Anda </string>
     <string name="save_changes">Simpan Perubahan</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -229,6 +230,26 @@
     <!--Fish Recipe-->
     <string name="fishpedia_menu"> Fishpedia </string>
     <string name="fish_recipe"> Rekomendasi Olahan </string>
+    <string name="recipe"> Olahan Ikan </string>
+    <string name="choose_recipe"> Pilih Olahan Ikan </string>
     <string name="recipe_recomendation"> Rekomendasi Olahan Ikan </string>
     <string name="question">Pertanyaan</string>
+
+    <!--Location-->
+    <string name="appBar_location"> Tentukan Lokasi </string>
+    <string name="review_maps"> Pratinjau Lokasi </string>
+    <string name="rincian_alamat"> Rincian Alamat </string>
+    <string name="use_mylocation"> Gunakan Lokasi Saat Ini </string>
+    <string name="full_name"> Nama Lengkap </string>
+    <string name="no_telp"> No Telepon </string>
+    <string name="hint_alamat"> Masukan Alamat </string>
+    <string name="hint_name"> Masukan Nama Lengkap </string>
+    <string name="hint_no_telp"> Masukan No Handphone </string>
+    <string name="save_adress"> Simpan Alamat </string>
+
+    <!--Fish Store-->
+    <string name="fish_shop"> Pasar Ikan </string>
+    <string name="shop_location"> Lokasi Pasar Ikan </string>
+    <string name="visit_store"> Kunjungi Toko </string>
+    <string name="fish_avalilable"> Ikan Yang Tersedia </string>
 </resources>

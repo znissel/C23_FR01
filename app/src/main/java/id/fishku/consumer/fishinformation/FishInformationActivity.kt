@@ -15,6 +15,11 @@ class FishInformationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         hideActionBar()
+        setUpAction()
+    }
+
+    private fun setUpAction() {
+        binding.toolbarInformation.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 
     private fun hideActionBar() {

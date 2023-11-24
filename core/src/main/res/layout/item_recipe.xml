@@ -32,7 +32,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:background="@mipmap/ic_launcher_round" />
+                android:background="@drawable/logo_fishku" />
 
         </androidx.cardview.widget.CardView>
 

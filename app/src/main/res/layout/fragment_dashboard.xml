@@ -50,7 +50,7 @@
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/search_view_fish"
-                    android:layout_width="250dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:background="@drawable/bg_search_view"
@@ -73,6 +73,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:contentDescription="@string/cart" />
 
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -84,7 +85,9 @@
             android:backgroundTint="@color/grey"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:text="@string/set_location"
-            android:textColor="@color/black"
+            app:icon="@drawable/ic_my_location"
+            app:iconGravity="start"
+            android:textColor="@color/bg_text_setLocation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar_dashboard" />
