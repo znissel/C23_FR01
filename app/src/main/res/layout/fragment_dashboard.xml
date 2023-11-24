@@ -85,6 +85,8 @@
             android:backgroundTint="@color/grey"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:text="@string/set_location"
+            app:icon="@drawable/ic_my_location"
+            app:iconGravity="start"
             android:textColor="@color/bg_text_setLocation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

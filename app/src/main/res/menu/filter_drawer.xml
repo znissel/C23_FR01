@@ -8,6 +8,7 @@
             android:id="@+id/location_filter"
             android:title="@string/filter" />
     </group>
+
     <group android:enabled="false">
         <item
             android:id="@+id/save_changes"

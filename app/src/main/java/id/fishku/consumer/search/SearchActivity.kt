@@ -120,6 +120,16 @@ class SearchActivity : AppCompatActivity() {
     }
 
     //TAMBAHAN
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            setupToolbar()
+        } else {
+            val cartIntent = Intent(this, CartActivity::class.java)
+            startActivity(cartIntent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.dashboard_menu, menu)

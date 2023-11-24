@@ -63,4 +63,6 @@
     <string name="later">"Nanti saja"</string>
     <string name="update">"update"</string>
     <string name="err_update">"Aplikasi tidak ditemukan"</string>
+
+    <string name="recipe_recomendation"> Rekomendasi Olahan Ikan </string>
 </resources>
