@@ -50,7 +50,7 @@
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/search_view_fish"
-                    android:layout_width="0dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:background="@drawable/bg_search_view"
@@ -81,13 +81,13 @@
         <Button
             android:id="@+id/btn_set_location"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:backgroundTint="@color/gray"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:text="@string/set_location"
-            app:icon="@drawable/ic_my_location"
-            app:iconGravity="start"
-            android:textColor="@color/bg_text_setLocation"
+            android:textColor="@color/black_transparent"
+            app:icon="@drawable/ic_location_2"
+            app:iconTint="@null"
+            android:backgroundTint="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar_dashboard" />
@@ -98,7 +98,7 @@
             android:layout_height="120dp"
             android:layout_margin="@dimen/activity_vertical_margin"
             android:contentDescription="@string/banner_discount"
-            android:src="@drawable/img_banner"
+            android:src="@drawable/img_banner_2"
             app:layout_constraintBottom_toTopOf="@id/tv_best_product"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
