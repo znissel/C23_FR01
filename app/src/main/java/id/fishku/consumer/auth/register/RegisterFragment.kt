@@ -48,12 +48,12 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         binding?.edtPhoneRegister?.setText(nomor)
         binding?.apply {
             btnRegister.setOnClickListener(this@RegisterFragment)
-            btnLoginHere.setOnClickListener(this@RegisterFragment)
+            btnRegisterHere.setOnClickListener(this@RegisterFragment)
         }
     }
 
     private fun registerResult() {
-        registerViewModel.result.observe(this) {
+        registerViewModel.result.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> showLoading(true)
                 is Resource.Success -> {
@@ -78,7 +78,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_register -> registerHandler()
-            R.id.btn_login_here -> v.findNavController()
+            R.id.btn_register_here-> v.findNavController()
                 .navigate(R.id.action_registerFragment_to_loginFragment)
         }
     }
@@ -150,13 +150,13 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         if (isLoading) {
             binding?.apply {
                 loadingRegister.visibility = View.VISIBLE
-                btnLoginHere.isClickable = false
+                btnRegisterHere.isClickable = false
                 btnRegister.isClickable = false
             }
         } else {
             binding?.apply {
                 loadingRegister.visibility = View.GONE
-                btnLoginHere.isClickable = true
+                btnRegisterHere.isClickable = true
                 btnRegister.isClickable = true
             }
         }
