@@ -65,4 +65,5 @@
     <string name="err_update">"Aplikasi tidak ditemukan"</string>
 
     <string name="recipe_recomendation"> Rekomendasi Olahan Ikan </string>
+    <string name="fish_nutrition"> Nama Ikan </string>
 </resources>

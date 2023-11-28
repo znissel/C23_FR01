@@ -212,22 +212,37 @@
     </string-array>
 
     <!--Fish Information Description-->
+    <string name="fish_nutrition"> Nama Ikan </string>
+    <string name="fish_nutrition_tittle"> Kandungan Gizi Ikan </string>
+    <string name="choose_fish_nutrition"> Pilih Jenis Ikan : </string>
     <string name="nutritional_value"> Kandungan Gizi </string>
+    <string name="fish_artikel"> Artikel Ikan </string>
+
     <string name="protein_desc"> Protein </string>
-    <string name="Selenium_desc"> Selenium </string>
+    <string name="Selenium_desc"> Kalium </string>
     <string name="VitB12_desc"> Vit B12 </string>
     <string name="VitB6_desc"> Vit B6 </string>
     <string name="ZatBesi_desc"> Zat Besi </string>
     <string name="Magnesium_desc"> Magnesium </string>
-    <string name="Sodium_desc"> Sodium </string>
+    <string name="Sodium_desc"> Fosfor </string>
+
+    <string name="lemak_desc"> Lemak </string>
+    <string name="karbo_desc"> Karbohidrat </string>
+    <string name="natrium_desc"> Natrium </string>
+    <string name="kalsium_desc"> Kalsium </string>
 
     <string name="protein_value">Nilai Protein</string>
-    <string name="Selenium_value">Nilai Selenium </string>
+    <string name="Selenium_value">Nilai Kalium </string>
     <string name="VitB12_value">Nilai Vit B12 </string>
     <string name="VitB6_value">Nilai Vit B6 </string>
     <string name="ZatBesi_value">Nilai Zat Besi </string>
     <string name="Magnesium_value">Nilai Magnesium </string>
-    <string name="Sodium_value">Nilai Sodium </string>
+    <string name="Sodium_value">Nilai Fosfor </string>
+
+    <string name="lemak_value">Nilai Lemak </string>
+    <string name="karbo_value">Nilai Karbohidrat </string>
+    <string name="natrium_value">Nilai Natrium </string>
+    <string name="kalsium_value">Nilai Kalsium </string>
 
     <!--Fish Recipe-->
     <string name="fishpedia_menu"> Fishpedia </string>
