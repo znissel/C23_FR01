@@ -197,7 +197,7 @@
             android:layout_width="match_parent"
             android:layout_height="8dp"
             android:layout_marginTop="8dp"
-            app:dividerColor="@color/gay"
+            app:dividerColor="@color/gray"
             app:layout_constraintTop_toBottomOf="@id/btn_critics_suggestion" />
 
         <TextView
