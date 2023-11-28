@@ -18,6 +18,7 @@ import id.fishku.consumer.core.ui.FishTypeAdapter
 import id.fishku.consumer.core.utils.showMessage
 import id.fishku.consumer.databinding.FragmentChooseFishBinding
 import id.fishku.consumer.fishinformation.FishInformationActivity
+import id.fishku.consumer.fishinformation.FishNutritionActivity
 import id.fishku.consumer.fishrecipe.FishRecipeActivity
 
 @AndroidEntryPoint
@@ -144,7 +145,7 @@ class ChooseFishFragment : Fragment(), Toolbar.OnMenuItemClickListener,
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             R.id.btn_fishpedia -> {
-                val fishPediaIntent = Intent(requireContext(), FishInformationActivity::class.java)
+                val fishPediaIntent = Intent(requireContext(), FishNutritionActivity::class.java)
                 startActivity(fishPediaIntent)
                 return true
             }
