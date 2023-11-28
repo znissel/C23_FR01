@@ -106,7 +106,7 @@ class SendOTPActivity : AppCompatActivity() {
             )
             viewModel.sendOtpCode(otpRequest)
         }
-//        startActivity(Intent(this, VerifyOTPActivity::class.java))
+        startActivity(Intent(this, VerifyOTPActivity::class.java))
     }
 
     /**

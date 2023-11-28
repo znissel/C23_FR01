@@ -29,8 +29,8 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 import io.github.cdimascio.dotenv.dotenv
 
-val dotenv = dotenv()
-val serverClientId = dotenv["serverClientId"] ?: error("serverClientId is not set in .env")
+//val dotenv = dotenv()
+//val serverClientId = dotenv["serverClientId"] ?: error("serverClientId is not set in .env")
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -68,7 +68,7 @@ class FirebaseModule {
     @Singleton
     fun provideGso(@ApplicationContext context: Context): GoogleSignInOptions =
         GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(serverClientId)
+            .requestIdToken(BuildConfig.serverClientId)
             .requestEmail()
             .build()
 

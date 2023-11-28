@@ -65,6 +65,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
             /*SEMENTARA*/
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
+            activity?.finish()
 
             //signGoogleAuth()
         }

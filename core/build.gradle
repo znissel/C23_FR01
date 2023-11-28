@@ -14,6 +14,10 @@ apply from: '../shared_dependencies.gradle'
 android {
     compileSdk 33
 
+    def localPropertiesFile = rootProject.file("local.properties")
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(localPropertiesFile))
+
     defaultConfig {
         minSdk 21
         targetSdk 33
@@ -22,6 +26,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "OTP_TOKEN", "\"" + localProperties['OTP_TOKEN'] + "\"")
+            buildConfigField("String", "SERVER_KEY", "\"" + localProperties['SERVER_KEY'] + "\"")
+            buildConfigField("String", "serverClientId", "\"" + localProperties['serverClientId'] + "\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -37,6 +46,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
     namespace 'id.fishku.consumer.core'
 }
