@@ -1,6 +1,10 @@
 package id.fishku.consumer.model
 
-class FishNutrition (
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class FishNutrition (
     val id: String,
     val fishName: String,
     val photoFishUrl: String,
@@ -15,4 +19,4 @@ class FishNutrition (
     val fishLemak: String,
     val fishNatrium: String,
     val fishKalsium: String
-)
+): Parcelable
