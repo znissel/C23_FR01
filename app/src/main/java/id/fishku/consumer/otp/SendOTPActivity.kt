@@ -1,12 +1,17 @@
 package id.fishku.consumer.otp
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.telephony.SmsManager
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
@@ -16,6 +21,7 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
+import id.fishku.consumer.R
 import id.fishku.consumer.auth.AuthActivity
 import id.fishku.consumer.core.data.Resource
 import id.fishku.consumer.core.data.source.local.datastore.LocalData
@@ -29,12 +35,6 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-
-/**
- * Send o t p activity
- *
- * Page for send otp via WhatsApp
- */
 @AndroidEntryPoint
 class SendOTPActivity : AppCompatActivity() {
 
@@ -78,7 +78,14 @@ class SendOTPActivity : AppCompatActivity() {
         startGenerateOtp()
 
         binding.waCard.setOnClickListener {
-            sendOtp()
+            sendWaOtp()
+            /*val user = saveToLocal.getDataUser()
+            val number = user.phoneNumber
+            sendOtp(number)*/
+            Log.d("BOSS", "udah keklik kok")
+        }
+        binding.smsCard.setOnClickListener {
+            sendSmsOtp()
             /*val user = saveToLocal.getDataUser()
             val number = user.phoneNumber
             sendOtp(number)*/
@@ -89,10 +96,50 @@ class SendOTPActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Init
-     * Show element in first open
-     */
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 100) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted
+            } else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun sendSmsOtp() {
+        val codeOtp = saveToLocal.getCodeOtp().toString()
+        Log.d("BOSS", "OTP - number: ${codeOtp}")
+        val user = saveToLocal.getDataUser()
+        Log.d("BOSS", "OTP - number: ${user}")
+        val number = "+" + user.phoneNumber.toString()
+        Log.d("BOSS", "OTP - number: ${number}")
+
+        val smsManager: SmsManager = SmsManager.getDefault()
+        //ubah stringnya
+        val parts = smsManager.divideMessage(getString(R.string.otp_msg) + codeOtp)
+        val phoneNumber = number
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.SEND_SMS
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            smsManager.sendMultipartTextMessage(phoneNumber, null, parts, null, null)
+
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.SEND_SMS),
+                100
+            )
+        }
+    }
+
     private fun init() {
         val number = saveToLocal.getNumber()
         number?.let {
@@ -104,77 +151,7 @@ class SendOTPActivity : AppCompatActivity() {
         }
     }
 
-    //tambahan
-    /*val db = FirebaseAuth.getInstance()
-    private var verificationCode: String? = null
-    private fun sendOtp(phoneNumber: String?) {
-        setInProgress(true)
-
-        val builder = phoneNumber?.let {
-            PhoneAuthOptions.newBuilder(db)
-                .setPhoneNumber(it)
-                .setTimeout(60L, TimeUnit.SECONDS)
-                .setActivity(this)
-                .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                    override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                        //signIn(phoneAuthCredential)
-                        Log.d("BOSS", "KEKIRIM")
-                        setInProgress(false)
-                    }
-
-                    override fun onVerificationFailed(p0: FirebaseException) {
-                        Log.d("BOSS", "GA KEKIRIM")
-                        setInProgress(false)
-                    }
-
-                    override fun onCodeSent(s: String, forceResendingToken: PhoneAuthProvider.ForceResendingToken) {
-                        super.onCodeSent(s, forceResendingToken)
-                        Log.d("BOSS", "GA TAHU")
-                        verificationCode = s
-                        setInProgress(false)
-
-                        sendSms(phoneNumber, "Your OTP is: $verificationCode")
-                    }
-                })
-        }
-    }
-
-    private fun sendSms(phoneNumber: String?, message: String) {
-        try {
-            val smsManager = SmsManager.getDefault()
-            smsManager.sendTextMessage(phoneNumber, null, message, null, null)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun setInProgress(inProgress: Boolean) {
-        if (inProgress) {
-            binding.loading.visibility = View.VISIBLE
-            binding.waCard.visibility = View.GONE
-        } else {
-            binding.loading.visibility = View.GONE
-            binding.waCard.visibility = View.VISIBLE
-        }
-    }
-
-    private fun signIn(phoneAuthCredential: PhoneAuthCredential) {
-        setInProgress(true)
-
-        db.signInWithCredential(phoneAuthCredential)
-            .addOnCompleteListener(this) { task ->
-                setInProgress(false)
-                if (task.isSuccessful) {
-                    val intent = Intent(this, LoginUsernameActivity::class.java)
-                    intent.putExtra("phone", phoneNumber)
-                    startActivity(intent)
-                } else {
-                    showToast("OTP verification failed")
-                }
-            }
-    }*/
-
-    private fun sendOtp() {
+    private fun sendWaOtp() {
         val codeOtp = saveToLocal.getCodeOtp()
         Log.d("BOSS", "OTP - kode: ${codeOtp}")
         val user = saveToLocal.getDataUser()

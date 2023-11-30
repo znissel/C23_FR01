@@ -256,4 +256,8 @@
     <string name="fish_avalilable"> Ikan Yang Tersedia </string>
     <string name="account_register">Daftar Akun</string>
     <string name="already_have_account">Sudah punya akun?</string>
+
+    <!---->
+    <string name="sms_to">Kirim SMS ke</string>
+    <string name="otp_msg">Kode OTP Anda untuk FI$HKU:</string>
 </resources>

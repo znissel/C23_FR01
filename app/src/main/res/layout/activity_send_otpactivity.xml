@@ -71,6 +71,56 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sms_card"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="@dimen/cardview_default_radius"
+        app:layout_constraintEnd_toEndOf="@id/wa_card"
+        app:layout_constraintStart_toStartOf="@id/wa_card"
+        app:layout_constraintTop_toBottomOf="@id/wa_card" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_sms"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:src="@drawable/ic_action_sms"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/app_name" />
+
+            <TextView
+                android:id="@+id/tv_sms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sms_to"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/iv_sms"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_sms_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/number"
+                app:layout_constraintStart_toStartOf="@+id/tv_sms"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sms" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/textView11"
         android:layout_width="0dp"
