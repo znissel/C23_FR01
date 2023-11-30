@@ -1,7 +1,6 @@
 package id.fishku.consumer.core.utils
 
 import id.fishku.consumer.core.BuildConfig
-import io.github.cdimascio.dotenv.dotenv
 
 //val dotenv = dotenv()
 

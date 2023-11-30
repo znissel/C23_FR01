@@ -27,7 +27,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import io.github.cdimascio.dotenv.dotenv
 
 //val dotenv = dotenv()
 //val serverClientId = dotenv["serverClientId"] ?: error("serverClientId is not set in .env")
