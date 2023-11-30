@@ -16,11 +16,6 @@ import id.fishku.consumer.otp.SendOTPActivity
 import id.fishku.consumer.utils.Constants.COUNTRY_CODE
 import javax.inject.Inject
 
-/**
- * Enter number activity
- *
- * Page for input phone number
- */
 @AndroidEntryPoint
 class EnterNumberActivity : AppCompatActivity() {
     companion object{
@@ -47,22 +42,6 @@ class EnterNumberActivity : AppCompatActivity() {
 
     }
 
-
-    /**
-     * Back
-     * Back page to login page
-     */
-    private fun back(){
-        val intent = Intent(this, AuthActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        startActivity(intent)
-        finish()
-    }
-
-    /**
-     * Check format number next
-     * Check correct format phone number before send to otp activity
-     */
     private fun checkFormatNumberNext(){
         val numText = binding.edtNumber.text.trim().toString()
         val startText = numText.startsWith(COUNTRY_CODE)
@@ -78,6 +57,12 @@ class EnterNumberActivity : AppCompatActivity() {
         }
     }
 
+    private fun back(){
+        val intent = Intent(this, AuthActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        finish()
+    }
 
     override fun onDestroy() {
         super.onDestroy()

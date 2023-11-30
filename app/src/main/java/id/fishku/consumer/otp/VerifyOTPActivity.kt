@@ -77,22 +77,6 @@ class VerifyOTPActivity : AppCompatActivity() {
 
     }
 
-    /**
-     * Back
-     * Back to send otp page and clear stack page
-     */
-    private fun back() {
-        val intent = Intent(this, SendOTPActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        startActivity(intent)
-        finish()
-    }
-
-    /**
-     * Resend otp
-     * Resend otp if after 60 not input correct code
-     * after 60 seconds this button will visible
-     */
     private fun resendOtp() {
         val codeOtp = saveToLocal.getCodeOtp()
         val user = saveToLocal.getDataUser()
@@ -124,10 +108,6 @@ class VerifyOTPActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Start generate otp
-     * Generate otp code locally with coroutine
-     */
     @SuppressLint("StringFormatInvalid")
     private fun startGenerateOtp() {
         lifecycleScope.launch {
@@ -156,10 +136,6 @@ class VerifyOTPActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Check verification code
-     * check if code from local otp and wa otp is matching
-     */
     private fun checkVerificationCode() {
         val verifyCode = binding.edtVerifyCode.text.trim().toString()
         val localCode = saveToLocal.getCodeOtp()
@@ -226,6 +202,13 @@ class VerifyOTPActivity : AppCompatActivity() {
             binding.loading.visibility = View.VISIBLE
         else
             binding.loading.visibility = View.GONE
+    }
+
+    private fun back() {
+        val intent = Intent(this, SendOTPActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        finish()
     }
 
     override fun onDestroy() {
