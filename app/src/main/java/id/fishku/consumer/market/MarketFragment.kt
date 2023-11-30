@@ -179,7 +179,7 @@ class MarketFragment : Fragment(), View.OnClickListener {
     private fun setupCart() {
         val menuItem = binding?.toolbarMarket?.menu?.getItem(0)?.actionView
         val tvAmount = menuItem?.findViewById<TextView>(R.id.cart_badge)
-        marketViewModel.cart.observe(this) {
+        marketViewModel.cart.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {}
 
