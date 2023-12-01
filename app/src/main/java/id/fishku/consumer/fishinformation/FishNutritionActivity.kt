@@ -32,9 +32,7 @@ class FishNutritionActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        nutritionAdapter = FishNutritionAdapter { nutritionId ->
-            val intent = Intent(this@FishNutritionActivity, FishInformationActivity::class.java)
-            startActivity(intent)
+        nutritionAdapter = FishNutritionAdapter { 
         }
 
         binding.rvFishNutrition.apply {
