@@ -1,8 +1,10 @@
 package id.fishku.consumer.otp
 
 import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +12,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavDeepLinkBuilder
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
+import id.fishku.consumer.auth.AuthActivity
 import id.fishku.consumer.auth.login.LoginViewModel
 import id.fishku.consumer.core.data.source.local.datastore.LocalData
 import id.fishku.consumer.core.data.source.remote.request.Component
@@ -27,11 +32,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * Verify o t p activity
- *
- * Page for verify code send to wa and locally
- */
 @AndroidEntryPoint
 class VerifyOTPActivity : AppCompatActivity() {
 
@@ -40,6 +40,8 @@ class VerifyOTPActivity : AppCompatActivity() {
 
     private val viewModel: SendOtpViewModel by viewModels()
     private val viewModelLogin: LoginViewModel by viewModels()
+
+    private val auth = FirebaseAuth.getInstance()
 
     @Inject
     lateinit var saveToLocal: LocalData
@@ -68,17 +70,13 @@ class VerifyOTPActivity : AppCompatActivity() {
         otpResponse()
     }
 
-    /**
-     * Init
-     * Show element in first open
-     */
     private fun init() {
         binding.tvNum.text = saveToLocal.getNumber()
 
     }
 
     private fun resendOtp() {
-        val codeOtp = saveToLocal.getCodeOtp()
+        /*val codeOtp = saveToLocal.getCodeOtp()
         val user = saveToLocal.getDataUser()
         val components = Component(
             parameters = listOf(
@@ -96,13 +94,9 @@ class VerifyOTPActivity : AppCompatActivity() {
             to = "${user.phoneNumber}",
             template = template
         )
-        viewModel.sendOtpCode(otpRequest)
+        viewModel.sendOtpCode(otpRequest)*/
     }
 
-    /**
-     * Otp response
-     * Get otp response from server
-     */
     private fun otpResponse() {
         viewModel.otpResponse.observe(this) { res ->
         }
@@ -138,6 +132,20 @@ class VerifyOTPActivity : AppCompatActivity() {
 
     private fun checkVerificationCode() {
         val verifyCode = binding.edtVerifyCode.text.trim().toString()
+        val verificationId = saveToLocal.getVerificationId().toString()
+        val credential = PhoneAuthProvider.getCredential(verificationId, verifyCode)
+            auth.signInWithCredential(credential)
+                .addOnCompleteListener {
+                    if (it.isSuccessful){
+                        //startActivity(Intent(this, MainActivity::class.java)) hrsnya ke fragment?
+                        //finish()
+                        toRegisterFragment()
+                        Log.d("BOSS", "check verif : it.isSuccessful")
+                    } else {
+                        Log.d("BOSS", "check verif : failed")
+                    }
+                }
+        /*val verifyCode = binding.edtVerifyCode.text.trim().toString()
         val localCode = saveToLocal.getCodeOtp()
         val state = saveToLocal.getStateAuth()
         val user = saveToLocal.getDataUser()
@@ -156,23 +164,13 @@ class VerifyOTPActivity : AppCompatActivity() {
             } else {
                 binding.tvError.visibility = View.VISIBLE
             }
-        }
+        }*/
     }
 
-    /**
-     * Get random num
-     * generate random number from RANGE_CODE_SECOND
-     * @return
-     */
     private fun getRandomNum(): Int {
         return (RANGE_CODE_SECOND).shuffled().first()
     }
 
-    /**
-     * Save otp code
-     * save otp locally and use later
-     * @param code
-     */
     private fun saveOtpCode(code: Int) {
         saveToLocal.setCodeOtp(code)
         textVisibility(true)
@@ -189,12 +187,22 @@ class VerifyOTPActivity : AppCompatActivity() {
     }
 
     private fun toRegisterFragment() {
-        val pendingIntent = NavDeepLinkBuilder(this.applicationContext)
+        //masih bermasalah, fragment register ga kebuka
+        val intent = Intent(this, AuthActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        intent.putExtra("open_register_fragment", true)
+        startActivity(intent)
+        finish()
+        /*val pendingIntent = NavDeepLinkBuilder(this.applicationContext)
             .setGraph(R.navigation.auth_navigation)
             .setDestination(R.id.registrationFragment)
             .createPendingIntent()
 
-        pendingIntent.send()
+        try {
+            pendingIntent.send()
+        } catch (e: PendingIntent.CanceledException) {
+            e.printStackTrace()
+        }*/
     }
 
     private fun isLoading(value: Boolean) {
