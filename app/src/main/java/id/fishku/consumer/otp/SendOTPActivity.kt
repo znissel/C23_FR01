@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
@@ -42,9 +43,7 @@ class SendOTPActivity : AppCompatActivity() {
 
     private var _binding: ActivitySendOtpactivityBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: SendOtpViewModel by viewModels()
-
     private val auth = FirebaseAuth.getInstance()
 
     @Inject
@@ -52,20 +51,21 @@ class SendOTPActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         _binding = ActivitySendOtpactivityBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
 
         //percobaan
-        //val data = HashMap<String, String>()
-        //val db = FirebaseFirestore.getInstance()
-        //db.collection("test").add(data);
-
+        /*val data = HashMap<String, String>()
+        val db = FirebaseFirestore.getInstance()
+        db.collection("test").add(data);*/
         init()
         otpResponse()
         //startGenerateOtp()
 
+        binding.btnBack.setOnClickListener {
+            back()
+        }
         binding.waCard.setOnClickListener {
             sendWaOtp()
             Log.d("BOSS", "udah keklik kok (wa)")
@@ -73,9 +73,6 @@ class SendOTPActivity : AppCompatActivity() {
         binding.smsCard.setOnClickListener {
             sendSmsOtp()
             Log.d("BOSS", "udah keklik kok (sms)")
-        }
-        binding.btnBack.setOnClickListener {
-            back()
         }
     }
 
@@ -92,15 +89,18 @@ class SendOTPActivity : AppCompatActivity() {
             .setPhoneNumber(number)
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(this) //klu diubah ke VerifyOTPActivity?
-            .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
+            .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(p0: PhoneAuthCredential) {
                     //progress bar gone
                     Log.d("BOSS", "OTP SMS: Completed")
+                    Log.d("BOSS", "onVerificationCompleted:$p0")
+                    //signInWithPhoneAuthCredential(p0)
                 }
 
                 override fun onVerificationFailed(p0: FirebaseException) {
                     //progress bar gone
                     Log.d("BOSS", "OTP SMS: Gagal")
+                    Log.w("BOSS", "onVerificationFailed", p0)
                 }
 
                 override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
@@ -114,13 +114,13 @@ class SendOTPActivity : AppCompatActivity() {
                 }
 
             }).build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
 
-        if (ContextCompat.checkSelfPermission(
+        /*if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.SEND_SMS
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            PhoneAuthProvider.verifyPhoneNumber(options)
             Log.d("BOSS", "OTP SMS - options : ${options}")
         } else {
             ActivityCompat.requestPermissions(
@@ -128,17 +128,35 @@ class SendOTPActivity : AppCompatActivity() {
                 arrayOf(Manifest.permission.SEND_SMS),
                 100
             )
-        }
+        }*/
     }
 
-    private fun init() {
-        val number = saveToLocal.getNumber()
-        number?.let {
-            if (number[0] == '0') {
-                binding.tvNumber.text = number.replaceRange(0, 1, "62")
-            } else {
-                binding.tvNumber.text = number
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d("BOSS", "signInWithCredential:success")
+
+                    val user = task.result?.user
+                } else {
+                    // Sign in failed, display a message and update the UI
+                    Log.w("BOSS", "signInWithCredential:failure", task.exception)
+                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                        // The verification code entered was invalid
+                    }
+                    // Update UI
+                }
             }
+    }
+
+    private fun startToVerifyOTP() {
+        //progress bar visible
+        val user = saveToLocal.getDataUser()
+        if (user.phoneNumber != null) {
+            val intent = Intent(this, VerifyOTPActivity::class.java)
+            //progress bar gone
+            startActivity(intent)
         }
     }
 
@@ -162,6 +180,17 @@ class SendOTPActivity : AppCompatActivity() {
         }*/
     }
 
+    private fun init() {
+        val number = saveToLocal.getNumber()
+        number?.let {
+            if (number[0] == '0') {
+                binding.tvNumber.text = number.replaceRange(0, 1, "62")
+            } else {
+                binding.tvNumber.text = number
+            }
+        }
+    }
+
     private fun otpResponse() {
         viewModel.otpResponse.observe(this) { res ->
             when (res) {
@@ -183,16 +212,6 @@ class SendOTPActivity : AppCompatActivity() {
 
                 else -> {}
             }
-        }
-    }
-
-    private fun startToVerifyOTP() {
-        //progress bar visible
-        val user = saveToLocal.getDataUser()
-        if (user.phoneNumber != null) {
-            val intent = Intent(this, VerifyOTPActivity::class.java)
-            //progress bar gone
-            startActivity(intent)
         }
     }
 

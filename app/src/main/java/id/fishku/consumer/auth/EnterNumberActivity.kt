@@ -18,9 +18,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class EnterNumberActivity : AppCompatActivity() {
-    companion object{
-        const val NUMBER = "number"
-    }
+
     private var _binding: ActivityEnterNumberBinding? = null
     private val binding get() = _binding!!
 
@@ -67,5 +65,9 @@ class EnterNumberActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object{
+        const val NUMBER = "number"
     }
 }
