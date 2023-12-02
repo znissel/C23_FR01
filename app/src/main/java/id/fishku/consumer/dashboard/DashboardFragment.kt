@@ -60,15 +60,8 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     //function baru intent faq
     private fun faqAction() {
         val faqButton = view?.findViewById<ImageView>(R.id.ivFaq)
-        // Set an OnClickListener for the Button
         faqButton?.setOnClickListener {
-            // Create an Intent to start the FaqActivity
             val intent = Intent(requireActivity(), FaqActivity::class.java)
-
-            // Optionally, you can pass data to the FaqActivity using extras
-            // intent.putExtra("key", "value")
-
-            // Start the FaqActivity
             startActivity(intent)
         }
     }
@@ -77,12 +70,8 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     private fun setLocationAction() {
         val faqButton = view?.findViewById<Button>(R.id.btn_set_location)
 
-        // Set an OnClickListener for the Button
         faqButton?.setOnClickListener {
-            // Create an Intent to start the FaqActivity
             val intent = Intent(requireActivity(), SetLocationActivity::class.java)
-
-            // Start the FaqActivity
             startActivity(intent)
         }
     }

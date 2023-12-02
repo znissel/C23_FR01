@@ -17,27 +17,61 @@
             android:id="@+id/appbar_choose_fish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:liftOnScroll="true">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar_choose_fish"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                app:menu="@menu/recipe_menu"
-                app:title="@string/fish_detection"
-                app:titleCentered="true"
-                app:titleTextAppearance="@style/Text.SemiBold.Big"
-                app:titleTextColor="@color/blue" />
+                android:layout_height="match_parent">
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:dividerColor="@color/gray_10" />
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/chooseFishToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme"
+                    app:title="@string/fish_detection"
+                    app:titleCentered="true"
+                    app:titleTextAppearance="@style/Text.SemiBold.Big"
+                    app:titleTextColor="@color/blue"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:dividerColor="@color/gray_10"
+                    app:layout_constraintBottom_toBottomOf="@+id/chooseFishToolbar" />
+
+                <ImageView
+                    android:id="@+id/ivFishRecipe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_fish_recipe"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/chooseFishToolbar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/recipe" />
+
+                <ImageView
+                    android:id="@+id/ivFishInformation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_recipe_fish"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/fish_information" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
