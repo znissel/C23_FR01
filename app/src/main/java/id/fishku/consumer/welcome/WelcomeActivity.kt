@@ -24,14 +24,17 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        activityHandler()
+        //activityHandler()
         setupView()
         binding.btnNext.setOnClickListener {
             welcomeViewModel.saveActivity()
+            //tambahan
+            startActivity(Intent(this, AuthActivity::class.java))
+            finish()
         }
     }
 
-    private fun activityHandler() {
+    /*private fun activityHandler() {
         welcomeViewModel.getFirstLaunch().observe(this) {
             if (it == true) {
                 binding.root.visibility = View.GONE
@@ -39,7 +42,7 @@ class WelcomeActivity : AppCompatActivity() {
                 finish()
             }
         }
-    }
+    }*/
 
     private fun setupView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
