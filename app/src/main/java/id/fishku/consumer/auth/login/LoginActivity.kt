@@ -3,14 +3,11 @@ package id.fishku.consumer.auth.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
@@ -21,20 +18,18 @@ import id.fishku.consumer.core.domain.model.User
 import id.fishku.consumer.core.domain.params.ParamsToken
 import id.fishku.consumer.core.utils.showError
 import id.fishku.consumer.core.utils.showMessage
-import id.fishku.consumer.databinding.FragmentLoginBinding
+import id.fishku.consumer.databinding.ActivityLoginBinding
 import id.fishku.consumer.main.MainActivity
 import id.fishku.consumer.otp.SendOTPActivity
-import id.fishku.consumer.otp.VerifyOTPActivity
 import id.fishku.consumer.services.FirebaseService
 import id.fishku.consumer.services.GenerateToken
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginFragment : Fragment(), View.OnClickListener {
+class LoginActivity : AppCompatActivity() {
 
     private val loginViewModel: LoginViewModel by viewModels()
-    private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding
+    private lateinit var binding: ActivityLoginBinding
 
     @Inject
     lateinit var saveToLocal: LocalData
@@ -45,17 +40,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
     @Inject
     lateinit var googleSignInClient: GoogleSignInClient
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         isLoginCheck()
         setupAction()
@@ -65,23 +53,23 @@ class LoginFragment : Fragment(), View.OnClickListener {
         loginResult()
         signGoogleResult()
 
-        binding?.btnGoogleSign?.setOnClickListener {
+        binding.btnGoogleSign.setOnClickListener {
             /*SEMENTARA*/
-            val intent = Intent(requireActivity(), MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            activity?.finish()
+            finish()
 
             //signGoogleAuth()
         }
     }
 
     private fun isLoginCheck() {
-        loginViewModel.getToken().observe(viewLifecycleOwner) { token ->
+        loginViewModel.getToken().observe(this) { token ->
             if (!token.isNullOrEmpty()) {
-                binding?.loginContainer?.visibility = View.GONE
-                val intent = Intent(requireContext(), MainActivity::class.java)
+                binding.loginContainer.visibility = View.GONE
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                activity?.finish()
+                finish()
             }
         }
     }
@@ -96,15 +84,18 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setupAction() {
-        binding?.apply {
-            btnLogin.setOnClickListener(this@LoginFragment)
-            btnRegisterHere.setOnClickListener(this@LoginFragment)
-            btnForgotPassword.setOnClickListener(this@LoginFragment)
+        binding.apply {
+            btnLogin.setOnClickListener { loginHandler() }
+            btnRegisterHere.setOnClickListener {
+                //view?.findNavController()?.navigate(R.id.action_loginFragment_to_registerFragment)
+                startActivity(Intent(this@LoginActivity, EnterNumberActivity::class.java))
+            }
+            btnForgotPassword.setOnClickListener { "forgot password".showMessage(this@LoginActivity) }
         }
     }
 
     private fun signGoogleResult() {
-        loginViewModel.user.observe(viewLifecycleOwner) {
+        loginViewModel.user.observe(this) {
             when (it) {
                 is Resource.Loading -> {
                 }
@@ -118,14 +109,14 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
     private fun userLinked(emailLink: String?) {
-        loginViewModel.userLinked(emailLink!!).observe(viewLifecycleOwner) {
+        loginViewModel.userLinked(emailLink!!).observe(this) {
             when (it) {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
                     saveToSession(it.data!!)
                 }
                 is Resource.Error -> {
-                    getString(R.string.login_to_linked).showMessage(requireContext())
+                    getString(R.string.login_to_linked).showMessage(this)
                     loginViewModel.signOutGoogle(googleSignInClient)
                 }
             }
@@ -134,7 +125,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     private fun saveToSession(data: User) {
         loginViewModel.saveSession(data.token!!, data)
-        startActivity(Intent(requireActivity(), MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     private fun signGoogleAuth() {
@@ -150,7 +141,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
         }
 
     private fun loginResult() {
-        loginViewModel.result.observe(viewLifecycleOwner) {
+        loginViewModel.result.observe(this) {
             when (it) {
                 is Resource.Loading -> showLoading(true)
                 is Resource.Success -> {
@@ -167,7 +158,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    it.message?.showMessage(requireContext())
+                    it.message?.showMessage(this)
                 }
             }
         }
@@ -187,35 +178,24 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
     private fun toMainMenu() {
-        val mainIntent = Intent(requireContext(), SendOTPActivity::class.java)
+        val mainIntent = Intent(this, SendOTPActivity::class.java)
         startActivity(mainIntent)
-    }
-
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.btn_login -> loginHandler()
-            R.id.btn_register_here -> {
-                v.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-                //startActivity(Intent(activity, EnterNumberActivity::class.java))
-            }
-            R.id.btn_forgot_password -> "forgot password".showMessage(requireContext())
-        }
     }
 
     private fun loginHandler() {
         if (!isFormValid()) return
 
-        val email = binding?.edtEmailLogin?.text.toString()
-        val password = binding?.edtPasswordLogin?.text.toString()
+        val email = binding.edtEmailLogin.text.toString()
+        val password = binding.edtPasswordLogin.text.toString()
 
         loginViewModel.loginUser(email, password)
     }
 
     private fun isFormValid(): Boolean {
-        val email = binding?.edtEmailLogin?.text.toString()
-        val password = binding?.edtPasswordLogin?.text.toString()
+        val email = binding.edtEmailLogin.text.toString()
+        val password = binding.edtPasswordLogin.text.toString()
 
-        binding?.tilEmailLogin?.apply {
+        binding.tilEmailLogin.apply {
             if (email.isEmpty()) {
                 showError(true, getString(R.string.email_cannot_be_empty))
             } else {
@@ -227,7 +207,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }
         }
 
-        binding?.tilPasswordLogin?.apply {
+        binding.tilPasswordLogin.apply {
             if (password.isEmpty()) {
                 showError(true, getString(R.string.password_cannot_be_empty))
             } else if (password.length < 6) {
@@ -237,20 +217,20 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }
         }
 
-        return binding?.tilEmailLogin?.isErrorEnabled == false &&
-                binding?.tilPasswordLogin?.isErrorEnabled == false
+        return binding.tilEmailLogin.isErrorEnabled == false &&
+                binding.tilPasswordLogin.isErrorEnabled == false
     }
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
-            binding?.apply {
+            binding.apply {
                 loadingLogin.visibility = View.VISIBLE
                 btnRegisterHere.isClickable = false
                 btnForgotPassword.isClickable = false
                 btnLogin.isClickable = false
             }
         } else {
-            binding?.apply {
+            binding.apply {
                 loadingLogin.visibility = View.GONE
                 btnRegisterHere.isClickable = true
                 btnForgotPassword.isClickable = true
@@ -259,8 +239,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    override fun onDestroy() {
+    /*override fun onDestroy() {
         super.onDestroy()
-        _binding = null
-    }
+        binding = null
+    }*/
 }

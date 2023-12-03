@@ -1,8 +1,6 @@
 package id.fishku.consumer.otp
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,24 +10,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavDeepLinkBuilder
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
 import id.fishku.consumer.auth.AuthActivity
-import id.fishku.consumer.auth.AuthActivity.Companion.OPEN_REGISTER_FRAGMENT
-import id.fishku.consumer.auth.login.LoginViewModel
+import id.fishku.consumer.auth.login.LoginActivity
+import id.fishku.consumer.auth.register.RegisterActivity
 import id.fishku.consumer.core.data.source.local.datastore.LocalData
-import id.fishku.consumer.core.data.source.remote.request.Component
-import id.fishku.consumer.core.data.source.remote.request.OtpRequest
-import id.fishku.consumer.core.data.source.remote.request.Parameter
-import id.fishku.consumer.core.data.source.remote.request.Template
 import id.fishku.consumer.databinding.ActivityVerifyOtpactivityBinding
-import id.fishku.consumer.main.MainActivity
 import id.fishku.consumer.utils.Constants.DELAY_SECONDS
 import id.fishku.consumer.utils.Constants.RANGE_CODE_SECOND
 import id.fishku.consumer.utils.Constants.WAITING_MINUTES
@@ -40,11 +31,14 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class VerifyOTPActivity : AppCompatActivity() {
 
-    private var _binding: ActivityVerifyOtpactivityBinding? = null
-    private val binding get() = _binding!!
+    //private var _binding: ActivityVerifyOtpactivityBinding? = null
+    //private val binding get() = _binding!!
+    private lateinit var binding: ActivityVerifyOtpactivityBinding
     private val viewModel: SendOtpViewModel by viewModels()
+
     //private val viewModelLogin: LoginViewModel by viewModels()
     private val auth = FirebaseAuth.getInstance()
+    private var isCompleted = false
 
     @Inject
     lateinit var saveToLocal: LocalData
@@ -52,7 +46,7 @@ class VerifyOTPActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityVerifyOtpactivityBinding.inflate(layoutInflater)
+        binding = ActivityVerifyOtpactivityBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
 
@@ -78,6 +72,14 @@ class VerifyOTPActivity : AppCompatActivity() {
         if (verifyCode.isNotEmpty()) {
             val credential = PhoneAuthProvider.getCredential(verificationId, verifyCode)
             signInWithPhoneAuthCredential(credential)
+
+            /*if (isVerificationComplete) {
+                Log.d("BOSS", "Verify: Complete, to Register")
+                toRegisterFragment()
+            } else {
+                //TODO
+                Log.d("BOSS", "Verify: gagal")
+            }*/
             /*if (verifyCode == localCode) {
                 if (state) {
                     viewModelLogin.saveSession(user.token.toString(), user)
@@ -120,11 +122,13 @@ class VerifyOTPActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("BOSS", "signInWithCredential:success")
-                    val user = task.result?.user
+                    //val user = task.result?.user
+                    isCompleted = true
                     toRegisterFragment()
+                    //startActivity(Intent(this, RegisterActivity::class.java))
                 } else {
                     // Sign in failed, display a message and update the UI
-                    Log.w("BOSS", "signInWithCredential:failure", task.exception)
+                    Log.d("BOSS", "signInWithCredential:failure", task.exception)
                     /*if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
                     }*/
@@ -147,9 +151,11 @@ class VerifyOTPActivity : AppCompatActivity() {
         }*/
 
         //cara 2
-        val intent = Intent(this, AuthActivity::class.java)
-        intent.putExtra("FRAGMENT_TYPE", "REGISTER")
+        val intent = Intent(this, RegisterActivity::class.java)
+        //intent.putExtra(AuthActivity.FRAGMENT_TYPE, "REGISTER")
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
+        finish()
         /*val intent = Intent(this, AuthActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         intent.putExtra(OPEN_REGISTER_FRAGMENT, true)
@@ -166,6 +172,17 @@ class VerifyOTPActivity : AppCompatActivity() {
         /*val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_auth) as NavHostFragment
         val navController = navHostFragment.navController
         navController.navigate(R.id.action_loginFragment_to_registerFragment)*/
+
+        //cara 5
+        /*val bundle = Bundle()
+        bundle.putString("FRAGMENT_TYPE", "REGISTER")
+
+        val navController = findNavController(R.id.nav_host_fragment_activity_auth)
+        navController.navigate(R.id.action_loginFragment_to_registerFragment, bundle)*/
+
+        //cara 6
+        //val navController = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_auth)?.findNavController()
+        //navController?.navigate(R.id.action_loginFragment_to_registerFragmentFromActivityVerify)
     }
 
     private fun resendOtp() {
@@ -260,9 +277,9 @@ class VerifyOTPActivity : AppCompatActivity() {
         finish()
     }
 
-    override fun onDestroy() {
+    /*override fun onDestroy() {
         super.onDestroy()
 
         _binding = null
-    }
+    }*/
 }

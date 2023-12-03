@@ -59,6 +59,7 @@ class SendOTPActivity : AppCompatActivity() {
         /*val data = HashMap<String, String>()
         val db = FirebaseFirestore.getInstance()
         db.collection("test").add(data);*/
+
         init()
         otpResponse()
         //startGenerateOtp()
@@ -115,20 +116,6 @@ class SendOTPActivity : AppCompatActivity() {
 
             }).build()
         PhoneAuthProvider.verifyPhoneNumber(options)
-
-        /*if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.SEND_SMS
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            Log.d("BOSS", "OTP SMS - options : ${options}")
-        } else {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.SEND_SMS),
-                100
-            )
-        }*/
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
@@ -142,9 +129,9 @@ class SendOTPActivity : AppCompatActivity() {
                 } else {
                     // Sign in failed, display a message and update the UI
                     Log.w("BOSS", "signInWithCredential:failure", task.exception)
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                    /*if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
-                    }
+                    }*/
                     // Update UI
                 }
             }

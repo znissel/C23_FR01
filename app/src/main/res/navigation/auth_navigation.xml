@@ -12,12 +12,15 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registrationFragment" />
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragmentFromActivityVerify"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
-        android:id="@+id/registrationFragment"
+        android:id="@+id/registerFragment"
         android:name="id.fishku.consumer.auth.register.RegisterFragment"
-        android:label="fragment_registration"
+        android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
