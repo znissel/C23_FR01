@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
@@ -58,13 +59,17 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
         isLoginCheck()
         setupAction()
-        loginResult()
+
         getTokenFcm()
+
+        loginResult()
         signGoogleResult()
+
         binding?.btnGoogleSign?.setOnClickListener {
             /*SEMENTARA*/
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
+            activity?.finish()
 
             //signGoogleAuth()
         }
@@ -89,7 +94,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
             FirebaseService.token = token
         }
     }
-
 
     private fun setupAction() {
         binding?.apply {
@@ -145,7 +149,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }
         }
 
-
     private fun loginResult() {
         loginViewModel.result.observe(viewLifecycleOwner) {
             when (it) {
@@ -188,33 +191,11 @@ class LoginFragment : Fragment(), View.OnClickListener {
         startActivity(mainIntent)
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding?.apply {
-                loadingLogin.visibility = View.VISIBLE
-                btnRegisterHere.isClickable = false
-                btnForgotPassword.isClickable = false
-                btnLogin.isClickable = false
-            }
-        } else {
-            binding?.apply {
-                loadingLogin.visibility = View.GONE
-                btnRegisterHere.isClickable = true
-                btnForgotPassword.isClickable = true
-                btnLogin.isClickable = true
-            }
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_login -> loginHandler()
             R.id.btn_register_here -> {
+                //view?.findNavController()?.navigate(R.id.action_loginFragment_to_registerFragment)
                 startActivity(Intent(activity, EnterNumberActivity::class.java))
             }
             R.id.btn_forgot_password -> "forgot password".showMessage(requireContext())
@@ -258,5 +239,28 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
         return binding?.tilEmailLogin?.isErrorEnabled == false &&
                 binding?.tilPasswordLogin?.isErrorEnabled == false
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding?.apply {
+                loadingLogin.visibility = View.VISIBLE
+                btnRegisterHere.isClickable = false
+                btnForgotPassword.isClickable = false
+                btnLogin.isClickable = false
+            }
+        } else {
+            binding?.apply {
+                loadingLogin.visibility = View.GONE
+                btnRegisterHere.isClickable = true
+                btnForgotPassword.isClickable = true
+                btnLogin.isClickable = true
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

@@ -101,7 +101,6 @@
             android:src="@drawable/img_banner_2"
             app:layout_constraintBottom_toTopOf="@id/tv_best_product"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_set_location" />
 

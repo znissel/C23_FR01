@@ -11,16 +11,7 @@ import androidx.security.crypto.MasterKey
 import com.securepreferences.SecurePreferences
 import id.fishku.consumer.core.domain.model.User
 
-/**
- * Shared prefs
- *
- * @constructor
- *
- * @param context
- */
-
 class LocalData(context: Context) {
-
 
     private var prefs: SharedPreferences = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         val spec = KeyGenParameterSpec.Builder(
@@ -44,17 +35,21 @@ class LocalData(context: Context) {
         SecurePreferences(context)
     }
 
-
-    /**
-     * Set login
-     *
-     * @param value
-     */
     fun setCodeOtp(value: Int) {
         val editor = prefs.edit()
         editor.putInt(CODE_OTP, value)
         editor.apply()
     }
+
+    //tambahan
+    fun setVerificationId(value: String?) {
+        val editor = prefs.edit()
+        editor.putString(VERIFICATION_ID, value)
+        editor.apply()
+    }
+    fun getVerificationId(): String? =
+        prefs.getString(VERIFICATION_ID, "")
+    //tambahan
 
     @SuppressLint("CommitPrefEdits")
     fun setDataUser(value: User?) {
@@ -90,12 +85,6 @@ class LocalData(context: Context) {
     fun getStateAuth(): Boolean =
         prefs.getBoolean(IS_AUTH, false)
 
-
-    /**
-     * Get login
-     *
-     * @return
-     */
     fun getCodeOtp(): Int =
         prefs.getInt(CODE_OTP, 0)
 
@@ -105,11 +94,6 @@ class LocalData(context: Context) {
         editor.apply()
     }
 
-    /**
-     * Get login
-     *
-     * @return
-     */
     fun getNumber(): String? =
         prefs.getString(NUMBER_FOR_OTP, "")
 
@@ -135,6 +119,8 @@ class LocalData(context: Context) {
         private const val TOKEN = "token_auth"
 
         private const val TOKEN_FCM = "token_fcm_consumer"
+
+        private const val VERIFICATION_ID = "verification_id"
 
     }
 }

@@ -22,6 +22,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
+            //sementara
             startActivity(Intent(this, WelcomeActivity::class.java))
             finish()
             //activityHandler() --> VM bermasalah

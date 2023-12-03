@@ -27,10 +27,14 @@ class WelcomeActivity : AppCompatActivity() {
         //activityHandler()
         setupView()
         binding.btnNext.setOnClickListener {
+            val intent = Intent(this, AuthActivity::class.java)
+            intent.putExtra("FRAGMENT_TYPE", "LOGIN")
+            startActivity(intent)
+
             welcomeViewModel.saveActivity()
             //tambahan
-            startActivity(Intent(this, AuthActivity::class.java))
-            finish()
+            /*startActivity(Intent(this, AuthActivity::class.java))
+            finish()*/
         }
     }
 

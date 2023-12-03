@@ -48,7 +48,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         binding?.edtPhoneRegister?.setText(nomor)
         binding?.apply {
             btnRegister.setOnClickListener(this@RegisterFragment)
-            btnRegisterHere.setOnClickListener(this@RegisterFragment)
+            btnLoginHere.setOnClickListener(this@RegisterFragment)
         }
     }
 
@@ -78,7 +78,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_register -> registerHandler()
-            R.id.btn_register_here-> v.findNavController()
+            R.id.btn_login_here-> v.findNavController()
                 .navigate(R.id.action_registerFragment_to_loginFragment)
         }
     }
@@ -150,13 +150,13 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         if (isLoading) {
             binding?.apply {
                 loadingRegister.visibility = View.VISIBLE
-                btnRegisterHere.isClickable = false
+                btnLoginHere.isClickable = false
                 btnRegister.isClickable = false
             }
         } else {
             binding?.apply {
                 loadingRegister.visibility = View.GONE
-                btnRegisterHere.isClickable = true
+                btnLoginHere.isClickable = true
                 btnRegister.isClickable = true
             }
         }
