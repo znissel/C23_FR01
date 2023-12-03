@@ -24,11 +24,11 @@
                 android:id="@+id/toolbar_Information"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:title="@string/fish_information"
-                app:titleTextAppearance="@style/Text.SemiBold.Big"
-                app:titleCentered="true"
                 android:background="@color/white"
-                app:navigationIcon="@drawable/ic_back_blue" />
+                app:navigationIcon="@drawable/ic_back_blue"
+                app:title="@string/fish_information"
+                app:titleCentered="true"
+                app:titleTextAppearance="@style/Text.SemiBold.Big" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -55,8 +55,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:textColor="@color/black"
                     android:text="@string/selected_fish"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -66,55 +66,66 @@
                     android:layout_width="300dp"
                     android:layout_height="150dp"
                     android:layout_margin="6dp"
-                    android:background="@drawable/fish_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvSelectedFish" />
 
-                <ImageView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/imageView5"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                    android:background="@color/bg_blue_nutritioninfo"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/bg_blue_nutritioninfo"
+                    app:cardCornerRadius="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivFish" />
+                    app:layout_constraintTop_toBottomOf="@+id/ivFish">
 
-                <TextView
-                    android:id="@+id/tvNutrition"
-                    style="@style/Fish_Description_Medium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/nutritional_value"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivFish" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tvNutrition"
+                            style="@style/Fish_Description_Medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/nutritional_value"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
 
                 <TextView
                     android:id="@+id/tvProtein"
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
                     android:text="@string/protein_desc"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
                     app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
 
                 <TextView
-                    android:id="@+id/tvSelenium"
+                    android:id="@+id/tvKalium"
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
                     android:text="@string/Selenium_desc"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
                     app:layout_constraintTop_toBottomOf="@+id/tvProtein" />
 
@@ -123,22 +134,22 @@
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
                     android:text="@string/VitB12_desc"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/tvSelenium" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvKalium" />
 
                 <TextView
                     android:id="@+id/tvVitB6"
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
                     android:text="@string/VitB6_desc"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
                     app:layout_constraintTop_toBottomOf="@+id/tvVitB12" />
 
@@ -147,10 +158,10 @@
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
                     android:text="@string/ZatBesi_desc"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
                     app:layout_constraintTop_toBottomOf="@+id/tvVitB6" />
 
@@ -159,49 +170,97 @@
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
                     android:text="@string/Magnesium_desc"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
                     app:layout_constraintTop_toBottomOf="@+id/tvZatBesi" />
 
                 <TextView
-                    android:id="@+id/tvSodium"
+                    android:id="@+id/tvFosfor"
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
                     android:text="@string/Sodium_desc"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
                     app:layout_constraintTop_toBottomOf="@+id/tvMagnesium" />
+
+                <TextView
+                    android:id="@+id/tvLemak"
+                    style="@style/Fish_Description_Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/lemak_desc"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/tvKarbo" />
+
+                <TextView
+                    android:id="@+id/tvKarbo"
+                    style="@style/Fish_Description_Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/karbo_desc"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFosfor" />
+
+
+                <TextView
+                    android:id="@+id/tvNatrium"
+                    style="@style/Fish_Description_Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/natrium_desc"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLemak" />
+
+                <TextView
+                    android:id="@+id/tvKalsium"
+                    style="@style/Fish_Description_Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/kalsium_desc"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNatrium" />
+
 
                 <TextView
                     android:id="@+id/tvProteinValue"
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
-                    android:text="@string/protein_value"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="@+id/imageView5"
-                    app:layout_constraintStart_toEndOf="@+id/tvProtein"
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
                     app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
                 <TextView
-                    android:id="@+id/tvSeleniumValue"
+                    android:id="@+id/tvKaliumValue"
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
-                    android:text="@string/Selenium_value"
+                    android:gravity="center"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="@+id/imageView5"
-                    app:layout_constraintStart_toEndOf="@+id/tvSelenium"
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
                     app:layout_constraintTop_toBottomOf="@+id/tvProteinValue" />
 
                 <TextView
@@ -209,25 +268,23 @@
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
-                    android:text="@string/VitB12_value"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="@+id/imageView5"
-                    app:layout_constraintStart_toEndOf="@+id/tvVitB12"
-                    app:layout_constraintTop_toBottomOf="@+id/tvSeleniumValue" />
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
+                    app:layout_constraintTop_toBottomOf="@+id/tvKaliumValue" />
 
                 <TextView
                     android:id="@+id/tvVitB6value"
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
-                    android:text="@string/VitB6_value"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="@+id/imageView5"
-                    app:layout_constraintStart_toEndOf="@+id/tvVitB6"
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
                     app:layout_constraintTop_toBottomOf="@+id/tvVitB12value" />
 
                 <TextView
@@ -235,12 +292,11 @@
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
-                    android:text="@string/ZatBesi_value"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="@+id/imageView5"
-                    app:layout_constraintStart_toEndOf="@+id/tvZatBesi"
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
                     app:layout_constraintTop_toBottomOf="@+id/tvVitB6value" />
 
                 <TextView
@@ -248,52 +304,100 @@
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
-                    android:text="@string/Magnesium_value"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="@+id/imageView5"
-                    app:layout_constraintStart_toEndOf="@+id/tvMagnesium"
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
                     app:layout_constraintTop_toBottomOf="@+id/tvZatBesiValue" />
 
                 <TextView
-                    android:id="@+id/tvSodiumValue"
+                    android:id="@+id/tvFosforValue"
                     style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="8dp"
-                    android:text="@string/Sodium_value"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="@+id/imageView5"
-                    app:layout_constraintStart_toEndOf="@+id/tvSodium"
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
                     app:layout_constraintTop_toBottomOf="@+id/tvMagnesiumValue" />
 
-                <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/recive_phase"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:dividerColor="@color/gray_10"
-                    app:layout_constraintBottom_toTopOf="@+id/tvRecipe" />
-
                 <TextView
-                    android:id="@+id/tvRecipe"
-                    style="@style/Fish_Recipe_Medium_Bold"
+                    android:id="@+id/tvKarbohidratValue"
+                    style="@style/Fish_Description_Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="13dp"
-                    android:text="@string/fish_recipe"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvSodiumValue" />
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFosforValue" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tvLemakValue"
+                    style="@style/Fish_Description_Small"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="6dp"
-                    app:layout_constraintTop_toBottomOf="@+id/tvRecipe"
-                    tools:listitem="@layout/item_recipe" />
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
+                    app:layout_constraintTop_toBottomOf="@+id/tvKarbohidratValue" />
+
+                <TextView
+                    android:id="@+id/tvNatriumValue"
+                    style="@style/Fish_Description_Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLemakValue" />
+
+                <TextView
+                    android:id="@+id/tvKalsiumValue"
+                    style="@style/Fish_Description_Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                    app:layout_constraintStart_toEndOf="@+id/pembatas"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNatriumValue" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/materialDivider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="20dp"
+                    app:dividerColor="@color/gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tvKalsiumValue" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/pembatas"
+                    android:layout_width="10dp"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+                <TextView
+                    style="@style/Fish_Description_Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manfaat Kandungan Gizi"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/materialDivider4" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

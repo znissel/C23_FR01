@@ -24,7 +24,7 @@
                 android:id="@+id/toolbar_Recipe"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:title="@string/recipe"
+                app:title="@string/fish_information"
                 app:titleTextAppearance="@style/Text.SemiBold.Big"
                 app:titleCentered="true"
                 android:background="@color/white"
@@ -42,13 +42,13 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginVertical="8dp"
-            android:text="@string/choose_recipe"
+            android:text="@string/choose_fish_nutrition"
             android:textAppearance="@style/Text.SemiBold.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar_fishRecipe" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_fish_recipe"
+            android:id="@+id/rv_fish_nutrition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_vertical_margin"

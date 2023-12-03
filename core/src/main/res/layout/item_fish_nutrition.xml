@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/recipe_image"
+            android:id="@+id/fish_nutrition_image"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:contentDescription="@string/select_fish"
@@ -27,12 +27,12 @@
             android:src="@color/blue" />
 
         <TextView
-            android:id="@+id/fish_recipe_name"
+            android:id="@+id/fish_nutrition_name"
             style="@style/Text.SemiBold.Medium.Black"
             android:layout_margin="@dimen/activity_vertical_margin"
             android:gravity="center"
             android:singleLine="true"
             android:textColor="@color/black"
-            tools:text="@string/recipe_recomendation" />
+            tools:text="@string/fish_nutrition" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

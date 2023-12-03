@@ -3,10 +3,8 @@ package id.fishku.consumer.detection
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -17,12 +15,11 @@ import id.fishku.consumer.core.domain.model.FishType
 import id.fishku.consumer.core.ui.FishTypeAdapter
 import id.fishku.consumer.core.utils.showMessage
 import id.fishku.consumer.databinding.FragmentChooseFishBinding
-import id.fishku.consumer.fishinformation.FishInformationActivity
+import id.fishku.consumer.fishinformation.FishNutritionActivity
 import id.fishku.consumer.fishrecipe.FishRecipeActivity
 
 @AndroidEntryPoint
-class ChooseFishFragment : Fragment(), Toolbar.OnMenuItemClickListener,
-    androidx.appcompat.widget.Toolbar.OnMenuItemClickListener {
+class ChooseFishFragment : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentChooseFishBinding? = null
     private val binding get() = _binding
@@ -44,14 +41,14 @@ class ChooseFishFragment : Fragment(), Toolbar.OnMenuItemClickListener,
         super.onViewCreated(view, savedInstanceState)
 
         setupData()
-        setupAction()
+        setUpAction()
+
     }
 
     fun setPartOfFish(fishName: String?, fishPart: String?) {
         val toDetectionFish =
             ChooseFishFragmentDirections.actionNavigationChooseFishToDetectionFishActivity(
-                fishName,
-                fishPart
+                fishName, fishPart
             )
         view?.findNavController()?.navigate(toDetectionFish)
     }
@@ -90,6 +87,13 @@ class ChooseFishFragment : Fragment(), Toolbar.OnMenuItemClickListener,
                     it.message?.showMessage(requireContext())
                 }
             }
+        }
+    }
+
+    private fun setUpAction() {
+        binding?.apply {
+            ivFishRecipe.setOnClickListener(this@ChooseFishFragment)
+            ivFishInformation.setOnClickListener(this@ChooseFishFragment)
         }
     }
 
@@ -137,25 +141,19 @@ class ChooseFishFragment : Fragment(), Toolbar.OnMenuItemClickListener,
         _binding = null
     }
 
-    private fun setupAction() {
-        binding?.toolbarChooseFish?.setOnMenuItemClickListener(this)
-    }
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.ivFishRecipe -> {
+                val intentToFishRecipe = Intent(requireContext(), FishRecipeActivity::class.java)
+                startActivity(intentToFishRecipe)
 
-    override fun onMenuItemClick(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
-            R.id.btn_fishpedia -> {
-                val fishPediaIntent = Intent(requireContext(), FishInformationActivity::class.java)
-                startActivity(fishPediaIntent)
-                return true
             }
 
-            R.id.btn_fishRecipe -> {
-                val fishRecipeIntent = Intent(requireContext(), FishRecipeActivity::class.java)
-                startActivity(fishRecipeIntent)
-                return true
+            R.id.ivFishInformation -> {
+                val intentToFishInformation =
+                    Intent(requireContext(), FishNutritionActivity::class.java)
+                startActivity(intentToFishInformation)
             }
-
-            else -> false
         }
     }
 
