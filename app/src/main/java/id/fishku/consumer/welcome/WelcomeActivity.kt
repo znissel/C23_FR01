@@ -34,8 +34,6 @@ class WelcomeActivity : AppCompatActivity() {
 
             //tambahan
             val intent = Intent(this, LoginActivity::class.java)
-            //intent.putExtra("fragment_type", "LOGIN")
-            //Log.d("BOSS", "Intent Fragment Type: ${intent.getStringExtra("fragment_type")}")
             Log.d("BOSS", "Welcome :  to Login")
             startActivity(intent)
             finish()

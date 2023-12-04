@@ -2,6 +2,7 @@ package id.fishku.consumer.auth.register
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
@@ -29,6 +30,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        Log.d("BOSS", "Activity: Register")
 
         setupAction()
         registerResult()

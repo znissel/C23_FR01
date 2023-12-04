@@ -3,6 +3,7 @@ package id.fishku.consumer.auth.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -44,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        Log.d("BOSS", "Activity: Login")
 
         isLoginCheck()
         setupAction()
@@ -54,12 +56,7 @@ class LoginActivity : AppCompatActivity() {
         signGoogleResult()
 
         binding.btnGoogleSign.setOnClickListener {
-            /*SEMENTARA*/
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-
-            //signGoogleAuth()
+            signGoogleAuth()
         }
     }
 

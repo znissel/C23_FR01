@@ -3,6 +3,7 @@ package id.fishku.consumer.auth.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,6 +57,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("BOSS", "Fragment: Login")
 
         isLoginCheck()
         setupAction()
@@ -195,8 +197,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
         when (v?.id) {
             R.id.btn_login -> loginHandler()
             R.id.btn_register_here -> {
-                v.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-                //startActivity(Intent(activity, EnterNumberActivity::class.java))
+                //v.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+                startActivity(Intent(activity, EnterNumberActivity::class.java))
             }
             R.id.btn_forgot_password -> "forgot password".showMessage(requireContext())
         }

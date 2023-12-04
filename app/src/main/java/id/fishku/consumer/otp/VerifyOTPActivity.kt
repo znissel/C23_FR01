@@ -11,21 +11,26 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
 import id.fishku.consumer.auth.AuthActivity
 import id.fishku.consumer.auth.login.LoginActivity
+import id.fishku.consumer.auth.login.LoginViewModel
 import id.fishku.consumer.auth.register.RegisterActivity
 import id.fishku.consumer.core.data.source.local.datastore.LocalData
 import id.fishku.consumer.databinding.ActivityVerifyOtpactivityBinding
+import id.fishku.consumer.main.MainActivity
 import id.fishku.consumer.utils.Constants.DELAY_SECONDS
 import id.fishku.consumer.utils.Constants.RANGE_CODE_SECOND
 import id.fishku.consumer.utils.Constants.WAITING_MINUTES
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -36,9 +41,8 @@ class VerifyOTPActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVerifyOtpactivityBinding
     private val viewModel: SendOtpViewModel by viewModels()
 
-    //private val viewModelLogin: LoginViewModel by viewModels()
+    private val viewModelLogin: LoginViewModel by viewModels()
     private val auth = FirebaseAuth.getInstance()
-    private var isCompleted = false
 
     @Inject
     lateinit var saveToLocal: LocalData
@@ -49,17 +53,20 @@ class VerifyOTPActivity : AppCompatActivity() {
         binding = ActivityVerifyOtpactivityBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
+        Log.d("BOSS", "Activity: VerifyOTP")
 
         binding.btnVerify.setOnClickListener {
             loadCheckCode()
         }
         binding.tvResend.setOnClickListener {
-            resendOtp()
+            resendSmsOtp()
+            //pakai seleksi kondisi buat WA/SMS?
             startGenerateOtp()
             textVisibility(false)
         }
         binding.btnBack.setOnClickListener {
-            back()
+            //back()
+            onBackPressedDispatcher.onBackPressed()
         }
         init()
         startGenerateOtp()
@@ -72,120 +79,74 @@ class VerifyOTPActivity : AppCompatActivity() {
         if (verifyCode.isNotEmpty()) {
             val credential = PhoneAuthProvider.getCredential(verificationId, verifyCode)
             signInWithPhoneAuthCredential(credential)
-
-            /*if (isVerificationComplete) {
-                Log.d("BOSS", "Verify: Complete, to Register")
-                toRegisterFragment()
-            } else {
-                //TODO
-                Log.d("BOSS", "Verify: gagal")
-            }*/
-            /*if (verifyCode == localCode) {
-                if (state) {
-                    viewModelLogin.saveSession(user.token.toString(), user)
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    finish()
-                    startActivity(intent)
-                } else {
-                    toRegisterFragment()
-                }
-            } else {
-                binding.tvError.visibility = View.VISIBLE
-            }*/
         }
-        /*val verifyCode = binding.edtVerifyCode.text.trim().toString()
-        val localCode = saveToLocal.getCodeOtp()
-        val state = saveToLocal.getStateAuth()
-        val user = saveToLocal.getDataUser()
-        if (verifyCode.isNotEmpty()) {
-            val codeWa = verifyCode.toInt()
-            if (codeWa == localCode) {
-                if (state) {
-                    viewModelLogin.saveSession(user.token.toString(), user)
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    finish()
-                    startActivity(intent)
-                } else {
-                    toRegisterFragment()
-                }
-            } else {
-                binding.tvError.visibility = View.VISIBLE
-            }
-        }*/
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d("BOSS", "signInWithCredential:success")
-                    //val user = task.result?.user
-                    isCompleted = true
-                    toRegisterFragment()
-                    //startActivity(Intent(this, RegisterActivity::class.java))
+                    val state = saveToLocal.getStateAuth()
+                    val user = saveToLocal.getDataUser()
+
+                    if (state) {
+                        viewModelLogin.saveSession(user.token.toString(), user)
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        finish()
+                        startActivity(intent)
+                    } else {
+                        toRegisterFragment()
+                    }
                 } else {
-                    // Sign in failed, display a message and update the UI
                     Log.d("BOSS", "signInWithCredential:failure", task.exception)
                     /*if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
+                        // invalid
                     }*/
-                    // Update UI
                 }
             }
     }
 
     private fun toRegisterFragment() {
-        //cara 1
-        /*val pendingIntent = NavDeepLinkBuilder(this.applicationContext)
-            .setGraph(R.navigation.auth_navigation)
-            .setDestination(R.id.registrationFragment)
-            .createPendingIntent()
-
-        try {
-            pendingIntent.send()
-        } catch (e: PendingIntent.CanceledException) {
-            e.printStackTrace()
-        }*/
-
-        //cara 2
         val intent = Intent(this, RegisterActivity::class.java)
-        //intent.putExtra(AuthActivity.FRAGMENT_TYPE, "REGISTER")
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         finish()
-        /*val intent = Intent(this, AuthActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-        intent.putExtra(OPEN_REGISTER_FRAGMENT, true)
-        startActivity(intent)
-        finish()*/
-
-        //cara 3
-        /*val resultIntent = Intent()
-        resultIntent.putExtra("open_register_fragment", true)
-        setResult(Activity.RESULT_OK, resultIntent)
-        finish()*/
-
-        //cara 4
-        /*val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_auth) as NavHostFragment
-        val navController = navHostFragment.navController
-        navController.navigate(R.id.action_loginFragment_to_registerFragment)*/
-
-        //cara 5
-        /*val bundle = Bundle()
-        bundle.putString("FRAGMENT_TYPE", "REGISTER")
-
-        val navController = findNavController(R.id.nav_host_fragment_activity_auth)
-        navController.navigate(R.id.action_loginFragment_to_registerFragment, bundle)*/
-
-        //cara 6
-        //val navController = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_auth)?.findNavController()
-        //navController?.navigate(R.id.action_loginFragment_to_registerFragmentFromActivityVerify)
     }
 
-    private fun resendOtp() {
+    private fun resendSmsOtp() {
+        //progress bar visible
+        val user = saveToLocal.getDataUser()
+        Log.d("BOSS", "OTP - number: ${user}")
+        val number = "+" + user.phoneNumber.toString()
+        Log.d("BOSS", "OTP - number: ${number}")
+
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(number)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(this)
+            .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                override fun onVerificationCompleted(p0: PhoneAuthCredential) {
+                    //progress bar gone
+                    Log.d("BOSS", "onVerificationCompleted:$p0")
+                }
+
+                override fun onVerificationFailed(p0: FirebaseException) {
+                    //progress bar gone
+                    Log.w("BOSS", "onVerificationFailed", p0)
+                }
+
+                override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
+                    //progress bar gone
+                    super.onCodeSent(p0, p1)
+                    saveToLocal.setVerificationId(p0)
+                }
+            }).build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+
+    private fun resendWaOtp() {
         /*val codeOtp = saveToLocal.getCodeOtp()
         val user = saveToLocal.getDataUser()
         val components = Component(
@@ -206,6 +167,7 @@ class VerifyOTPActivity : AppCompatActivity() {
         )
         viewModel.sendOtpCode(otpRequest)*/
     }
+
 
     private fun init() {
         binding.tvNum.text = saveToLocal.getNumber()
@@ -270,12 +232,12 @@ class VerifyOTPActivity : AppCompatActivity() {
             binding.loading.visibility = View.GONE
     }
 
-    private fun back() {
+    /*private fun back() {
         val intent = Intent(this, SendOTPActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         finish()
-    }
+    }*/
 
     /*override fun onDestroy() {
         super.onDestroy()
