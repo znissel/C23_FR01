@@ -16,6 +16,4 @@ class WelcomeViewModel @Inject constructor(private val authUseCase: AuthUseCase)
             authUseCase.saveActivity()
         }
     }
-
-    fun getFirstLaunch() = authUseCase.getFirstLaunch().asLiveData()
 }

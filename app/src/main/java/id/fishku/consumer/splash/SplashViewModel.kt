@@ -11,11 +11,5 @@ import javax.inject.Inject
 @HiltViewModel
 class SplashViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
 
-    /*fun saveActivity() {
-        viewModelScope.launch {
-            authUseCase.saveActivity()
-        }
-    }*/
-
     fun getFirstLaunch() = authUseCase.getFirstLaunch().asLiveData()
 }
