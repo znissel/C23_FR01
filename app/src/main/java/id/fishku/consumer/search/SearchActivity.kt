@@ -77,7 +77,7 @@ class SearchActivity : AppCompatActivity() {
 
             navView.setNavigationItemSelectedListener {
                 when(it.itemId){
-                    R.id.location_filter -> {
+                    R.id.filter -> {
                         Toast.makeText(this@SearchActivity, R.string.filter, Toast.LENGTH_SHORT).show()
                     }
                     //buat item-item lain klu diklik
