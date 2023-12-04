@@ -5,13 +5,41 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/location_filter"
+            android:id="@+id/filter"
             android:title="@string/filter" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nearest_category"
+            android:actionLayout="@layout/view_filter_button"
+            android:checkable="true"
+            android:title="Terdekat" />
+        <item
+            android:id="@+id/bestseller_category"
+            android:actionLayout="@layout/view_filter_button"
+            android:title="Terlaris" />
+        <item
+            android:id="@+id/latest_category"
+            android:actionLayout="@layout/view_filter_button"
+            android:title="Terbaru" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/highest_price"
+            android:actionLayout="@layout/view_filter_button"
+            android:title="Tertinggi" />
+        <item
+            android:id="@+id/lowest_price"
+            android:actionLayout="@layout/view_filter_button"
+            android:title="Terendah" />
     </group>
 
     <group android:enabled="false">
         <item
             android:id="@+id/save_changes"
+            android:actionLayout="@layout/view_filter_button"
             android:title="@string/save_changes" />
     </group>
 
