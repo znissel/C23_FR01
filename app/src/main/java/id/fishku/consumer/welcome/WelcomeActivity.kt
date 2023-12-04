@@ -26,32 +26,9 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //activityHandler()
         setupView()
-
-        binding.btnNext.setOnClickListener {
-            welcomeViewModel.saveActivity()
-
-            //tambahan
-            val intent = Intent(this, LoginActivity::class.java)
-            Log.d("BOSS", "Welcome :  to Login")
-            startActivity(intent)
-            finish()
-
-            /*startActivity(Intent(this, AuthActivity::class.java))
-            finish()*/
-        }
+        binding.btnNext.setOnClickListener { nextButton() }
     }
-
-    /*private fun activityHandler() {
-        welcomeViewModel.getFirstLaunch().observe(this) {
-            if (it == true) {
-                binding.root.visibility = View.GONE
-                startActivity(Intent(this, AuthActivity::class.java))
-                finish()
-            }
-        }
-    }*/
 
     private fun setupView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -66,5 +43,17 @@ class WelcomeActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+    }
+
+    private fun nextButton() {
+        welcomeViewModel.saveActivity()
+
+        //tambahan
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+
+        /*startActivity(Intent(this, AuthActivity::class.java))
+        finish()*/
     }
 }

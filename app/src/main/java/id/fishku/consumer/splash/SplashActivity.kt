@@ -8,11 +8,14 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
 import id.fishku.consumer.auth.AuthActivity
+import id.fishku.consumer.auth.login.LoginActivity
 import id.fishku.consumer.welcome.WelcomeActivity
 
 @SuppressLint("CustomSplashScreen")
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
     private val splashViewModel: SplashViewModel by viewModels()
@@ -22,17 +25,15 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            //sementara
-            startActivity(Intent(this, WelcomeActivity::class.java))
-            finish()
-            //activityHandler() --> VM bermasalah
+            activityHandler()
         }, 3000L)
     }
 
     private fun activityHandler() {
         splashViewModel.getFirstLaunch().observe(this) {
             if (it == true) {
-                startActivity(Intent(this, AuthActivity::class.java))
+                //startActivity(Intent(this, AuthActivity::class.java))
+                startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             } else {
                 startActivity(Intent(this, WelcomeActivity::class.java))

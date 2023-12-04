@@ -2,13 +2,6 @@
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
-    <Transition
-        motion:constraintSetEnd="@+id/welcome_two"
-        motion:constraintSetStart="@id/welcome_one"
-        motion:duration="1000">
-        <OnSwipe motion:dragDirection="dragStart" />
-    </Transition>
-
     <ConstraintSet android:id="@+id/welcome_one">
 
         <!--judul t1-->
@@ -35,7 +28,7 @@
         <!--teks 1-->
         <Constraint
             android:id="@+id/textView1"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
             motion:layout_constraintEnd_toEndOf="@id/imageView1"
@@ -89,6 +82,13 @@
             motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
 
+    <Transition
+        motion:constraintSetEnd="@+id/welcome_two"
+        motion:constraintSetStart="@id/welcome_one"
+        motion:duration="1000">
+        <OnSwipe motion:dragDirection="dragStart" />
+    </Transition>
+
     <ConstraintSet
         android:id="@+id/welcome_two"
         motion:deriveConstraintsFrom="@+id/welcome_one">
@@ -110,7 +110,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
-            motion:layout_constraintEnd_toStartOf="parent"
+            android:visibility="gone"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@id/titleText1" />
 
         <Constraint
@@ -125,20 +127,22 @@
         <!--teks 1 2-->
         <Constraint
             android:id="@+id/textView1"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="56dp"
-            motion:layout_constraintEnd_toStartOf="@id/imageView1"
-            motion:layout_constraintTop_toBottomOf="@id/imageView1" />-->
+            android:layout_marginTop="56dp"
+            android:visibility="gone"
+            motion:layout_constraintEnd_toEndOf="@id/imageView1"
+            motion:layout_constraintStart_toStartOf="@id/imageView1"
+            motion:layout_constraintTop_toBottomOf="@id/imageView1" />
 
         <Constraint
             android:id="@+id/textView2"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/imageView1" />
+            motion:layout_constraintTop_toBottomOf="@id/imageView2" />
 
         <!--iv filter-->
         <Constraint
@@ -220,7 +224,7 @@
         <!--teks 2-->
         <Constraint
             android:id="@+id/textView2"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
             motion:layout_constraintEnd_toStartOf="parent"
@@ -239,17 +243,17 @@
         <!--judul 2-->
         <Constraint
             android:id="@+id/titleText2"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="@id/imageView3"
+            motion:layout_constraintStart_toStartOf="@id/imageView3"
             motion:layout_constraintTop_toBottomOf="@id/imageView3" />
 
         <!--button-->
         <Constraint
             android:id="@+id/btn_next"
-            android:layout_width="250dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="64dp"
             android:layout_marginTop="64dp"
