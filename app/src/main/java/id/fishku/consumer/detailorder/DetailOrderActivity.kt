@@ -32,7 +32,7 @@ class DetailOrderActivity : AppCompatActivity() {
     }
 
     private fun setupToolbar() {
-        binding.toolbarDetailOrder.setNavigationOnClickListener { onBackPressed() }
+        binding.toolbarDetailOrder.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 
     private fun setupProducts() {

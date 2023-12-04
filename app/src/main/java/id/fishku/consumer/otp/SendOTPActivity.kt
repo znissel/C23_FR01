@@ -54,17 +54,15 @@ class SendOTPActivity : AppCompatActivity() {
         _binding = ActivitySendOtpactivityBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
+        Log.d("BOSS", "Activity: SendOTP")
 
-        //percobaan
-        /*val data = HashMap<String, String>()
-        val db = FirebaseFirestore.getInstance()
-        db.collection("test").add(data);*/
         init()
         otpResponse()
         //startGenerateOtp()
 
         binding.btnBack.setOnClickListener {
-            back()
+            //back()
+            onBackPressedDispatcher.onBackPressed()
         }
         binding.waCard.setOnClickListener {
             sendWaOtp()
@@ -78,28 +76,23 @@ class SendOTPActivity : AppCompatActivity() {
 
     private fun sendSmsOtp() {
         //progress bar visible
-        val codeOtp = saveToLocal.getCodeOtp().toString()
-        Log.d("BOSS", "OTP - number: ${codeOtp}")
         val user = saveToLocal.getDataUser()
-        Log.d("BOSS", "OTP - number: ${user}")
+        Log.d("BOSS", "OTP - user: ${user}")
         val number = "+" + user.phoneNumber.toString()
         Log.d("BOSS", "OTP - number: ${number}")
 
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(number)
             .setTimeout(60L, TimeUnit.SECONDS)
-            .setActivity(this) //klu diubah ke VerifyOTPActivity?
+            .setActivity(this)
             .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(p0: PhoneAuthCredential) {
                     //progress bar gone
-                    Log.d("BOSS", "OTP SMS: Completed")
                     Log.d("BOSS", "onVerificationCompleted:$p0")
-                    //signInWithPhoneAuthCredential(p0)
                 }
 
                 override fun onVerificationFailed(p0: FirebaseException) {
                     //progress bar gone
-                    Log.d("BOSS", "OTP SMS: Gagal")
                     Log.w("BOSS", "onVerificationFailed", p0)
                 }
 
@@ -107,47 +100,10 @@ class SendOTPActivity : AppCompatActivity() {
                     //progress bar gone
                     super.onCodeSent(p0, p1)
                     saveToLocal.setVerificationId(p0)
-                    Log.d("BOSS", "OTP SMS: Terkirim")
-                    Log.d("BOSS", "OTP SMS: p0 = ${p0}")
-                    Log.d("BOSS", "OTP SMS: p1 = ${p1}")
                     startToVerifyOTP()
                 }
-
             }).build()
         PhoneAuthProvider.verifyPhoneNumber(options)
-
-        /*if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.SEND_SMS
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            Log.d("BOSS", "OTP SMS - options : ${options}")
-        } else {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.SEND_SMS),
-                100
-            )
-        }*/
-    }
-
-    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("BOSS", "signInWithCredential:success")
-
-                    val user = task.result?.user
-                } else {
-                    // Sign in failed, display a message and update the UI
-                    Log.w("BOSS", "signInWithCredential:failure", task.exception)
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
-                    }
-                    // Update UI
-                }
-            }
     }
 
     private fun startToVerifyOTP() {
@@ -161,23 +117,25 @@ class SendOTPActivity : AppCompatActivity() {
     }
 
     private fun sendWaOtp() {
-        /*val codeOtp = saveToLocal.getCodeOtp()
+        val codeOtp = saveToLocal.getCodeOtp()
         Log.d("BOSS", "OTP - kode: ${codeOtp}")
         val user = saveToLocal.getDataUser()
         Log.d("BOSS", "OTP - user: ${user}")
         val number = user.phoneNumber
         Log.d("BOSS", "OTP - number: ${number}")
+
         val components = Component(parameters = listOf(Parameter(text = "$codeOtp")))
         val template = Template(components = listOf(components))
         if (number != null) {
-            val otpRequest = OtpRequest(to =
-            if (number[0] == '0')
-                number.replaceRange(0, 1, "62")
-            else number, template = template
+            val otpRequest = OtpRequest(
+                to =
+                if (number[0] == '0')
+                    number.replaceRange(0, 1, "62")
+                else number, template = template
             )
             Log.d("BOSS", "OTP - otpRequest: ${otpRequest}")
             viewModel.sendOtpCode(otpRequest)
-        }*/
+        }
     }
 
     private fun init() {
@@ -185,8 +143,10 @@ class SendOTPActivity : AppCompatActivity() {
         number?.let {
             if (number[0] == '0') {
                 binding.tvNumber.text = number.replaceRange(0, 1, "62")
+                binding.tvSmsNumber.text = number.replaceRange(0, 1, "62")
             } else {
                 binding.tvNumber.text = number
+                binding.tvSmsNumber.text = number
             }
         }
     }
@@ -237,16 +197,15 @@ class SendOTPActivity : AppCompatActivity() {
             binding.loading.visibility = View.GONE
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
-    //klik back ke auth atau ke enter number?
-    private fun back() {
+    /*private fun back() {
         val intent = Intent(this, AuthActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         finish()
+    }*/
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

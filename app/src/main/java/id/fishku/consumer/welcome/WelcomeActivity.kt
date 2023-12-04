@@ -3,6 +3,7 @@ package id.fishku.consumer.welcome
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
@@ -11,6 +12,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.auth.AuthActivity
+import id.fishku.consumer.auth.login.LoginActivity
 import id.fishku.consumer.databinding.ActivityWelcomeBinding
 
 @AndroidEntryPoint
@@ -26,13 +28,16 @@ class WelcomeActivity : AppCompatActivity() {
 
         //activityHandler()
         setupView()
-        binding.btnNext.setOnClickListener {
-            val intent = Intent(this, AuthActivity::class.java)
-            intent.putExtra("FRAGMENT_TYPE", "LOGIN")
-            startActivity(intent)
 
+        binding.btnNext.setOnClickListener {
             welcomeViewModel.saveActivity()
+
             //tambahan
+            val intent = Intent(this, LoginActivity::class.java)
+            Log.d("BOSS", "Welcome :  to Login")
+            startActivity(intent)
+            finish()
+
             /*startActivity(Intent(this, AuthActivity::class.java))
             finish()*/
         }

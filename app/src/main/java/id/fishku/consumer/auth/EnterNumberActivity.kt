@@ -2,6 +2,7 @@ package id.fishku.consumer.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavDeepLinkBuilder
@@ -30,12 +31,14 @@ class EnterNumberActivity : AppCompatActivity() {
         _binding = ActivityEnterNumberBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
+        Log.d("BOSS", "Activity: EnterNumber")
 
         binding.btnNext.setOnClickListener {
             checkFormatNumberNext()
         }
         binding.btnBack.setOnClickListener {
-            back()
+            //back()
+            onBackPressedDispatcher.onBackPressed()
         }
 
     }
@@ -55,12 +58,12 @@ class EnterNumberActivity : AppCompatActivity() {
         }
     }
 
-    private fun back(){
+    /*private fun back(){
         val intent = Intent(this, AuthActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         finish()
-    }
+    }*/
 
     override fun onDestroy() {
         super.onDestroy()

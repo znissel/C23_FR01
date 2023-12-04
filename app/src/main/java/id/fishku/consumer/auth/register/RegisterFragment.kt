@@ -1,6 +1,7 @@
 package id.fishku.consumer.auth.register
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns.EMAIL_ADDRESS
 import android.util.Patterns.PHONE
 import androidx.fragment.app.Fragment
@@ -38,6 +39,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("BOSS", "Fragment: Register")
 
         setupAction()
         registerResult()

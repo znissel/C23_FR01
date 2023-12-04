@@ -13,6 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
+
     private val _result = MutableLiveData<Resource<Register>>()
     val result: LiveData<Resource<Register>> get() = _result
 
