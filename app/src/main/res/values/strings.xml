@@ -244,6 +244,13 @@
     <string name="natrium_value">Nilai Natrium </string>
     <string name="kalsium_value">Nilai Kalsium </string>
 
+    <string name="title_nutrition_benefits"> Manfaat Kandungan Gizi </string>
+    <string name="nutrition_benefits1"> Manfaat Kandungan Gizi 1 </string>
+    <string name="nutrition_benefits2"> Manfaat Kandungan Gizi 2 </string>
+    <string name="nutrition_benefits3"> Manfaat Kandungan Gizi 3 </string>
+    <string name="nutrition_benefits4"> Manfaat Kandungan Gizi 4 </string>
+    <string name="nutrition_benefits_complete"> Lihat Manfaat Selengkapnya </string>
+
     <!--Fish Recipe-->
     <string name="fishpedia_menu"> Fishpedia </string>
     <string name="fish_recipe"> Rekomendasi Olahan </string>
@@ -251,6 +258,7 @@
     <string name="choose_recipe"> Pilih Olahan Ikan </string>
     <string name="recipe_recomendation"> Rekomendasi Olahan Ikan </string>
     <string name="question">Pertanyaan</string>
+    <string name="search_recipe">Cari Resep Ikan Disini</string>
 
     <!--Location-->
     <string name="appBar_location"> Tentukan Lokasi </string>

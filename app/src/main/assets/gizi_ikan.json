@@ -1,0 +1,601 @@
+[
+  {
+    "nama": "kembung",
+    "gizi": {
+      "Air (Water)": "71.4 g",
+      "Energi (Energy)": " 125 Kal",
+      "Protein (Protein)": "21.3 g",
+      "Lemak (Fat)": "3.4 g",
+      "Karbohidrat (CHO)": "2.2 g",
+      "Abu (ASH)": "1.7 g",
+      "Kalsium (Ca)": "136 mg",
+      "Fosfor (P)": "69 mg",
+      "Besi (Fe)": "0.8 mg",
+      "Natrium (Na)": "214 mg",
+      "Kalium (K)": "245.0 mg",
+      "Tembaga (Cu)": "0.20 mg",
+      "Seng (Zn)": "1.1 mg",
+      "Thiamin (Vit. B1)": "0.26 mg",
+      "Riboflavin (Vit. B2)": "0.03 mg",
+      "Niasin (Niacin)": "0.2 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Ikan kembung bumbu acar",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/kembung/Ikan%20kembung%20bumbu%20acar.webp"
+      },
+      {
+        "nama": "Pepes ikan kembung kemangi",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/kembung/Pepes%20ikan%20kembung%20kemangi.webp"
+      },
+      {
+        "nama": "Ikan Kembung asam pedas",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/kembung/Kembung%20asam%20pedas.webp"
+      },
+      {
+        "nama": "Ikan kembung bakar manis pedas",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/kembung/Ikan%20kembung%20bakar%20manis%20pedas.webp"
+      },
+      {
+        "nama": "Ikan kembung balado kemangi",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/kembung/Ikan%20kembung%20balado%20kemangi.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/8-resep-olahan-ikan-kembung-sederhana-enak-dan-bikin-nagih-200819z.html"
+  },
+  {
+    "nama": "bandeng",
+    "gizi": {
+      "Air (Water)": "74.0 g",
+      "Energi (Energy)": "123 Kal",
+      "Protein (Protein)": "20.0 g",
+      "Lemak (Fat)": "4.8 g",
+      "Karbohidrat (CHO)": "0.0 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "1.2 g",
+      "Kalsium (Ca)": "20 mg",
+      "Fosfor (P)": "150 mg",
+      "Besi (Fe)": "2.0 mg",
+      "Natrium (Na)": "67 mg",
+      "Kalium (K)": "271.1 mg",
+      "Tembaga (Cu)": "0.00 mg",
+      "Seng (Zn)": "0.9 mg",
+      "Retinol (Vit. A)": "45 mcg",
+      "Beta-Karoten (Carotenes)": "21 mcg",
+      "Thiamin (Vit. B1)": "0.05 mg",
+      "Riboflavin (Vit. B2)": "0.10 mg",
+      "Niasin (Niacin)": "6.0 mg",
+      "Vitamin C (Vit. C)": "0 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Bandeng goreng tepung",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bandeng/Bandeng%20goreng%20tepung.webp"
+      },
+      {
+        "nama": "Pepes bandeng presto",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bandeng/Pepes%20bandeng%20presto.webp"
+      },
+      {
+        "nama": "Abon bandeng",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bandeng/Abon%20bandeng.webp"
+      },
+      {
+        "nama": "Bandeng bakar manis",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bandeng/Bandeng%20bakar%20manis.webp"
+      },
+      {
+        "nama": "Bandeng Acar Kuning",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bandeng/Bandeng%20Acar%20Kuning.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/10-resep-olahan-ikan-bandeng-enak-sederhana-dan-bikin-nagih-200318w.html"
+  },
+  {
+    "nama": "tongkol",
+    "gizi": {
+      "Air (Water)": "74.7 g",
+      "Energi (Energy)": "100 Kal",
+      "Protein (Protein)": "13.7 g",
+      "Lemak (Fat)": "1.5 g",
+      "Karbohidrat (CHO)": "8.0 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "2.1 g",
+      "Kalsium (Ca)": "92 mg",
+      "Fosfor (P)": "606 mg",
+      "Besi (Fe)": "1.7 mg",
+      "Natrium (Na)": "202 mg",
+      "Kalium (K)": "227.0 mg",
+      "Tembaga (Cu)": "0.20 mg",
+      "Seng (Zn)": "1.6 mg",
+      "Retinol (Vit. A)": "181 mcg",
+      "Beta-Karoten (Carotenes)": "0 mcg",
+      "Thiamin (Vit. B1)": "0.35 mg",
+      "Riboflavin (Vit. B2)": "0.03 mg",
+      "Niasin (Niacin)": "6.6 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Tongkol cabai hijau",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/tongkol/Tongkol%20cabai%20hijau.webp"
+      },
+      {
+        "nama": "Tongkol kuah santan",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/tongkol/Tongkol%20kuah%20santan.webp"
+      },
+      {
+        "nama": "Tongkol jontor",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/tongkol/Tongkol%20jontor.webp"
+      },
+      {
+        "nama": "Tongkol kecap",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/tongkol/Tongkol%20kecap.webp"
+      },
+      {
+        "nama": "Tongkol suwir pedas",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/tongkol/Tongkol%20suwir%20pedas.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/12-resep-ikan-tongkol-enak-sederhana-dan-bikin-nagih-200212e.html"
+  },
+  {
+    "nama": "nila",
+    "gizi": {
+      "Energi (Energy)": "96 Kal",
+      "Lemak (Fat)": "1.70 g",
+      "Karbohidrat (CHO)": "0 g",
+      "Kalium (K)": "302 mg",
+      "Kalsium (Ca)": "25.9 mg",
+      "Zat besi": "1.79 mg",
+      "Protein (Protein)": "17.3 g",
+      "Omega-3": "0.407 g",
+      "Selenium": "74.2 mcg",
+      "Retinol (Vit. A)": "3.77 mcg",
+      "Seng (Zn)": "1.91 mg",
+      "Niasin (Niacin)": "3.9 mg",
+      "Fosfor": "170 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Nila bakar kecap",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/nila/Nila%20bakar%20kecap.webp"
+      },
+      {
+        "nama": "Ikan nila bakar rica",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/nila/Ikan%20nila%20bakar%20rica.webp"
+      },
+      {
+        "nama": "Ikan nila goreng krispi bumbu kuning",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/nila/Ikan%20nila%20goreng%20krispi%20bumbu%20kuning.webp"
+      },
+      {
+        "nama": "Pepes ikan nila",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/nila/Pepes%20ikan%20nila.webp"
+      },
+      {
+        "nama": "Balado ikan nila",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/nila/Balado%20ikan%20nila.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/11-resep-olahan-ikan-nila-lezat-mudah-dan-bikin-nagih-200309u.html"
+  },
+  {
+    "nama": "teri",
+    "gizi": {
+      "Air (Water)": "80.0 g",
+      "Energi (Energy)": "74 Kal",
+      "Protein (Protein)": "10.3 g",
+      "Lemak (Fat)": "1.4 g",
+      "Karbohidrat (CHO)": "4.1 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "4.2 g",
+      "Kalsium (Ca)": "972 mg",
+      "Fosfor (P)": "253 mg",
+      "Besi (Fe)": "3.9 mg",
+      "Natrium (Na)": "554 mg",
+      "Kalium (K)": "126.1 mg",
+      "Tembaga (Cu)": "305.20 mg",
+      "Seng (Zn)": "0.2 mg",
+      "Retinol (Vit. A)": "13 mcg",
+      "Beta-Karoten (Carotenes)": "0 mcg",
+      "Karoten Total (Re)": "28 mcg",
+      "Thiamin (Vit. B1)": "0.24 mg",
+      "Riboflavin (Vit. B2)": "0.10 mg",
+      "Niasin (Niacin)": "1.9 mg",
+      "Vitamin C (Vit. C)": "0 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Teri tumis cabai bawang",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/teri/Teri%20kacang%20bumbu%20balado.webp"
+      },
+      {
+        "nama": "Tumis teri Medan bawang",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/teri/Tumis%20teri%20Medan%20bawang..webp"
+      },
+      {
+        "nama": "Balado ikan teri",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/teri/Balado%20ikan%20teri.webp"
+      },
+      {
+        "nama": "Teri kacang bumbu balado",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/teri/Teri%20kacang%20bumbu%20balado.webp"
+      },
+      {
+        "nama": "Orek teri",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/teri/Orek%20teri.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/15-resep-olahan-teri-enak-praktis-dan-mudah-dibuat-2003114.html"
+  },
+  {
+    "nama": "cakalang",
+    "gizi": {
+      "Air (Water)": "73.0 g",
+      "Energi (Energy)": "107 Kal",
+      "Protein (Protein)": "19.6 g",
+      "Lemak (Fat)": "0.7 g",
+      "Karbohidrat (CHO)": "5.5 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "1.2 g",
+      "Kalsium (Ca)": "23 mg",
+      "Fosfor (P)": "242 mg",
+      "Besi (Fe)": "2.9 mg",
+      "Natrium (Na)": "66 mg",
+      "Kalium (K)": "239.0 mg",
+      "Tembaga (Cu)": "0.20 mg",
+      "Seng (Zn)": "0.6 mg",
+      "Retinol (Vit. A)": "386 mcg",
+      "Beta-Karoten (Carotenes)": "0 mcg",
+      "Thiamin (Vit. B1)": "0.17 mg",
+      "Riboflavin (Vit. B2)": "0.05 mg",
+      "Niasin (Niacin)": "21.7 mg",
+      "Vitamin C (Vit. C)": "0 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Cakalang sambal dabu-dabu",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/cakalang/Cakalang%20sambal%20dabu-dabu.webp"
+      },
+      {
+        "nama": "Cakalang santan pedas",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/cakalang/Cakalang%20santan%20pedas.webp"
+      },
+      {
+        "nama": "Cakalang suwir pedas",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/cakalang/Cakalang%20suwir%20pedas.webp"
+      },
+      {
+        "nama": "Ikan cakalang asap",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/cakalang/Ikan%20cakalang%20asap.webp"
+      },
+      {
+        "nama": "Ikan cakalang kecap pedas",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/cakalang/Ikan%20cakalang%20kecap%20pedas.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/8-resep-olahan-ikan-cakalang-sederhana-dan-bikin-nagih-200709e.html"
+  },
+  {
+    "nama": "mujair",
+    "gizi": {
+      "Air (Water)": "79.7 g",
+      "Energi (Energy)": "89 Kal",
+      "Protein (Protein)": "18.7 g",
+      "Lemak (Fat)": "1.0 g",
+      "Karbohidrat (CHO)": "0.0 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "1.1 g",
+      "Kalsium (Ca)": "96 mg",
+      "Fosfor (P)": "209 mg",
+      "Besi (Fe)": "1.5 mg",
+      "Natrium (Na)": "51 mg",
+      "Kalium (K)": "265.8 mg",
+      "Tembaga (Cu)": "0.00 mg",
+      "Seng (Zn)": "0.2 mg",
+      "Retinol (Vit. A)": "6 mcg",
+      "Beta-Karoten (Carotenes)": "3 mcg",
+      "Karoten Total (Re)": "5 mcg",
+      "Thiamin (Vit. B1)": "0.03 mg",
+      "Riboflavin (Vit. B2)": "0.10 mg",
+      "Niasin (Niacin)": "2.0 mg",
+      "Vitamin C (Vit. C)": "0 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Pecak Mujair",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/mujair/Pecak%20Mujair.webp"
+      },
+      {
+        "nama": "Mujair Panggang Madu",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/mujair/Mujair%20Panggang%20Madu.webp"
+      },
+      {
+        "nama": "Asem Asem Mujair",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/mujair/Asem%20Asem%20Mujair.webp"
+      },
+      {
+        "nama": "Mujair Bumbu Pecel",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/mujair/Mujair%20Bumbu%20Pecel.webp"
+      },
+      {
+        "nama": "Ikan Mujair Bumbu Acar",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/mujair/Ikan%20Mujair%20Bumbu%20Acar.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/10-resep-olahan-ikan-mujair-sederhana-enak-dan-bikin-nagih-201119p.html"
+  },
+  {
+    "nama": "kakap",
+    "gizi": {
+      "Air (Water)": "77.0 g",
+      "Energi (Energy)": " 92 Kal",
+      "Protein (Protein)": "20.0 g",
+      "Lemak (Fat)": " 0.7 g",
+      "Karbohidrat (CHO)": "0.0 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "2.3 g",
+      "Kalsium (Ca)": "20 mg",
+      "Fosfor (P)": "200 mg",
+      "Besi (Fe)": "1.0 mg",
+      "Retinol (Vit. A)": "9 mcg",
+      "Thiamin (Vit. B1)": "0.05 mg",
+      "Vitamin C (Vit. C)": "0 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Kakap Panggang Pedas Manis",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/kakap/Kakap%20Panggang%20Pedas%20Manis.webp"
+      },
+      {
+        "nama": "Steak Kakap",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/kakap/Steak%20Kakap.webp"
+      },
+      {
+        "nama": "Kakap Merah Bumbu Bali",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/kakap/Kakap%20Merah%20Bumbu%20Bali.webp"
+      },
+      {
+        "nama": "Kakap Fillet Saos Telur Asin",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/kakap/Kakap%20Fillet%20Saos%20Telur%20Asin.webp"
+      },
+      {
+        "nama": "Kakap Krispi Saus Asam Manis",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/kakap/Kakap%20Krispi%20Saus%20Asam%20Manis.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/10-resep-olahan-ikan-kakap-enak-seperti-di-restoran-200616i.html"
+  },
+  {
+    "nama": "gurame",
+    "gizi": {
+      "Air (Water)": "63.1 g",
+      "Energi (Energy)": "192 Kal",
+      "Protein (Protein)": "12.7 g",
+      "Lemak (Fat)": "10.1 g",
+      "Karbohidrat (CHO)": "12.7 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "2.4 g",
+      "Kalsium (Ca)": "283 mg",
+      "Fosfor (P)": "169 mg",
+      "Besi (Fe)": "1.1 mg",
+      "Retinol (Vit. A)": "19 mcg",
+      "Karoten Total (Re)": "1,440 mcg",
+      "Thiamin (Vit. B1)": "0.10 mg",
+      "Vitamin C (Vit. C)": "0 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Gurame asam manis",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/gurame/Gurame%20asam%20manis.webp"
+      },
+      {
+        "nama": "Sop ikan gurame kuah bening",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/gurame/Sop%20ikan%20gurame%20kuah%20bening.webp"
+      },
+      {
+        "nama": "Gurame goreng tepung saus asam manis",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/gurame/Gurame%20goreng%20tepung%20saus%20asam%20manis.webp"
+      },
+      {
+        "nama": "Gurame bakar pedas manis",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/gurame/Gurame%20bakar%20pedas%20manis.webp"
+      },
+      {
+        "nama": "Gurame saus Thailand",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/gurame/Gurame%20saus%20Thailand.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/10-resep-olahan-ikan-gurame-enak-sederhana-dan-bikin-nagih-200825n.html"
+  },
+  {
+    "nama": "patin",
+    "gizi": {
+      "Air (Water)": "74.4 g",
+      "Energi (Energy)": "132 Kal",
+      "Protein (Protein)": "17.0 g",
+      "Lemak (Fat)": "6.6 g",
+      "Karbohidrat (CHO)": "1.1 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "0.9 g",
+      "Kalsium (Ca)": "31 mg",
+      "Fosfor (P)": "173 mg",
+      "Besi (Fe)": "1.6 mg",
+      "Natrium (Na)": "77 mg",
+      "Kalium (K)": "346.0 mg",
+      "Tembaga (Cu)": "0.70 mg",
+      "Seng (Zn)": "0.8 mg",
+      "Beta-Karoten (Carotenes)": "7 mcg",
+      "Thiamin (Vit. B1)": "0.20 mg",
+      "Riboflavin (Vit. B2)": "0.03 mg",
+      "Niasin (Niacin)": "1.7 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Nugget ikan patin",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/patin/Nugget%20ikan%20patin.webp"
+      },
+      {
+        "nama": "Asam Padeh ikan patin",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/patin/Asam%20Padeh%20ikan%20patin.webp"
+      },
+      {
+        "nama": "ikan patin Bumbu Kuning",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/patin/ikan%20patin%20Bumbu%20Kuning.webp"
+      },
+      {
+        "nama": "Patin Kecap",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/patin/Patin%20Kecap.webp"
+      },
+      {
+        "nama": "Sup ikan patin",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/patin/Sup%20ikan%20patin.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/10-resep-olahan-ikan-patin-enak-lembut-dan-gurih-2008120.html"
+  },
+  {
+    "nama": "mas",
+    "mas": {
+      "Air (Water)": "80.0 g",
+      "Energi (Energy)": "86 Kal",
+      "Protein (Protein)": "16.0 g",
+      "Lemak (Fat)": "2.0 g",
+      "Karbohidrat (CHO)": "0.0 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "2.0 g",
+      "Kalsium (Ca)": "20 mg",
+      "Fosfor (P)": "150 mg",
+      "Besi (Fe)": "2.0 mg",
+      "Natrium (Na)": "65 mg",
+      "Kalium (K)": "276.7 mg",
+      "Tembaga (Cu)": "0.10 mg",
+      "Seng (Zn)": "1.1 mg",
+      "Retinol (Vit. A)": "45 mcg",
+      "Beta-Karoten (Carotenes)": "8 mcg",
+      "Thiamin (Vit. B1)": "0.05 mg",
+      "Riboflavin (Vit. B2)": "0.10 mg",
+      "Niasin (Niacin)": "2.6 mg",
+      "Vitamin C (Vit. C)": "0 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Ikan Mas Cobek",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/mas/Ikan%20Mas%20Cobek.webp"
+      },
+      {
+        "nama": "Ikan Mas Kuah Kuning Kemangi",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/mas/Ikan%20Mas%20Kuah%20Kuning%20Kemangi.webp"
+      },
+      {
+        "nama": "Pesmol Ikan Mas",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/mas/Pesmol%20Ikan%20Mas.webp"
+      },
+      {
+        "nama": "Gulai Ikan Mas",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/mas/Gulai%20Ikan%20Mas.webp"
+      },
+      {
+        "nama": "Ikan Mas Kuah Kemangi",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/mas/Ikan%20Mas%20Kuah%20Kemangi.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/8-resep-olahan-ikan-mas-enak-sedap-dan-mudah-dibuat-200827u.html"
+  },
+  {
+    "nama": "bawal",
+    "bawal": {
+      "Air (Water)": "78.0 g",
+      "Energi (Energy)": "91 Kal",
+      "Protein (Protein)": "19.0 g",
+      "Lemak (Fat)": "1.7 g",
+      "Karbohidrat (CHO)": "0.0 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "1.3 g",
+      "Kalsium (Ca)": "20 mg",
+      "Fosfor (P)": "150 mg",
+      "Besi (Fe)": "2.0 mg",
+      "Natrium (Na)": "129 mg",
+      "Kalium (K)": "233.3 mg",
+      "Tembaga (Cu)": "0.10 mg",
+      "Seng (Zn)": "0.3 mg",
+      "Retinol (Vit. A)": "45 mcg",
+      "Beta-Karoten (Carotenes)": "0 mcg",
+      "Thiamin (Vit. B1)": "0.05 mg",
+      "Riboflavin (Vit. B2)": "0.10 mg",
+      "Niasin (Niacin)": "1.8 mg",
+      "Vitamin C (Vit. C)": "0 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Ikan Bawal Kukus",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bawal/Ikan%20Bawal%20Kukus.webp"
+      },
+      {
+        "nama": "Bawal Goreng Sambal Tauco",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bawal/Bawal%20Goreng%20Sambal%20Tauco.webp"
+      },
+      {
+        "nama": "Bawal Lada Hitam",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bawal/Bawal%20Lada%20Hitam.webp"
+      },
+      {
+        "nama": "Ikan Bawal Goreng Kecap",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bawal/Ikan%20Bawal%20Goreng%20Kecap.webp"
+      },
+      {
+        "nama": "Pesmol Ikan Bawal",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bawal/Pesmol%20Ikan%20Bawal.webp"
+      }
+    ],
+    "link-olahan": "https://www.briliofood.net/resep/10-resep-olahan-ikan-bawal-enak-gurih-dan-sedap-200821u.html"
+  },
+  {
+    "nama": "bader",
+    "gizi": {
+      "Air (Water)": "66.0 g",
+      "Energi (Energy)": "193 Kal",
+      "Protein (Protein)": "19.0 g",
+      "Lemak (Fat)": "13.0 g",
+      "Karbohidrat (CHO)": "0.0 g",
+      "Serat (Fibre)": "0.0 g",
+      "Abu (ASH)": "2.0 g",
+      "Kalsium (Ca)": "48 mg",
+      "Fosfor (P)": "150 mg",
+      "Besi (Fe)": "0.4 mg",
+      "Natrium (Na)": "118 mg",
+      "Kalium (K)": "264.9 mg",
+      "Tembaga (Cu)": "0.10 mg",
+      "Seng (Zn)": "0.2 mg",
+      "Retinol (Vit. A)": "45 mcg",
+      "Beta-Karoten (Carotenes)": "0 mcg",
+      "Thiamin (Vit. B1)": "0.01 mg",
+      "Riboflavin (Vit. B2)": "0.10 mg",
+      "Niasin (Niacin)": " 4.1 mg",
+      "Vitamin C (Vit. C)": "0 mg"
+    },
+    "olahan": [
+      {
+        "nama": "Sambel goreng telur ikan bader khas lumpur gresik ",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bader/Sambel%20goreng%20telur%20ikan%20bader%20khas%20lumpur%20gresik.webp"
+      },
+      {
+        "nama": "Telur bader kw goreng",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bader/Telur%20bader%20kw%20goreng.webp"
+      },
+      {
+        "nama": "Sambal goreng telur ikan bader KW ",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bader/Sambal%20goreng%20telur%20ikan%20bader%20KW.webp"
+      },
+      {
+        "nama": "Ikan Asin Bader Tahu Tempe (Gongso Pedas) ",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bader/Ikan%20Asin%20Bader%20Tahu%20Tempe%20(Gongso%20Pedas).webp"
+      },
+      {
+        "nama": "Ikan bader sambel tomat mentah",
+        "gambar": "https://storage.googleapis.com/fishku-bucket/olahan%20ikan/bader/Ikan%20bader%20sambel%20tomat%20mentah.webp"
+      }
+    ],
+    "link-olahan": "https://cookpad.com/id/cari/ikan%20bader"
+  }
+]

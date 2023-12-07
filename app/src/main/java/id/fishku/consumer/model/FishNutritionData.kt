@@ -17,6 +17,10 @@ object FishNutritionData {
             "3.4 gram",
             "214 mg",
             "136 mg",
+            "Kandungan gizi ikan kembung berpotensi untuk mencegah peradangan pada tubuh",
+            "Kandungan gizi ikan Kembung Dapat Membantu Menurunkan Berat badan",
+            "Kandungan Gizi Ikan Kembung dapat menyehatkan Tulang",
+            "Kandungan Gizi Ikan Kembung membantu menjaga kesehatan otot dan saraf"
         ),
 
         FishNutrition(
@@ -34,6 +38,10 @@ object FishNutritionData {
             "7.3 g",
             "67 mg",
             "43 mg",
+            "Kandungan Gizi Ikan Bandeng dapat membantu menjaga keseimbangan kadar kolesterol",
+            "Kandungan Gizi Ikan Bandeng Dapat bermanfaat untuk Ibu Hamil",
+            "Kandungan Gizi Ikan Bandeng Dapat membantu untuk merawat Tulang dan Gigi",
+            "Kandungan Gizi Ikan Bandeng dapat Mencegah Defisiensi Mikronutrien "
         ),
 
         FishNutrition(
@@ -51,6 +59,10 @@ object FishNutritionData {
             "0.49 g",
             "45 mg",
             "4 mg",
+            "Kandungan Gizi Ikan Tongkol dapat Meningkatkan Kesehatan Jantung pada Orang Dewasa",
+            "Kandungan Gizi Ikan Tongkol dapat Mencegah Gangguan Otak",
+            "Kandungan Gizi Ikan Tongkol dapat Mencegah Anemia",
+            "Kandungan Gizi Ikan Tongkol dapat Mencegah Obesitas"
         ),
 
         FishNutrition(
@@ -68,6 +80,10 @@ object FishNutritionData {
             "6.6 g",
             "77 mg",
             "31 mg",
+            "Kandungan Gizi Ikan Dori dapat Meningkatkan kesehatan tulang",
+            "Kandungan Gizi Ikan Dori dapat Menurunkan kadar kolesterol tinggi",
+            "Kandungan Gizi Ikan Dori dapat Mengoptimalkan sel yang rusak",
+            "Kandungan Gizi Ikan Dori dapat Meningkatkan kesehatan pencernaan"
         ),
 
         FishNutrition(
@@ -85,6 +101,10 @@ object FishNutritionData {
             "3 g",
             "56 mg",
             "26 mg",
+            "Kandungan Gizi Ikan Nila dapat Mengontrol kolesterol dan mencegah kanker ",
+            "Kandungan Gizi Ikan Nila dapat Menjaga kesehatan otot, tulang, dan gigi",
+            "Kandungan Gizi Ikan Nila dapat Menjaga kesehatan kulit dan mencegah penuaan dini",
+            "Kandungan Gizi Ikan Nila dapat Meningkatkan kekebalan tubuh"
         ),
 
         FishNutrition(
@@ -102,6 +122,10 @@ object FishNutritionData {
             "6.3 g",
             "59 mg",
             "11 mg",
+            "Kandungan Gizi Ikan Dori dapat",
+            "Kandungan Gizi Ikan Dori dapat",
+            "Kandungan Gizi Ikan Dori dapat",
+            "Kandungan Gizi Ikan Dori dapat"
         ),
 
         FishNutrition(
@@ -119,6 +143,10 @@ object FishNutritionData {
             "0.5 g",
             "45 mg",
             "4 mg",
+            "Kandungan Gizi Ikan Tuna dapat Mengurangi risiko demensia",
+            "Kandungan Gizi Ikan Tuna dapat Meningkatkan kesehatan jantung",
+            "Kandungan Gizi Ikan Tuna dapat Mengontrol kadar gula darah",
+            "Kandungan Gizi Ikan Tuna dapat Meningkatkan kekuatan tulang"
         ),
 
         FishNutrition(
@@ -136,6 +164,10 @@ object FishNutritionData {
             "0.7 g",
             "62 mg",
             "20 mg",
+            "Kandungan Gizi Ikan Kakap Putih dapat Mendukung Metabolisme dan Fungsi Kerja Tubuh",
+            "Kandungan Gizi Ikan Kakap Putih dapat Meningkatkan Kesehatan Mata",
+            "Kandungan Gizi Ikan Kakap Putih dapat Mencegah Anemia",
+            "Kandungan Gizi Ikan Kakap Putih dapat Mengurangi resiko Penyakit jantung"
         ),
 
         FishNutrition(
@@ -153,6 +185,10 @@ object FishNutritionData {
             "4.6 g",
             "176 mg",
             "37 mg",
+            "Kandungan Gizi Ikan Cakalang dapat Menyehatkan jantung",
+            "Kandungan Gizi Ikan Cakalang dapat Membantu menjaga tekanan darah",
+            "Kandungan Gizi Ikan Cakalang dapat Memperkuat fungsi sel dan perkembangan otot",
+            "Kandungan Gizi Ikan Cakalang dapat Mencegah anemia"
         ),
 
         FishNutrition(
@@ -170,6 +206,10 @@ object FishNutritionData {
             "5.6 g",
             "-",
             "41 mg",
+            "Kandungan Gizi Ikan Gurame dapat Menyehatkan kulit",
+            "Kandungan Gizi Ikan Gurame dapat Menjaga kesehatan tulang",
+            "Kandungan Gizi Ikan Gurame dapat Membentuk antibodi",
+            "Kandungan Gizi Ikan Gurame dapat Menjaga kesehatan tulang"
         ),
 
         FishNutrition(
@@ -187,6 +227,10 @@ object FishNutritionData {
             "6.60 g",
             "77 mg",
             "31 mg",
+            "Kandungan Gizi Ikan Patin dapat Membangun dan Memperbaiki Jaringan Otot",
+            "Kandungan Gizi Ikan Patin dapat Meningkatkan Kesehatan Otak ",
+            "Kandungan Gizi Ikan Patin dapat  Meningkatkan Imun Tubuh",
+            "Kandungan Gizi Ikan Patin dapat Menurunkan Depresi"
         ),
     )
 }

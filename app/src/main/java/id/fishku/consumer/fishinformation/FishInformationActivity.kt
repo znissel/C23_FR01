@@ -1,14 +1,15 @@
 package id.fishku.consumer.fishinformation
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import id.fishku.consumer.R
 import id.fishku.consumer.databinding.ActivityFishInformationBinding
+import id.fishku.consumer.fishrecipe.FishRecipeActivity
 
 class FishInformationActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityFishInformationBinding
+    private lateinit var binding: ActivityFishInformationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +23,19 @@ class FishInformationActivity : AppCompatActivity() {
 
     private fun setUpAction() {
         binding.toolbarInformation.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+
+        binding.btnRecipeRecomendation.setOnClickListener {
+            openFishRecipeActivity()
+        }
     }
 
     private fun hideActionBar() {
         supportActionBar?.hide()
+    }
+
+    private fun openFishRecipeActivity() {
+        val intent = Intent(this, FishRecipeActivity::class.java)
+        startActivity(intent)
     }
 
     private fun getIntentDetail() {
@@ -44,6 +54,10 @@ class FishInformationActivity : AppCompatActivity() {
         lemak = intent.getStringExtra(LEMAK) ?: ""
         natrium = intent.getStringExtra(NATRIUM) ?: ""
         kalsium = intent.getStringExtra(KALSIUM) ?: ""
+        nutrition1 = intent.getStringExtra(NUTRITION1) ?: ""
+        nutrition2 = intent.getStringExtra(NUTRITION2) ?: ""
+        nutrition3 = intent.getStringExtra(NUTRITION3) ?: ""
+        nutrition4 = intent.getStringExtra(NUTRITION4) ?: ""
 
 
         binding.tvSelectedFish.text = name
@@ -61,6 +75,10 @@ class FishInformationActivity : AppCompatActivity() {
         binding.tvLemakValue.text = lemak
         binding.tvNatriumValue.text = natrium
         binding.tvKalsiumValue.text = kalsium
+        binding.tvManfaatGizi1.text = nutrition1
+        binding.tvManfaatGizi2.text = nutrition2
+        binding.tvManfaatGizi3.text = nutrition3
+        binding.tvManfaatGizi4.text = nutrition4
     }
 
     companion object {
@@ -78,6 +96,10 @@ class FishInformationActivity : AppCompatActivity() {
         const val LEMAK = "LEMAK"
         const val NATRIUM = "NATRIUM"
         const val KALSIUM = "KALSIUM"
+        const val NUTRITION1 = "NUTRITION1"
+        const val NUTRITION2 = "NUTRITION2"
+        const val NUTRITION3 = "NUTRITION3"
+        const val NUTRITION4 = "NUTRITION4"
 
         var id: String = ""
         var name: String = ""
@@ -93,6 +115,10 @@ class FishInformationActivity : AppCompatActivity() {
         var lemak: String = ""
         var natrium: String = ""
         var kalsium: String = ""
+        var nutrition1: String = ""
+        var nutrition2: String = ""
+        var nutrition3: String = ""
+        var nutrition4: String = ""
 
     }
 }

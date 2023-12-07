@@ -18,15 +18,11 @@ class FishNutritionAdapter(private val onItemClick: (String) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(itemName: FishNutrition) {
             binding.fishNutritionName.text = itemName.fishName
-            Glide.with(binding.root)
-                .load(itemName.photoFishUrl)
-                .into(binding.fishNutritionImage)
+            Glide.with(binding.root).load(itemName.photoFishUrl).into(binding.fishNutritionImage)
             binding.root.setOnClickListener {
                 onItemClick.invoke(itemName.id)
                 Toast.makeText(
-                    binding.root.context,
-                    "Kamu Memilih " + itemName.fishName,
-                    Toast.LENGTH_SHORT
+                    binding.root.context, "Kamu Memilih " + itemName.fishName, Toast.LENGTH_SHORT
                 ).show()
 
                 val intentDetail = Intent(binding.root.context, FishInformationActivity::class.java)
@@ -44,6 +40,18 @@ class FishNutritionAdapter(private val onItemClick: (String) -> Unit) :
                 intentDetail.putExtra(FishInformationActivity.LEMAK, itemName.fishLemak)
                 intentDetail.putExtra(FishInformationActivity.NATRIUM, itemName.fishNatrium)
                 intentDetail.putExtra(FishInformationActivity.KALSIUM, itemName.fishKalsium)
+                intentDetail.putExtra(
+                    FishInformationActivity.NUTRITION1, itemName.nutritionalBenefits1
+                )
+                intentDetail.putExtra(
+                    FishInformationActivity.NUTRITION2, itemName.nutritionalBenefits2
+                )
+                intentDetail.putExtra(
+                    FishInformationActivity.NUTRITION3, itemName.nutritionalBenefits3
+                )
+                intentDetail.putExtra(
+                    FishInformationActivity.NUTRITION4, itemName.nutritionalBenefits4
+                )
                 binding.root.context.startActivity(intentDetail)
             }
         }
@@ -59,13 +67,10 @@ class FishNutritionAdapter(private val onItemClick: (String) -> Unit) :
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+        parent: ViewGroup, viewType: Int
     ): NutritionViewHolder {
         val binding = ItemFishNutritionBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
+            LayoutInflater.from(parent.context), parent, false
         )
         return NutritionViewHolder(binding)
     }
