@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".location.SetLocationActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -123,68 +123,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/tv_full_name"
-                style="@style/Text.SemiBold.Medium.Black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="6dp"
-                android:text="@string/full_name"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/til_address" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fullname"
-                style="@style/TextInput"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_full_name">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/full_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/hint_name"
-                    android:inputType="textLongMessage"
-                    android:textAppearance="@style/Text.Regular.Medium" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tv_no_phone"
-                style="@style/Text.SemiBold.Medium.Black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="6dp"
-                android:text="@string/no_telp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/til_fullname" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_no_phone"
-                style="@style/TextInput"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_no_phone">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/no_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/hint_no_telp"
-                    android:inputType="textLongMessage"
-                    android:textAppearance="@style/Text.Regular.Medium" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -193,10 +131,11 @@
             style="@style/Button_Medium_Bold"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="204dp"
             android:background="@color/btn_save_adrees"
             android:text="@string/save_adress"
-            app:layout_constraintTop_toBottomOf="@+id/constraint_address" />
+            app:layout_constraintTop_toBottomOf="@+id/constraint_address"
+            tools:layout_editor_absoluteX="0dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
