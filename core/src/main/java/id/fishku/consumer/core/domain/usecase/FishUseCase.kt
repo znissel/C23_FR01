@@ -21,4 +21,7 @@ interface FishUseCase {
     fun getListFishDetection(): Flow<Resource<List<FishType>>>
 
     fun sendCodeOtp(request: OtpRequest): Flow<Resource<OtpResponse>>
+
+    //TAMBAHAN
+    fun get
 }

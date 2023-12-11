@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -42,7 +43,7 @@ class SearchActivity : AppCompatActivity() {
         setupCart()
 
         //TAMBAHAN
-        setupToolbar()
+        //setupToolbar()
     }
 
     //TAMBAHAN
@@ -73,9 +74,9 @@ class SearchActivity : AppCompatActivity() {
             drawerLayout.addDrawerListener(toggle)
             toggle.syncState()
 
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            //supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-            navView.setNavigationItemSelectedListener {
+            /*navView.setNavigationItemSelectedListener {
                 when(it.itemId){
                     R.id.filter -> {
                         Toast.makeText(this@SearchActivity, R.string.filter, Toast.LENGTH_SHORT).show()
@@ -85,11 +86,11 @@ class SearchActivity : AppCompatActivity() {
                     //itemShapeFillColor di xml NavigationView
                 }
                 true
-            }
+            }*/
         }
-    }//TAMBAHAN - sampai sini
+    }
 
-
+    //TAMBAHAN - sampai sini
 
     private fun initSearch() {
         val query = SearchActivityArgs.fromBundle(intent.extras as Bundle).query
