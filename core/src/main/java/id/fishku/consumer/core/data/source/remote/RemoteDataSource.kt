@@ -75,7 +75,34 @@ class RemoteDataSource @Inject constructor(
         }.flowOn(Dispatchers.IO)
 
     //TODO Tambahan
-    suspend fun getAllFishFilter(filterType: FishFilterType, location: String?): Flow<ApiResponse<List<FishItem>>> = flow {
+    /*suspend fun searchAndFilterFish(query: String, filterType: FishFilterType, location: String?): Flow<ApiResponse<List<FishItem>>> = flow {
+        try {
+            val response = if (query.isEmpty()) {
+                mainApiService.getAllFish(FilterUtils.getFilteredFish(filterType, location))
+            } else {
+                mainApiService.searchFishes(query)
+            }
+
+            val fishes = response.fishes
+            if (!fishes.isNullOrEmpty()) {
+                emit(ApiResponse.Success(fishes))
+            } else {
+                emit(ApiResponse.Empty)
+            }
+        } catch (e: Exception) {
+            when (e) {
+                is HttpException -> {
+                    val message = e.getErrorMessage()
+                    if (message != null) {
+                        emit(ApiResponse.Error(message))
+                    }
+                }
+                else -> emit(ApiResponse.Error(e.message.toString()))
+            }
+        }
+    }.flowOn(Dispatchers.IO)*/
+
+    /*suspend fun getAllFishFilter(filterType: FishFilterType, location: String?): Flow<ApiResponse<List<FishItem>>> = flow {
         try {
             val response = mainApiService.getAllFishFilter(FilterUtils.getFilteredFish(filterType, location))
             val fishes = response.fishes
@@ -95,7 +122,7 @@ class RemoteDataSource @Inject constructor(
                 else -> emit(ApiResponse.Error(e.message.toString()))
             }
         }
-    }.flowOn(Dispatchers.IO)
+    }.flowOn(Dispatchers.IO)*/
 
     suspend fun getAllFish(): Flow<ApiResponse<List<FishItem>>> = flow {
         try {

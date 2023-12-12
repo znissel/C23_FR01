@@ -12,6 +12,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.GravityCompat
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
 import id.fishku.consumer.cart.CartActivity
@@ -43,7 +44,7 @@ class SearchActivity : AppCompatActivity() {
         setupCart()
 
         //TAMBAHAN
-        //setupToolbar() TODO
+        setupToolbar() //TODO
 
         //TODO
         /*binding.drawerContent.btn1.setOnClickListener {
@@ -78,22 +79,30 @@ class SearchActivity : AppCompatActivity() {
             toggle=ActionBarDrawerToggle(this@SearchActivity,drawerLayout,R.string.open,R.string.close)
             drawerLayout.addDrawerListener(toggle)
             toggle.syncState()
+        }
+    }
 
-            //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    /*
+    /*toggle.toolbarNavigationClickListener = View.OnClickListener {
+                if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                } else {
+                    drawerLayout.openDrawer(GravityCompat.START)
+                }
+            }*/
 
             /*navView.setNavigationItemSelectedListener {
                 when(it.itemId){
-                    R.id.filter -> {
+                    *//*R.id.filter -> {
                         Toast.makeText(this@SearchActivity, R.string.filter, Toast.LENGTH_SHORT).show()
-                    }
+                    }*//*
                     //buat item-item lain klu diklik
                     //klu mau bentukannya kayak tombol mgkn bisa dgn nambah
                     //itemShapeFillColor di xml NavigationView
                 }
                 true
             }*/
-        }
-    }
+    */
     //TAMBAHAN - sampai sini
 
     private fun initSearch() {

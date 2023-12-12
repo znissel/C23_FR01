@@ -29,10 +29,15 @@ interface MainApiService {
     suspend fun getAllFish(): FishResponse
 
     //TODO Tambahan
-    @GET("consumer/ikan/all")
+    /*@GET("consumer/ikan/{namaIkan}")
+    suspend fun searchFilteredFishes(
+        @Path("namaIkan") query: String,
+        @Query("filter") filter: String?
+    ): FishResponse*/
+    /*@GET("consumer/ikan/all")
     suspend fun getAllFishFilter(
         @Query("filter") filter: SimpleSQLiteQuery
-    ): FishResponse
+    ): FishResponse*/
 
     @GET("consumer/ikan/{namaIkan}")
     suspend fun searchFishes(

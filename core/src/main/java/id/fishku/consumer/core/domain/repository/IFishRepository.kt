@@ -19,5 +19,5 @@ interface IFishRepository {
     fun sendCodeOtp(request: OtpRequest): Flow<Resource<OtpResponse>>
 
     //TODO tambahan
-    fun getAllFishFilter(filterType: FishFilterType, location: String?): Flow<Resource<List<Fish>>>
+    /*fun getAllFishFilter(filterType: FishFilterType, location: String?): Flow<Resource<List<Fish>>>*/
 }

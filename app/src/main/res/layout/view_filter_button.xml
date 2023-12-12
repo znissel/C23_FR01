@@ -18,6 +18,7 @@
         android:layout_gravity="center"
         android:includeFontPadding="false"
         android:paddingHorizontal="12dp"
+        android:textSize="16sp"
         android:paddingVertical="4dp"
         android:textColor="@color/blue"
         tools:text="@string/filter" />

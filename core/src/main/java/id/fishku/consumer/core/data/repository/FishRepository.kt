@@ -30,7 +30,7 @@ class FishRepository @Inject constructor(
 ) : IFishRepository {
 
     //TODO Tambahan
-    override fun getAllFishFilter(filterType: FishFilterType, location: String?): Flow<Resource<List<Fish>>> =
+    /*override fun getAllFishFilter(filterType: FishFilterType, location: String?): Flow<Resource<List<Fish>>> =
         object : NetworkBoundResource<List<Fish>, List<FishItem>>() {
             override fun loadFromDB(): Flow<List<Fish>> =
                 localDataSource.getAllFish().map { fishEntities ->
@@ -51,7 +51,7 @@ class FishRepository @Inject constructor(
                 }
                 localDataSource.insertAllFish(fishes)
             }
-        }.asFlow()
+        }.asFlow()*/
     //tambahan
 
     override fun getAllFish(): Flow<Resource<List<Fish>>> =

@@ -34,10 +34,10 @@ class FishUseCaseImpl @Inject constructor(private val fishRepository: IFishRepos
         fishRepository.sendCodeOtp(request)
 
     //TAMBAHAN
-    override fun getAllFishFilter(
+    /*override fun getAllFishFilter(
         filterType: FishFilterType,
         location: String?,
     ): Flow<Resource<List<Fish>>> {
         TODO("Not yet implemented")
-    }
+    }*/
 }

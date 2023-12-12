@@ -6,7 +6,7 @@
         android:name="android.hardware.camera"
         android:required="false" />
     <!--
-<uses-feature
+    <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -115,7 +115,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB5OiUDMm5yBcty9LKchJ70KPY5viRlNOo" />
+            android:value="AIzaSyB5OiUDMm5yBcty9LKchJ70KPY5viRlNOo" /> <!--TODO recheck, udah sesuai token dr CC/belum-->
 
         <activity
             android:name=".location.SetLocationActivity"
