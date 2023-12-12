@@ -6,6 +6,8 @@ import id.fishku.consumer.core.data.Resource
 import id.fishku.consumer.core.data.source.remote.response.DetectionFishResponse
 import id.fishku.consumer.core.domain.model.FishType
 import id.fishku.consumer.core.domain.usecase.FishUseCase
+import id.fishku.consumer.model.FishTypeDetection
+import id.fishku.consumer.model.FishTypeDetectionData
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import javax.inject.Inject

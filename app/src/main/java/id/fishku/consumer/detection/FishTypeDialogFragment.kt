@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
-import id.fishku.consumer.core.utils.addPhotoUrl
-import id.fishku.consumer.core.utils.convertFishName
-import id.fishku.consumer.core.utils.loadFishImage
 import id.fishku.consumer.core.utils.showMessage
 import id.fishku.consumer.databinding.FragmentFishTypeDialogBinding
 
@@ -45,8 +43,8 @@ class FishTypeDialogFragment : BottomSheetDialogFragment() {
         this.fishName = name
 
         binding?.apply {
-            name.let { tvNameFish.text = it?.convertFishName() }
-            photo?.let { imgPhotoFish.loadFishImage(it.addPhotoUrl()) }
+            name.let { tvNameFish.text = it }
+            photo?.let { Glide.with(root).load(it).into(imgPhotoFish) }
         }
     }
 

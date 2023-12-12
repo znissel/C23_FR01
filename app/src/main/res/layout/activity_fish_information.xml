@@ -39,7 +39,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="1500dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/bg_blue_nutrition"

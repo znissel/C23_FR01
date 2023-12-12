@@ -136,6 +136,18 @@
             android:text="@string/save_adress"
             app:layout_constraintTop_toBottomOf="@+id/constraint_address"
             tools:layout_editor_absoluteX="0dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:text="@string/reset_adress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraint_address" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </ScrollView>
