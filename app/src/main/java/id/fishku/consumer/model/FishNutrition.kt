@@ -18,5 +18,9 @@ data class FishNutrition (
     val fishKarbohidrat: String,
     val fishLemak: String,
     val fishNatrium: String,
-    val fishKalsium: String
+    val fishKalsium: String,
+    val nutritionalBenefits1: String,
+    val nutritionalBenefits2: String,
+    val nutritionalBenefits3: String,
+    val nutritionalBenefits4: String
 ): Parcelable

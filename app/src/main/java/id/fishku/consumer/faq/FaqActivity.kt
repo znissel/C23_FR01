@@ -44,10 +44,29 @@ class FaqActivity : AppCompatActivity() {
     private fun getListFaq(): ArrayList<Questions> {
         val questions = resources.getStringArray(R.array.data_questions)
         val answer = resources.getStringArray(R.array.data_answer)
+
+        val faqList = ArrayList<Questions>()
+
+        if (questions.size != answer.size) {
+            // Handle the error, log a message, or throw an exception
+            return faqList
+        }
+
+        val uniqueQuestions = HashSet<String>()
+
         for (i in questions.indices) {
-            val q = Questions(questions[i], answer[i])
+            val currentQuestion = questions[i]
+            if (uniqueQuestions.contains(currentQuestion)) {
+                // Duplicate question found, handle accordingly (skip, log, etc.)
+                continue
+            }
+
+            uniqueQuestions.add(currentQuestion)
+
+            val q = Questions(currentQuestion, answer[i])
             faqList.add(q)
         }
+
         return faqList
     }
 }

@@ -3,6 +3,7 @@ package id.fishku.consumer.fishrecipe
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -26,6 +27,7 @@ class FishRecipeActivity : AppCompatActivity() {
         setUpAction()
         setupRecyclerView()
         observeFishRecipes()
+        setUpSearchView()
     }
 
     private fun setUpAction() {
@@ -36,7 +38,7 @@ class FishRecipeActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    //setup RV
+    // Setup RV
     private fun setupRecyclerView() {
         recipeAdapter = FishRecipeAdapter { recipeId ->
             val selectedRecipe = recipeAdapter.getRecipeById(recipeId)
@@ -59,12 +61,27 @@ class FishRecipeActivity : AppCompatActivity() {
         }
     }
 
-    //intent youtube
+    // Intent youtube
     private fun openYouTubeWithRecipeName(recipeName: String) {
         val youtubeIntent = Intent(
             Intent.ACTION_VIEW,
             Uri.parse("https://www.youtube.com/results?search_query=$recipeName")
         )
         startActivity(youtubeIntent)
+    }
+
+    // Setup SearchView
+    private fun setUpSearchView() {
+        binding.searchViewRecipe.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { recipeViewModel.searchFishRecipes(it) }
+                return true
+            }
+        })
     }
 }
