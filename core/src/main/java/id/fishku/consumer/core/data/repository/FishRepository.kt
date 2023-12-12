@@ -1,5 +1,6 @@
 package id.fishku.consumer.core.data.repository
 
+import android.location.Location
 import id.fishku.consumer.core.data.NetworkBoundResource
 import id.fishku.consumer.core.data.Resource
 import id.fishku.consumer.core.data.source.local.LocalDataSource
@@ -13,6 +14,7 @@ import id.fishku.consumer.core.domain.model.Fish
 import id.fishku.consumer.core.domain.model.FishType
 import id.fishku.consumer.core.domain.repository.IFishRepository
 import id.fishku.consumer.core.utils.DataMapper
+import id.fishku.consumer.core.utils.FishFilterType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -26,6 +28,32 @@ class FishRepository @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource,
 ) : IFishRepository {
+
+    //TODO Tambahan
+    override fun getAllFishFilter(filterType: FishFilterType, location: String?): Flow<Resource<List<Fish>>> =
+        object : NetworkBoundResource<List<Fish>, List<FishItem>>() {
+            override fun loadFromDB(): Flow<List<Fish>> =
+                localDataSource.getAllFish().map { fishEntities ->
+                    fishEntities.map {
+                        DataMapper.fishEntityToFish(it)
+                    }
+                }
+
+            override fun shouldFetch(data: List<Fish>?): Boolean =
+                data == null || data.isEmpty()
+
+            override suspend fun createCall(): Flow<ApiResponse<List<FishItem>>> =
+                remoteDataSource.getAllFishFilter(filterType, location)
+
+            override suspend fun saveCallResult(data: List<FishItem>) {
+                val fishes = data.map {
+                    DataMapper.fishResponseToFishEntity(it)
+                }
+                localDataSource.insertAllFish(fishes)
+            }
+        }.asFlow()
+    //tambahan
+
     override fun getAllFish(): Flow<Resource<List<Fish>>> =
         object : NetworkBoundResource<List<Fish>, List<FishItem>>() {
             override fun loadFromDB(): Flow<List<Fish>> =

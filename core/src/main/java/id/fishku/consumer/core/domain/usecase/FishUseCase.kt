@@ -22,6 +22,6 @@ interface FishUseCase {
 
     fun sendCodeOtp(request: OtpRequest): Flow<Resource<OtpResponse>>
 
-    //TAMBAHAN
-    fun get
+    //TODO
+    //fun get
 }

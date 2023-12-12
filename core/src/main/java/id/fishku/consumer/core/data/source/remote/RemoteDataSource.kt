@@ -6,6 +6,8 @@ import id.fishku.consumer.core.data.source.remote.network.*
 import id.fishku.consumer.core.data.source.remote.request.NotificationRequest
 import id.fishku.consumer.core.data.source.remote.request.OtpRequest
 import id.fishku.consumer.core.data.source.remote.response.*
+import id.fishku.consumer.core.utils.FilterUtils
+import id.fishku.consumer.core.utils.FishFilterType
 import id.fishku.consumer.core.utils.getErrorMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -71,6 +73,29 @@ class RemoteDataSource @Inject constructor(
                 }
             }
         }.flowOn(Dispatchers.IO)
+
+    //TODO Tambahan
+    suspend fun getAllFishFilter(filterType: FishFilterType, location: String?): Flow<ApiResponse<List<FishItem>>> = flow {
+        try {
+            val response = mainApiService.getAllFishFilter(FilterUtils.getFilteredFish(filterType, location))
+            val fishes = response.fishes
+            if (!fishes.isNullOrEmpty()) {
+                emit(ApiResponse.Success(fishes))
+            } else {
+                emit(ApiResponse.Empty)
+            }
+        } catch (e: Exception) {
+            when (e) {
+                is HttpException -> {
+                    val message = e.getErrorMessage()
+                    if (message != null) {
+                        emit(ApiResponse.Error(message))
+                    }
+                }
+                else -> emit(ApiResponse.Error(e.message.toString()))
+            }
+        }
+    }.flowOn(Dispatchers.IO)
 
     suspend fun getAllFish(): Flow<ApiResponse<List<FishItem>>> = flow {
         try {

@@ -10,6 +10,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray_10">#DADADA</color>
     <color name="blue">#02366F</color>
+    <color name="blue_500">#5002366F</color>
+    <color name="blue_100">#1002366F</color>
     <!--<color name="blue">#0C7DBF</color>-->
     <color name="yellow">#FFDA2D</color>
     <color name="light_blue">#3D5A80</color>

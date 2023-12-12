@@ -47,7 +47,7 @@ class SearchViewModel @Inject constructor(
     //TAMBAHAN
     fun filterByLocation(query: String) {
         viewModelScope.launch {
-            fishUseCase.searchFishes(query).collect { result ->
+            fishUseCase.searchFishes(query).collect { result -> //TODO
                 _result.value = result
             }
         }
@@ -55,7 +55,7 @@ class SearchViewModel @Inject constructor(
 
     fun filterBestSeller(query: String) {
         viewModelScope.launch {
-            fishUseCase.searchFishes(query).collect { result ->
+            fishUseCase.searchFishes(query).collect { result -> //TODO
                 _result.value = result
             }
         }
@@ -63,7 +63,7 @@ class SearchViewModel @Inject constructor(
 
     fun filterNewest(query: String) {
         viewModelScope.launch {
-            fishUseCase.searchFishes(query).collect { result ->
+            fishUseCase.searchFishes(query).collect { result -> //TODO
                 _result.value = result
             }
         }

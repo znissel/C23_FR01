@@ -4,11 +4,11 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardBackgroundColor="@color/bg_button_color"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="12dp"
     android:layout_gravity="center"
     app:cardElevation="0dp"
-    app:strokeColor="@color/blue"
+    app:strokeColor="@color/blue_500"
     app:strokeWidth="1dp">
 
     <TextView
