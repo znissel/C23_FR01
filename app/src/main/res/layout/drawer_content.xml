@@ -30,7 +30,7 @@
     <LinearLayout
         android:id="@+id/drawer_button"
         android:layout_width="match_parent"
-        android:layout_height="850dp"
+        android:layout_height="0dp"
         android:background="@drawable/bg_filter"
         android:orientation="vertical"
         android:padding="16dp"
@@ -197,8 +197,8 @@
             android:gravity="right"
             android:orientation="horizontal">
 
-            <include
-                android:id="@+id/btn6"
+            <!--<include
+                android:id="@+id/btn_reset"
                 layout="@layout/view_filter_button"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
@@ -206,30 +206,35 @@
                 android:layout_marginEnd="15dp" />
 
             <include
-                android:id="@+id/btn7"
+                android:id="@+id/btn_apply"
                 layout="@layout/view_filter_button"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginEnd="15dp" />
+                android:layout_marginEnd="15dp" />-->
 
-            <!--<Button
+            <Button
                 android:id="@+id/btnReset"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:layout_marginEnd="15dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/bg_button_color"
                 android:onClick="onButtonClick"
-                android:text="Hapus Filter" />
+                android:text="Hapus Filter"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnApply"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:layout_marginStart="15dp"
                 android:layout_weight="1"
                 android:onClick="onButtonClick"
-                android:text="Terapkan" />-->
+                android:text="Terapkan" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
