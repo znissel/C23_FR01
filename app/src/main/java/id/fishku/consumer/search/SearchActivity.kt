@@ -43,7 +43,12 @@ class SearchActivity : AppCompatActivity() {
         setupCart()
 
         //TAMBAHAN
-        //setupToolbar()
+        //setupToolbar() TODO
+
+        //TODO
+        /*binding.drawerContent.btn1.setOnClickListener {
+            // Handle Button 1 click
+        }*/
     }
 
     //TAMBAHAN
@@ -89,7 +94,6 @@ class SearchActivity : AppCompatActivity() {
             }*/
         }
     }
-
     //TAMBAHAN - sampai sini
 
     private fun initSearch() {

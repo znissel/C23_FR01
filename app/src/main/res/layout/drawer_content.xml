@@ -41,11 +41,15 @@
             android:onClick="onButtonClick"
             android:text="Terdekat" />-->
 
-        <include layout="@layout/view_filter_button" />
-
-        <include layout="@layout/view_filter_button" />
-
-        <include layout="@layout/view_filter_button" />
+        <include
+            android:id="@+id/btn1"
+            layout="@layout/view_filter_button" />
+        <include
+            android:id="@+id/btn2"
+            layout="@layout/view_filter_button" />
+        <include
+            android:id="@+id/btn3"
+            layout="@layout/view_filter_button" />
 
         <!--<Button
             android:id="@+id/btn2"
@@ -90,9 +94,12 @@
         android:layout_marginStart="10dp"
         android:orientation="horizontal">
 
-        <include layout="@layout/view_filter_button" />
-
-        <include layout="@layout/view_filter_button" />
+        <include
+            android:id="@+id/btn4"
+            layout="@layout/view_filter_button" />
+        <include
+            android:id="@+id/btn5"
+            layout="@layout/view_filter_button" />
 
         <!--<Button
             android:id="@+id/btn4"
@@ -126,9 +133,12 @@
         android:layout_marginTop="300dp"
         android:orientation="horizontal">
 
-        <include layout="@layout/view_filter_button" />
-
-        <include layout="@layout/view_filter_button" />
+        <include
+            android:id="@+id/btn6"
+            layout="@layout/view_filter_button" />
+        <include
+            android:id="@+id/btn7"
+            layout="@layout/view_filter_button" />
 
         <!--<Button
             android:id="@+id/btnReset"
