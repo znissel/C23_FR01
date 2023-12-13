@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".search.SearchActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="start"> <!--TODO-->
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

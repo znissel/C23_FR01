@@ -95,10 +95,6 @@
             android:name=".fishrecipe.DetailFishRecipeActivity"
             android:exported="false" />--> <!--TODO, memang ga ada?-->
         <activity
-            android:name=".fishinformation.FishNutritionActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".fishrecipe.FishRecipeActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
