@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
 import id.fishku.consumer.core.data.Resource
@@ -17,6 +20,7 @@ import id.fishku.consumer.core.utils.showMessage
 import id.fishku.consumer.databinding.FragmentChooseFishBinding
 import id.fishku.consumer.fishinformation.FishNutritionActivity
 import id.fishku.consumer.fishrecipe.FishRecipeActivity
+import id.fishku.consumer.model.FishTypeDetection
 
 @AndroidEntryPoint
 class ChooseFishFragment : Fragment(), View.OnClickListener {
@@ -24,8 +28,13 @@ class ChooseFishFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentChooseFishBinding? = null
     private val binding get() = _binding
 
-    private val detectionViewModel: DetectionViewModel by viewModels()
-    private val fishTypeAdapter: FishTypeAdapter by lazy { FishTypeAdapter(::productItemClicked) }
+//    private val detectionViewModel: DetectionViewModel by viewModels()
+//    private val fishTypeAdapter: FishTypeAdapter by lazy { FishTypeAdapter(::productItemClicked) }
+
+    private val fishTypeViewModel: FishTypeDetectionViewModel by viewModels()
+    private val fishTypeAdapter = FishTypeDetectionAdapter { selectedFish ->
+        productItemClicked(selectedFish)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,8 +49,18 @@ class ChooseFishFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupData()
+//        setupData()
         setUpAction()
+
+        setupRecyclerView()
+
+        // Observe the LiveData in the ViewModel
+        fishTypeViewModel.fishList.observe(viewLifecycleOwner, Observer { fishList ->
+            fishTypeAdapter.submitList(fishList)
+        })
+
+        // Fetch fish data when the fragment is created
+        fishTypeViewModel.fetchFishData()
 
     }
 
@@ -53,40 +72,10 @@ class ChooseFishFragment : Fragment(), View.OnClickListener {
         view?.findNavController()?.navigate(toDetectionFish)
     }
 
-    private fun setupData() {
-        detectionViewModel.getListFishDetection().observe(viewLifecycleOwner) {
-            when (it) {
-                is Resource.Loading -> {
-                    binding?.apply {
-                        loadingSearch.visibility = View.VISIBLE
-                        rvFishType.visibility = View.GONE
-                        imgEmptySearch.visibility = View.GONE
-                        tvEmptySearch.visibility = View.GONE
-                        imgErrorSearch.visibility = View.GONE
-                        tvErrorSearch.visibility = View.GONE
-                    }
-                }
-
-                is Resource.Success -> {
-                    binding?.loadingSearch?.visibility = View.GONE
-                    if (!it.data.isNullOrEmpty()) {
-                        fishTypeAdapter.submitList(it.data)
-                        setupAdapter()
-                        isEmptyResult(false)
-                    } else {
-                        isEmptyResult(true)
-                    }
-                }
-
-                is Resource.Error -> {
-                    binding?.apply {
-                        loadingSearch.visibility = View.GONE
-                        imgErrorSearch.visibility = View.VISIBLE
-                        tvErrorSearch.visibility = View.VISIBLE
-                    }
-                    it.message?.showMessage(requireContext())
-                }
-            }
+    private fun setupRecyclerView() {
+        binding?.rvFishType?.apply {
+            layoutManager = GridLayoutManager(requireContext(), 2) // Set the number of columns as needed
+            adapter = fishTypeAdapter
         }
     }
 
@@ -97,33 +86,33 @@ class ChooseFishFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun setupAdapter() {
-        binding?.rvFishType?.apply {
-            setHasFixedSize(true)
-            adapter = fishTypeAdapter
-        }
-    }
+//    private fun setupAdapter() {
+//        binding?.rvFishType?.apply {
+//            setHasFixedSize(true)
+//            adapter = fishTypeAdapter
+//        }
+//    }
+//
+//    private fun isEmptyResult(isEmpty: Boolean) {
+//        if (!isEmpty) {
+//            binding?.apply {
+//                rvFishType.visibility = View.VISIBLE
+//                imgEmptySearch.visibility = View.GONE
+//                tvEmptySearch.visibility = View.GONE
+//            }
+//        } else {
+//            binding?.apply {
+//                rvFishType.visibility = View.GONE
+//                imgEmptySearch.visibility = View.VISIBLE
+//                tvEmptySearch.visibility = View.VISIBLE
+//            }
+//        }
+//    }
 
-    private fun isEmptyResult(isEmpty: Boolean) {
-        if (!isEmpty) {
-            binding?.apply {
-                rvFishType.visibility = View.VISIBLE
-                imgEmptySearch.visibility = View.GONE
-                tvEmptySearch.visibility = View.GONE
-            }
-        } else {
-            binding?.apply {
-                rvFishType.visibility = View.GONE
-                imgEmptySearch.visibility = View.VISIBLE
-                tvEmptySearch.visibility = View.VISIBLE
-            }
-        }
-    }
-
-    private fun showBottomSheet(fishType: FishType) {
+    private fun showBottomSheet(fishType: FishTypeDetection) {
         val bundle = Bundle()
         bundle.apply {
-            putString(FISH_NAME, fishType.name)
+            putString(FISH_NAME, fishType.fishName)
             putString(FISH_PHOTO, fishType.photoUrl)
         }
 
@@ -132,7 +121,7 @@ class ChooseFishFragment : Fragment(), View.OnClickListener {
         modalBottomSheet.show(childFragmentManager, modalBottomSheet.tag)
     }
 
-    private fun productItemClicked(fishType: FishType) {
+    private fun productItemClicked(fishType: FishTypeDetection) {
         showBottomSheet(fishType)
     }
 
@@ -164,3 +153,42 @@ class ChooseFishFragment : Fragment(), View.OnClickListener {
 
 
 }
+
+//private fun setupData() {
+//        detectionViewModel.getListFishDetection().observe(viewLifecycleOwner) {
+//            when (it) {
+//                is Resource.Loading -> {
+//                    binding?.apply {
+//                        loadingSearch.visibility = View.VISIBLE
+//                        rvFishType.visibility = View.GONE
+//                        imgEmptySearch.visibility = View.GONE
+//                        tvEmptySearch.visibility = View.GONE
+//                        imgErrorSearch.visibility = View.GONE
+//                        tvErrorSearch.visibility = View.GONE
+//                    }
+//                }
+//
+//                is Resource.Success -> {
+//                    binding?.loadingSearch?.visibility = View.GONE
+//                    if (!it.data.isNullOrEmpty()) {
+//                        fishTypeAdapter.submitList(it.data)
+//                        setupAdapter()
+//                        isEmptyResult(false)
+//                    } else {
+//                        isEmptyResult(true)
+//                    }
+//                }
+//
+//                is Resource.Error -> {
+//                    binding?.apply {
+//                        loadingSearch.visibility = View.GONE
+//                        imgErrorSearch.visibility = View.VISIBLE
+//                        tvErrorSearch.visibility = View.VISIBLE
+//                    }
+//                    it.message?.showMessage(requireContext())
+//                }
+//
+//                else -> {}
+//            }
+//        }
+//    }

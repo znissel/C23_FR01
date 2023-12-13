@@ -203,12 +203,16 @@
     <!--Frequently Asked Questions-->
     <string name="faq">FAQ</string>
     <string-array name="data_questions">
-        <item>APA?</item>
-        <item>KENAPA?</item>
+        <item> Apa Itu Fishku? </item>
+        <item> Bagaimana cara memesan produk di Fishku? </item>
+        <item> Bagaimana cara mengelola akun di Fishku? </item>
+        <item> Bagaimana cara mengelola pesanan saya di Fishku? </item>
     </string-array>
     <string-array name="data_answer">
-        <item>PERCOBAAN 1</item>
-        <item>PERCOBAAN 2</item>
+        <item>Fishku Adalah</item>
+        <item>Cara Memesan Produk Di fishku Adalah</item>
+        <item>Cara Mengelola akun di Fishku Adalah</item>
+        <item>Cara Mengelola Pesanan Saya di Fishku Adalah</item>
     </string-array>
 
     <!--Fish Information Description-->
@@ -244,6 +248,13 @@
     <string name="natrium_value">Nilai Natrium </string>
     <string name="kalsium_value">Nilai Kalsium </string>
 
+    <string name="title_nutrition_benefits"> Manfaat Kandungan Gizi </string>
+    <string name="nutrition_benefits1"> Manfaat Kandungan Gizi 1 </string>
+    <string name="nutrition_benefits2"> Manfaat Kandungan Gizi 2 </string>
+    <string name="nutrition_benefits3"> Manfaat Kandungan Gizi 3 </string>
+    <string name="nutrition_benefits4"> Manfaat Kandungan Gizi 4 </string>
+    <string name="nutrition_benefits_complete"> Lihat Manfaat Selengkapnya </string>
+
     <!--Fish Recipe-->
     <string name="fishpedia_menu"> Fishpedia </string>
     <string name="fish_recipe"> Rekomendasi Olahan </string>
@@ -251,6 +262,7 @@
     <string name="choose_recipe"> Pilih Olahan Ikan </string>
     <string name="recipe_recomendation"> Rekomendasi Olahan Ikan </string>
     <string name="question">Pertanyaan</string>
+    <string name="search_recipe">Cari Resep Ikan Disini</string>
 
     <!--Location-->
     <string name="appBar_location"> Tentukan Lokasi </string>
@@ -263,6 +275,7 @@
     <string name="hint_name"> Masukan Nama Lengkap </string>
     <string name="hint_no_telp"> Masukan No Handphone </string>
     <string name="save_adress"> Simpan Alamat </string>
+    <string name="reset_adress"> Setel Ulang Alamat </string>
 
     <!--Fish Store-->
     <string name="fish_shop"> Pasar Ikan </string>

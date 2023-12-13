@@ -1,9 +1,14 @@
 package id.fishku.consumer.location
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import android.widget.Toolbar
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -13,29 +18,35 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
-import id.fishku.consumer.dashboard.DashboardFragment
 import id.fishku.consumer.databinding.ActivitySetLocationBinding
+import java.io.IOException
+import java.util.Locale
 
 @AndroidEntryPoint
 class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivitySetLocationBinding
+    private lateinit var sharedPreferences: SharedPreferences
 
-    private lateinit var toolbar: Toolbar
+    private var currentLatLng: LatLng? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySetLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+        // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+
+        // Initialize the map asynchronously
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        //get location dengan button
+        // Other initialization code
         val btnFindMyLocation: Button = findViewById(R.id.btn_location)
         btnFindMyLocation.setOnClickListener {
             findMyLocation()
@@ -43,12 +54,15 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val btnNavigateToDashboard: Button = findViewById(R.id.btn_save_adress)
         btnNavigateToDashboard.setOnClickListener {
-            navigateToDashboardFragment()
+            saveAndShowLocation()
         }
+
+        val savedLatLng = loadSavedMarkerCoordinate()
+        Log.d("SavedLatLng", "Latitude: ${savedLatLng?.latitude}, Longitude: ${savedLatLng?.longitude}")
+
 
         setUpAction()
         hideActionBar()
-
     }
 
     private fun setUpAction() {
@@ -62,7 +76,7 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-
+        // Now that mMap is initialized, you can perform any map-related operations
         mMap.uiSettings.apply {
             isZoomControlsEnabled = true
             isIndoorLevelPickerEnabled = true
@@ -70,7 +84,38 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
             isMapToolbarEnabled = true
         }
 
-//        findMyLocation()
+        // Load saved address and marker coordinate after map is ready
+        loadSavedAddress()
+
+        val savedLatLng = loadSavedMarkerCoordinate()
+        if (savedLatLng != null) {
+            showMarkerAtLatLng(savedLatLng)
+        }
+
+        mMap.setOnMapClickListener { latLng ->
+            val address = getAddressFromLocation(latLng)
+            binding.fullAdress.setText(address)
+
+            // Save LatLng to SharedPreferences when the map is clicked
+            saveMarkerCoordinateToSharedPreferences(latLng)
+        }
+    }
+
+    private fun getAddressFromLocation(latLng: LatLng): String {
+        val geocoder = Geocoder(this, Locale.getDefault())
+        val addresses: List<Address>?
+
+        try {
+            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
+            if (!addresses.isNullOrEmpty()) {
+                val address = addresses[0]
+                return address.getAddressLine(0) ?: ""
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        return ""
     }
 
     //tambahan
@@ -82,19 +127,6 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
                 findMyLocation()
             }
         }
-//
-//    //getlocation
-//    private fun getMyLocation() {
-//        if (ContextCompat.checkSelfPermission(
-//                this.applicationContext,
-//                android.Manifest.permission.ACCESS_FINE_LOCATION
-//            ) == PackageManager.PERMISSION_GRANTED
-//        ) {
-//            mMap.isMyLocationEnabled = true
-//        } else {
-//            requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
-//        }
-//    }
 
     //get Location
     private fun findMyLocation() {
@@ -103,15 +135,20 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
                 android.Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-
             mMap.isMyLocationEnabled = true
 
             val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
             fusedLocationClient.lastLocation
                 .addOnSuccessListener { location ->
                     if (location != null) {
-                        val currentLatLng = LatLng(location.latitude, location.longitude)
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
+                        currentLatLng = LatLng(location.latitude, location.longitude)
+
+                        // Dapatkan alamat dari lokasi saat ini dan tampilkan
+                        val address = getAddressFromLocation(currentLatLng!!)
+                        binding.fullAdress.setText(address)
+
+                        // Pindahkan kamera ke lokasi saat ini
+                        moveCameraToLocation(currentLatLng!!)
                     }
                 }
         } else {
@@ -120,16 +157,80 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    //get address dan balik ke dashboard
-
-    //tambahan intent dashboard belum ada function save adress
-    private fun navigateToDashboardFragment() {
-        val dashboardFragment = DashboardFragment()
-
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.action_navigation_dashboard_to_setLocationActivity, dashboardFragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+    private fun moveCameraToLocation(latLng: LatLng) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
     }
 
+    private fun saveMarkerCoordinateToSharedPreferences(latLng: LatLng) {
+        val editor = sharedPreferences.edit()
+        editor.putString("saved_marker_latitude", latLng.latitude.toString())
+        editor.putString("saved_marker_longitude", latLng.longitude.toString())
+        editor.apply()
+    }
+
+    private fun loadSavedMarkerCoordinate(): LatLng? {
+        val latitudeStr = sharedPreferences.getString("saved_marker_latitude", null)
+        val longitudeStr = sharedPreferences.getString("saved_marker_longitude", null)
+
+        if (!latitudeStr.isNullOrBlank() && !longitudeStr.isNullOrBlank()) {
+            return LatLng(latitudeStr.toDouble(), longitudeStr.toDouble())
+        }
+
+        return null
+    }
+
+    private fun saveAddressToSharedPreferences(address: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString("saved_address", address)
+        editor.apply()
+    }
+
+    private fun saveAndShowLocation() {
+        val address = binding.fullAdress.text.toString().trim()
+
+        if (currentLatLng != null) {
+            saveAddressToSharedPreferences(address)
+
+            // Save LatLng to SharedPreferences
+            saveMarkerCoordinateToSharedPreferences(currentLatLng!!)
+
+            // Move camera and show marker
+            moveCameraToLocation(currentLatLng!!)
+            showMarkerAtLatLng(currentLatLng!!)
+        } else {
+            Toast.makeText(this, "Lokasi saat ini tidak ditemukan", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun moveCameraToAddress(address: String) {
+        val geocoder = Geocoder(this, Locale.getDefault())
+
+        try {
+            val addresses = geocoder.getFromLocationName(address, 1)
+            if (!addresses.isNullOrEmpty()) {
+                val location = addresses[0]
+                val latLng = LatLng(location.latitude, location.longitude)
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+            } else {
+                Toast.makeText(this, "Alamat tidak ditemukan", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            Toast.makeText(this, "Terjadi kesalahan saat mencari alamat", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun showMarkerAtLatLng(latLng: LatLng) {
+        mMap.clear()
+        mMap.addMarker(MarkerOptions().position(latLng).title("Saved Location"))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+    }
+
+    private fun loadSavedAddress() {
+        val savedAddress = sharedPreferences.getString("saved_address", "")
+        if (!savedAddress.isNullOrBlank()) {
+            binding.fullAdress.setText(savedAddress)
+            moveCameraToAddress(savedAddress)
+        }
+    }
 }

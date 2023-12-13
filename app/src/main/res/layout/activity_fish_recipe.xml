@@ -36,6 +36,20 @@
                 app:dividerColor="@color/gray_10" />
         </com.google.android.material.appbar.AppBarLayout>
 
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view_recipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_search_view"
+            app:defaultQueryHint="@string/search_recipe"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_fishRecipe"
+            app:queryBackground="@android:color/transparent" />
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -45,7 +59,7 @@
             android:text="@string/choose_recipe"
             android:textAppearance="@style/Text.SemiBold.Medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appbar_fishRecipe" />
+            app:layout_constraintTop_toBottomOf="@+id/search_view_recipe" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_fish_recipe"

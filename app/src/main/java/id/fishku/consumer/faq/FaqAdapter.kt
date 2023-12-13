@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import id.fishku.consumer.databinding.ViewFaqBinding
 
 //nanti perlu dipindah ke core mgkn kayak yg lain
-class FaqAdapter(private val faqList: ArrayList<Questions>) : RecyclerView.Adapter<FaqAdapter.FaqViewHolder>(){ //ListAdapter<Questions, FaqAdapter.FaqViewHolder>() {
+class FaqAdapter(private val faqList: ArrayList<Questions>) :
+    RecyclerView.Adapter<FaqAdapter.FaqViewHolder>() { //ListAdapter<Questions, FaqAdapter.FaqViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FaqViewHolder {
         val binding = ViewFaqBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -36,7 +37,7 @@ class FaqAdapter(private val faqList: ArrayList<Questions>) : RecyclerView.Adapt
         fun bind(q: Questions) {
             with(binding) {
                 faqQuestion.text = q.question
-                faqAnswer.text= q.answer
+                faqAnswer.text = q.answer
             }
         }
 
