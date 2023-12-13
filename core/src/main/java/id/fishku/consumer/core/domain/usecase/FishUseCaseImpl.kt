@@ -7,7 +7,6 @@ import id.fishku.consumer.core.data.source.remote.response.OtpResponse
 import id.fishku.consumer.core.domain.model.Fish
 import id.fishku.consumer.core.domain.model.FishType
 import id.fishku.consumer.core.domain.repository.IFishRepository
-import id.fishku.consumer.core.utils.FishFilterType
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
 import javax.inject.Inject
@@ -32,12 +31,4 @@ class FishUseCaseImpl @Inject constructor(private val fishRepository: IFishRepos
 
     override fun sendCodeOtp(request: OtpRequest): Flow<Resource<OtpResponse>> =
         fishRepository.sendCodeOtp(request)
-
-    //TAMBAHAN
-    /*override fun getAllFishFilter(
-        filterType: FishFilterType,
-        location: String?,
-    ): Flow<Resource<List<Fish>>> {
-        TODO("Not yet implemented")
-    }*/
 }

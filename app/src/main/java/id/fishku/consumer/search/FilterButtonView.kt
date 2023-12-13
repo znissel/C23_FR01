@@ -16,7 +16,7 @@ class FilterButtonView : AppCompatButton {
     private lateinit var unclickedBackground: Drawable
     private var clickedTextColor: Int = 0
     private var unclickedTextColor: Int = 0
-    private var isClicked = false
+    //private var isClicked = false
 
     constructor(context: Context) : super(context) {
         init()
@@ -33,8 +33,8 @@ class FilterButtonView : AppCompatButton {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        background = if (isClicked == true) clickedBackground else unclickedBackground
-        setTextColor(if (isClicked == true) clickedTextColor else unclickedTextColor)
+        background = if (isActivated == true) clickedBackground else unclickedBackground
+        setTextColor(if (isActivated == true) clickedTextColor else unclickedTextColor)
 
         setPadding(8, 0, 8, 0)
         width = 100
@@ -44,13 +44,15 @@ class FilterButtonView : AppCompatButton {
     }
 
     private fun init() {
+        isActivated = false
+
         clickedBackground = ContextCompat.getDrawable(context, R.drawable.bg_button_selected) as Drawable
         unclickedBackground = ContextCompat.getDrawable(context, R.drawable.bg_button_unselected) as Drawable
         clickedTextColor = ContextCompat.getColor(context, R.color.white)
         unclickedTextColor = ContextCompat.getColor(context, R.color.blue)
 
         setOnClickListener {
-            isClicked = !isClicked
+            isActivated = !isActivated
             invalidate()
         }
     }

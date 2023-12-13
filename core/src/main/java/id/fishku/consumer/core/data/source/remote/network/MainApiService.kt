@@ -1,6 +1,5 @@
 package id.fishku.consumer.core.data.source.remote.network
 
-import androidx.sqlite.db.SimpleSQLiteQuery
 import com.google.gson.JsonObject
 import id.fishku.consumer.core.data.source.remote.response.*
 import okhttp3.MultipartBody
@@ -27,17 +26,6 @@ interface MainApiService {
 
     @GET("consumer/ikan/all")
     suspend fun getAllFish(): FishResponse
-
-    //TODO Tambahan
-    /*@GET("consumer/ikan/{namaIkan}")
-    suspend fun searchFilteredFishes(
-        @Path("namaIkan") query: String,
-        @Query("filter") filter: String?
-    ): FishResponse*/
-    /*@GET("consumer/ikan/all")
-    suspend fun getAllFishFilter(
-        @Query("filter") filter: SimpleSQLiteQuery
-    ): FishResponse*/
 
     @GET("consumer/ikan/{namaIkan}")
     suspend fun searchFishes(

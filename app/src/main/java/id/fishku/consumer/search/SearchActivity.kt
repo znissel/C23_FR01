@@ -30,7 +30,6 @@ class SearchActivity : AppCompatActivity() {
     private val searchAdapter: SearchAdapter by lazy { SearchAdapter(::productItemClicked) }
     private val searchViewModel: SearchViewModel by viewModels()
 
-    //TAMBAHAN
     private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,16 +42,9 @@ class SearchActivity : AppCompatActivity() {
         searchFish()
         setupCart()
 
-        //TAMBAHAN
-        setupToolbar() //TODO
-
-        //TODO
-        /*binding.drawerContent.btn1.setOnClickListener {
-            // Handle Button 1 click
-        }*/
+        setupToolbar()
     }
 
-    //TAMBAHAN
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
             setupToolbar()
@@ -79,30 +71,17 @@ class SearchActivity : AppCompatActivity() {
             toggle=ActionBarDrawerToggle(this@SearchActivity,drawerLayout,R.string.open,R.string.close)
             drawerLayout.addDrawerListener(toggle)
             toggle.syncState()
+
+            drawerContent.btnApply.setOnClickListener {
+                if (drawerContent.btnNearest.isActivated) {
+                    //TODO filter hasil search
+                } else if (drawerContent.btnHighestPrice.isActivated) {
+                    //TODO
+                }
+                //drawer tertutup,
+            }
         }
     }
-
-    /*
-    /*toggle.toolbarNavigationClickListener = View.OnClickListener {
-                if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
-                    drawerLayout.closeDrawer(GravityCompat.START)
-                } else {
-                    drawerLayout.openDrawer(GravityCompat.START)
-                }
-            }*/
-
-            /*navView.setNavigationItemSelectedListener {
-                when(it.itemId){
-                    *//*R.id.filter -> {
-                        Toast.makeText(this@SearchActivity, R.string.filter, Toast.LENGTH_SHORT).show()
-                    }*//*
-                    //buat item-item lain klu diklik
-                    //klu mau bentukannya kayak tombol mgkn bisa dgn nambah
-                    //itemShapeFillColor di xml NavigationView
-                }
-                true
-            }*/
-    */
     //TAMBAHAN - sampai sini
 
     private fun initSearch() {
@@ -131,7 +110,6 @@ class SearchActivity : AppCompatActivity() {
                         tvErrorSearch.visibility = View.GONE
                     }
                 }
-
                 is Resource.Success -> {
                     binding.loadingSearch.visibility = View.GONE
                     if (!it.data.isNullOrEmpty()) {
@@ -142,7 +120,6 @@ class SearchActivity : AppCompatActivity() {
                         isEmptyResult(true)
                     }
                 }
-
                 is Resource.Error -> {
                     binding.apply {
                         loadingSearch.visibility = View.GONE

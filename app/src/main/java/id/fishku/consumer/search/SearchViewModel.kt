@@ -43,31 +43,4 @@ class SearchViewModel @Inject constructor(
         cartUseCase.getCart(customerID).asLiveData()
 
     val cart: LiveData<Resource<List<Cart>>> = Transformations.switchMap(getId) { getCart(it) }
-
-    //TAMBAHAN
-    /*fun filterByLocation(query: String) {
-        viewModelScope.launch {
-            fishUseCase.searchFishes(query).collect { result -> //TODO
-                _result.value = result
-            }
-        }
-    }
-
-    fun filterBestSeller(query: String) {
-        viewModelScope.launch {
-            fishUseCase.searchFishes(query).collect { result -> //TODO
-                _result.value = result
-            }
-        }
-    }
-
-    fun filterNewest(query: String) {
-        viewModelScope.launch {
-            fishUseCase.searchFishes(query).collect { result -> //TODO
-                _result.value = result
-            }
-        }
-    }*/
-
-
 }

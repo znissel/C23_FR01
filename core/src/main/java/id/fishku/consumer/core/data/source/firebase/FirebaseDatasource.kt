@@ -17,8 +17,8 @@ import javax.inject.Singleton
 
 @Singleton
 class FirebaseDatasource @Inject constructor(
-        private val firestore: FirebaseFirestore,
-        private val fireAuth: FirebaseAuth
+    private val firestore: FirebaseFirestore,
+    private val fireAuth: FirebaseAuth
 ){
     companion object{
         const val USERS = "users"
@@ -47,7 +47,7 @@ class FirebaseDatasource @Inject constructor(
         }catch (e: Exception){
             emit(false)
         }
-    }
+    }/*TODO*/
 
     fun getListenerToken(sellerEmail: String) = callbackFlow {
         val usersCollect = firestore.collection(USERS)
@@ -64,7 +64,7 @@ class FirebaseDatasource @Inject constructor(
         awaitClose {
             snapshotListener.remove()
         }
-    }
+    }/*TODO*/
 
     fun signWithGoogle(acct: GoogleSignInAccount) =
         fireAuth.signInWithCredential(GoogleAuthProvider.getCredential(acct.idToken, null))

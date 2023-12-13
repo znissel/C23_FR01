@@ -6,7 +6,6 @@ import id.fishku.consumer.core.data.source.remote.response.DetectionFishResponse
 import id.fishku.consumer.core.data.source.remote.response.OtpResponse
 import id.fishku.consumer.core.domain.model.Fish
 import id.fishku.consumer.core.domain.model.FishType
-import id.fishku.consumer.core.utils.FishFilterType
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
 
@@ -17,7 +16,4 @@ interface IFishRepository {
     fun uploadImageDetection(fishName: String?, image: MultipartBody.Part): Flow<Resource<DetectionFishResponse>>
     fun getListFishDetection(): Flow<Resource<List<FishType>>>
     fun sendCodeOtp(request: OtpRequest): Flow<Resource<OtpResponse>>
-
-    //TODO tambahan
-    /*fun getAllFishFilter(filterType: FishFilterType, location: String?): Flow<Resource<List<Fish>>>*/
 }
