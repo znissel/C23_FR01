@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.GravityCompat
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
 import id.fishku.consumer.cart.CartActivity
@@ -25,12 +27,10 @@ import id.fishku.consumer.detailfish.DetailFishActivity
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchBinding
-
-    //TAMBAHAN
-    private lateinit var toggle: ActionBarDrawerToggle
-
     private val searchAdapter: SearchAdapter by lazy { SearchAdapter(::productItemClicked) }
     private val searchViewModel: SearchViewModel by viewModels()
+
+    private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +40,94 @@ class SearchActivity : AppCompatActivity() {
         initSearch()
         setupData()
         searchFish()
-
-        //TAMBAHAN
-        setupToolbar()
         setupCart()
+
+        setupToolbar()
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            setupToolbar()
+        } else {
+            val cartIntent = Intent(this, CartActivity::class.java)
+            startActivity(cartIntent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.dashboard_menu, menu)
+        return true
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(binding.toolbarSearch)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+        }
+
+        //drawer
+        binding.apply {
+            toggle = ActionBarDrawerToggle(
+                this@SearchActivity,
+                drawerLayout,
+                R.string.open,
+                R.string.close
+            )
+            drawerLayout.addDrawerListener(toggle)
+            toggle.syncState()
+        }
+    }
+
+    fun onButtonClick(view: View) {
+        when (view.id) {
+            R.id.btnReset -> resetFilterButtons()
+            R.id.btnApply -> applyFilters()
+        }
+    }
+
+    private fun resetFilterButtons() {
+        binding.drawerContent.apply {
+            btnNearest.resetState()
+            btnBest.resetState()
+            btnNewest.resetState()
+            btnHighestPrice.resetState()
+            btnLowestPrice.resetState()
+        }
+    }
+
+    private fun applyFilters() {
+        val locationFilter = null//TODO dapetin lokasi kota dari data SetLocationActivity
+        val unfilteredResults = searchViewModel.result.value?.data ?: emptyList()
+
+        val locationFilteredResults = if (locationFilter != null) {
+            unfilteredResults.filter { fish ->
+                fish.location == locationFilter
+            }
+        } else {
+            unfilteredResults
+        }
+
+        val sortedResults = when {
+            binding.drawerContent.btnNearest.isActivated -> {
+                locationFilteredResults.sortedByDescending { it.location }
+            }
+            //TODO button lainnya
+            binding.drawerContent.btnHighestPrice.isActivated -> {
+                unfilteredResults.sortedByDescending { it.price }
+            }
+            binding.drawerContent.btnLowestPrice.isActivated -> {
+                unfilteredResults.sortedBy { it.price }
+            }
+            else -> {
+                unfilteredResults
+            }
+        }
+
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        searchAdapter.submitList(sortedResults)
+    }
+    //TAMBAHAN - sampai sini
 
     private fun initSearch() {
         val query = SearchActivityArgs.fromBundle(intent.extras as Bundle).query
@@ -119,55 +202,11 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    //TAMBAHAN
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)) {
-            setupToolbar()
-        } else {
-            val cartIntent = Intent(this, CartActivity::class.java)
-            startActivity(cartIntent)
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.dashboard_menu, menu)
-        return true
-    }
-    private fun setupToolbar(){
-        setSupportActionBar(binding.toolbarSearch)
-        supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
-        }
-
-        //drawer
-        binding.apply {
-            toggle=ActionBarDrawerToggle(this@SearchActivity,drawerLayout,R.string.open,R.string.close)
-            drawerLayout.addDrawerListener(toggle)
-            toggle.syncState()
-
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-            navView.setNavigationItemSelectedListener {
-                when(it.itemId){
-                    R.id.location_filter -> {
-                        Toast.makeText(this@SearchActivity, R.string.filter, Toast.LENGTH_SHORT).show()
-                    }
-                    //buat item-item lain klu diklik
-                    //klu mau bentukannya kayak tombol mgkn bisa dgn nambah
-                    //itemShapeFillColor di xml NavigationView
-                }
-                true
-            }
-        }
-    }//TAMBAHAN - sampai sini
-
     private fun setupCart() {
         val menuItem = binding.toolbarSearch.menu.getItem(0).actionView
 
         menuItem?.setOnClickListener {
-            val cartIntent = Intent(this@SearchActivity, CartActivity::class.java)
+            val cartIntent = Intent(this, CartActivity::class.java)
             startActivity(cartIntent)
         }
 

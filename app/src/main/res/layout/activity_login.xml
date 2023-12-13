@@ -91,24 +91,41 @@
             app:layout_constraintStart_toStartOf="@id/til_password_login"
             app:layout_constraintTop_toBottomOf="@id/btn_forgot_password" />
 
-        <TextView
+        <LinearLayout
             android:id="@+id/tv_or"
-            style="@style/Text.Regular.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:text="@string/or"
-
+            android:layout_marginTop="25dp"
             app:layout_constraintBottom_toTopOf="@id/btn_google_sign"
             app:layout_constraintEnd_toEndOf="@id/btn_login"
             app:layout_constraintStart_toStartOf="@id/btn_login"
-            app:layout_constraintTop_toBottomOf="@id/btn_login" />
+            app:layout_constraintTop_toBottomOf="@id/btn_login">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                style="@style/Text.Regular.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/or" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_google_sign"
             style="@style/OutlinedButton"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:backgroundTint="@color/gray"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
