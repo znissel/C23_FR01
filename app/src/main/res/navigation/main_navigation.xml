@@ -24,14 +24,14 @@
             app:destination="@id/cartActivity" />
 
         <action
-            android:id="@+id/action_navigation_dashboard_to_faqActivity"
-            app:destination="@+id/faqActivity"/>
-        <action
             android:id="@+id/action_navigation_dashboard_to_setLocationActivity"
             app:destination="@id/setLocationActivity" />
         <action
             android:id="@+id/action_navigation_dashboard_to_detailShopActivity"
             app:destination="@id/detailShopActivity" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_fishPriceActivity"
+            app:destination="@id/fishPriceActivity" />
 
     </fragment>
 
@@ -117,13 +117,6 @@
         tools:layout="@layout/fragment_live_chat" />
 
 
-
-    <activity
-        android:id="@+id/faqActivity"
-        android:name="id.fishku.consumer.faq.FaqActivity"
-        android:label="activity_faq"
-        tools:layout="@layout/activity_faq" />
-
     <activity
         android:id="@+id/setLocationActivity"
         android:name="id.fishku.consumer.location.SetLocationActivity"
@@ -134,4 +127,9 @@
         android:name="id.fishku.consumer.detailshop.DetailShopActivity"
         android:label="activity_detail_shop"
         tools:layout="@layout/activity_detail_shop" />
+    <activity
+        android:id="@+id/fishPriceActivity"
+        android:name="id.fishku.consumer.fishprice.FishPriceActivity"
+        android:label="activity_fish_price"
+        tools:layout="@layout/activity_fish_price" />
 </navigation>

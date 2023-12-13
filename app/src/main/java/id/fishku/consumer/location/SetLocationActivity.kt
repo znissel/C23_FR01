@@ -57,6 +57,11 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
             saveAndShowLocation()
         }
 
+        val btnResetAddress: Button = findViewById(R.id.btn_reset_address)
+        btnResetAddress.setOnClickListener {
+            resetAddress()
+        }
+
         val savedLatLng = loadSavedMarkerCoordinate()
         Log.d("SavedLatLng", "Latitude: ${savedLatLng?.latitude}, Longitude: ${savedLatLng?.longitude}")
 
@@ -99,6 +104,24 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
             // Save LatLng to SharedPreferences when the map is clicked
             saveMarkerCoordinateToSharedPreferences(latLng)
         }
+    }
+
+    private fun resetAddress() {
+        // Hapus alamat yang tersimpan dari SharedPreferences
+        sharedPreferences.edit().remove("saved_address").apply()
+
+        // Hapus koordinat marker yang tersimpan dari SharedPreferences
+        sharedPreferences.edit().remove("saved_marker_latitude").apply()
+        sharedPreferences.edit().remove("saved_marker_longitude").apply()
+
+        // Bersihkan teks pada fullAdress
+        binding.fullAdress.text = null
+
+        // Hapus marker pada peta
+        mMap.clear()
+
+        // Tampilkan pesan notifikasi bahwa alamat telah direset
+        Toast.makeText(this, "Alamat telah direset", Toast.LENGTH_SHORT).show()
     }
 
     private fun getAddressFromLocation(latLng: LatLng): String {
@@ -188,18 +211,44 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun saveAndShowLocation() {
         val address = binding.fullAdress.text.toString().trim()
 
-        if (currentLatLng != null) {
-            saveAddressToSharedPreferences(address)
+        if (address.isNotEmpty()) {
+            val location = getLocationFromAddress(address)
+            if (location != null) {
+                // Save address to SharedPreferences
+                saveAddressToSharedPreferences(address)
 
-            // Save LatLng to SharedPreferences
-            saveMarkerCoordinateToSharedPreferences(currentLatLng!!)
+                // Save LatLng to SharedPreferences
+                saveMarkerCoordinateToSharedPreferences(location)
 
-            // Move camera and show marker
-            moveCameraToLocation(currentLatLng!!)
-            showMarkerAtLatLng(currentLatLng!!)
+                // Move camera and show marker
+                moveCameraToLocation(location)
+                showMarkerAtLatLng(location)
+
+                // Display a toast notification
+                Toast.makeText(this, "Alamat berhasil disimpan", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Alamat tidak valid, coba lagi", Toast.LENGTH_SHORT).show()
+            }
         } else {
-            Toast.makeText(this, "Lokasi saat ini tidak ditemukan", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Mohon masukkan alamat terlebih dahulu", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun getLocationFromAddress(address: String): LatLng? {
+        val geocoder = Geocoder(this, Locale.getDefault())
+
+        try {
+            val addresses = geocoder.getFromLocationName(address, 1)
+            if (!addresses.isNullOrEmpty()) {
+                val location = addresses[0]
+                return LatLng(location.latitude, location.longitude)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            Toast.makeText(this, "Terjadi kesalahan saat mencari alamat", Toast.LENGTH_SHORT).show()
+        }
+
+        return null
     }
 
     private fun moveCameraToAddress(address: String) {

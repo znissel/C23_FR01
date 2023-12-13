@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_provence"
+            style="@style/Text.SemiBold.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="@string/text_provence"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_fish1"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_fish1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_provence" />
+
+        <TextView
+            android:id="@+id/tv_fish2"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_fish2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fish1" />
+
+        <TextView
+            android:id="@+id/tv_fish3"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_fish3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fish2" />
+
+        <TextView
+            android:id="@+id/tv_fish4"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_fish4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fish3" />
+
+        <TextView
+            android:id="@+id/tv_fish5"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_fish5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fish4" />
+
+        <TextView
+            android:id="@+id/tv_fish6"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_fish6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fish5" />
+
+        <TextView
+            android:id="@+id/tv_price1"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_price1"
+            app:layout_constraintStart_toEndOf="@+id/tv_fish1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_provence" />
+
+        <TextView
+            android:id="@+id/tv_price2"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_price2"
+            app:layout_constraintStart_toEndOf="@+id/tv_fish2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price1" />
+
+        <TextView
+            android:id="@+id/tv_price3"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_price3"
+            app:layout_constraintStart_toEndOf="@+id/tv_fish3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price2" />
+
+        <TextView
+            android:id="@+id/tv_price4"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_price4"
+            app:layout_constraintStart_toEndOf="@+id/tv_fish4"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price3" />
+
+        <TextView
+            android:id="@+id/tv_price5"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_price5"
+            app:layout_constraintStart_toEndOf="@+id/tv_fish5"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price4" />
+
+        <TextView
+            android:id="@+id/tv_price6"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/text_price6"
+            app:layout_constraintStart_toEndOf="@+id/tv_fish6"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price5" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerColor="@color/gray_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

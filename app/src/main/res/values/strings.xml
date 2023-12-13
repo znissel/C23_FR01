@@ -290,4 +290,20 @@
     <string name="otp_msg">Kode OTP Anda untuk FI$HKU:</string>
     <string name="verivication_completed">Verifikasi Berhasil</string>
     <string name="verivication_failed">Verifikasi Gagal</string>
+
+    <!--Fish Price-->
+    <string name="app_title"> Harga Ikan </string>
+    <string name="text_provence"> Nama Provinsi </string>
+    <string name="text_fish1"> Nama Ikan 1 </string>
+    <string name="text_fish2"> Nama Ikan 2 </string>
+    <string name="text_fish3"> Nama Ikan 3 </string>
+    <string name="text_fish4"> Nama Ikan 4 </string>
+    <string name="text_fish5"> Nama Ikan 5 </string>
+    <string name="text_fish6"> Nama Ikan 6 </string>
+    <string name="text_price1"> Harga 1 </string>
+    <string name="text_price2"> Harga 2 </string>
+    <string name="text_price3"> Harga 3 </string>
+    <string name="text_price4"> Harga 4 </string>
+    <string name="text_price5"> Harga 5 </string>
+    <string name="text_price6"> Harga 6 </string>
 </resources>
