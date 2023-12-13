@@ -16,7 +16,6 @@ class FilterButtonView : AppCompatButton {
     private lateinit var unclickedBackground: Drawable
     private var clickedTextColor: Int = 0
     private var unclickedTextColor: Int = 0
-    //private var isClicked = false
 
     constructor(context: Context) : super(context) {
         init()
@@ -55,5 +54,10 @@ class FilterButtonView : AppCompatButton {
             isActivated = !isActivated
             invalidate()
         }
+    }
+
+    fun resetState() {
+        isActivated = false
+        invalidate()
     }
 }

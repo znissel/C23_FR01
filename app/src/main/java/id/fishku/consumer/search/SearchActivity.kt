@@ -60,7 +60,7 @@ class SearchActivity : AppCompatActivity() {
         return true
     }
 
-    private fun setupToolbar(){
+    private fun setupToolbar() {
         setSupportActionBar(binding.toolbarSearch)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
@@ -68,19 +68,64 @@ class SearchActivity : AppCompatActivity() {
 
         //drawer
         binding.apply {
-            toggle=ActionBarDrawerToggle(this@SearchActivity,drawerLayout,R.string.open,R.string.close)
+            toggle = ActionBarDrawerToggle(
+                this@SearchActivity,
+                drawerLayout,
+                R.string.open,
+                R.string.close
+            )
             drawerLayout.addDrawerListener(toggle)
             toggle.syncState()
+        }
+    }
 
-            drawerContent.btnApply.setOnClickListener {
-                if (drawerContent.btnNearest.isActivated) {
-                    //TODO filter hasil search
-                } else if (drawerContent.btnHighestPrice.isActivated) {
-                    //TODO
-                }
-                //drawer tertutup,
+    fun onButtonClick(view: View) {
+        when (view.id) {
+            R.id.btnReset -> resetFilterButtons()
+            R.id.btnApply -> applyFilters()
+        }
+    }
+
+    private fun resetFilterButtons() {
+        binding.drawerContent.apply {
+            btnNearest.resetState()
+            btnBest.resetState()
+            btnNewest.resetState()
+            btnHighestPrice.resetState()
+            btnLowestPrice.resetState()
+        }
+    }
+
+    private fun applyFilters() {
+        val locationFilter = null//TODO dapetin lokasi kota dari data SetLocationActivity
+        val unfilteredResults = searchViewModel.result.value?.data ?: emptyList()
+
+        val locationFilteredResults = if (locationFilter != null) {
+            unfilteredResults.filter { fish ->
+                fish.location == locationFilter
+            }
+        } else {
+            unfilteredResults
+        }
+
+        val sortedResults = when {
+            binding.drawerContent.btnNearest.isActivated -> {
+                locationFilteredResults.sortedByDescending { it.location }
+            }
+            //TODO button lainnya
+            binding.drawerContent.btnHighestPrice.isActivated -> {
+                unfilteredResults.sortedByDescending { it.price }
+            }
+            binding.drawerContent.btnLowestPrice.isActivated -> {
+                unfilteredResults.sortedBy { it.price }
+            }
+            else -> {
+                unfilteredResults
             }
         }
+
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        searchAdapter.submitList(sortedResults)
     }
     //TAMBAHAN - sampai sini
 
@@ -110,6 +155,7 @@ class SearchActivity : AppCompatActivity() {
                         tvErrorSearch.visibility = View.GONE
                     }
                 }
+
                 is Resource.Success -> {
                     binding.loadingSearch.visibility = View.GONE
                     if (!it.data.isNullOrEmpty()) {
@@ -120,6 +166,7 @@ class SearchActivity : AppCompatActivity() {
                         isEmptyResult(true)
                     }
                 }
+
                 is Resource.Error -> {
                     binding.apply {
                         loadingSearch.visibility = View.GONE

@@ -5,8 +5,9 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start"
-    tools:context=".search.SearchActivity" >
+    android:background="@color/white"
+    tools:context=".search.SearchActivity"
+    tools:openDrawer="start">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -79,6 +80,7 @@
                 android:id="@+id/loading_search"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:layout_marginTop="150dp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -92,6 +94,7 @@
                 android:id="@+id/img_empty_search"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
+                android:layout_marginTop="150dp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -115,6 +118,7 @@
                 android:id="@+id/img_error_search"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
+                android:layout_marginTop="150dp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
