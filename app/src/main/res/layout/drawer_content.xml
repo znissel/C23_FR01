@@ -54,6 +54,7 @@
                 android:layout_marginVertical="10dp"
                 android:layout_marginStart="10dp"
                 android:text="Berdasarkan kategori:"
+                android:textColor="@color/blue"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -62,70 +63,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="2dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <id.fishku.consumer.search.FilterButtonView
+                android:id="@+id/btn_nearest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="Terdekat" />
+
+            <id.fishku.consumer.search.FilterButtonView
+                android:id="@+id/btn_best"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="Terlaris" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
             android:layout_marginBottom="15dp"
             android:orientation="horizontal"
             android:padding="10dp">
 
-            <!--<Button
-                android:id="@+id/btn1"
-                android:layout_width="0dp"
+            <id.fishku.consumer.search.FilterButtonView
+                android:id="@+id/btn_newest"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="10sp"
-                android:onClick="onButtonClick"
-                android:text="Terdekat" />-->
+                android:text="Terbaru" />
 
-            <!--<androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_best_product"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:paddingHorizontal="12dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_best_product"
-                tools:listitem="@layout/view_filter_button" />-->
-
-            <include
-                android:id="@+id/btn1"
-                layout="@layout/view_filter_button"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp" />
-
-            <include
-                android:id="@+id/btn2"
-                layout="@layout/view_filter_button"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp" />
-
-            <include
-                android:id="@+id/btn3"
-                layout="@layout/view_filter_button"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp" />
-
-            <!--<Button
-                android:id="@+id/btn2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-
-                android:onClick="onButtonClick"
-                android:text="Terlaris" />
-
-            <Button
-                android:id="@+id/btn3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onButtonClick"
-                android:text="Terbaru" />-->
         </LinearLayout>
 
         <View
@@ -143,6 +114,7 @@
                 android:layout_marginVertical="10dp"
                 android:layout_marginStart="10dp"
                 android:text="Berdasarkan harga:"
+                android:textColor="@color/blue"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -150,39 +122,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="2dp"
             android:layout_marginBottom="15dp"
             android:orientation="horizontal"
             android:padding="10dp">
 
-            <include
-                android:id="@+id/btn4"
-                layout="@layout/view_filter_button"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp" />
-
-            <include
-                android:id="@+id/btn5"
-                layout="@layout/view_filter_button" />
-
-            <!--<Button
-                android:id="@+id/btn4"
-                android:layout_width="0dp"
+            <id.fishku.consumer.search.FilterButtonView
+                android:id="@+id/btn_highest_price"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:onClick="onButtonClick"
                 android:text="Tertinggi" />
 
-            <Button
-                android:id="@+id/btn5"
-                android:layout_width="0dp"
+            <id.fishku.consumer.search.FilterButtonView
+                android:id="@+id/btn_lowest_price"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:onClick="onButtonClick"
-                android:text="Terendah" />-->
+                android:text="Terendah" />
 
         </LinearLayout>
 
@@ -197,30 +153,14 @@
             android:gravity="right"
             android:orientation="horizontal">
 
-            <!--<include
-                android:id="@+id/btn_reset"
-                layout="@layout/view_filter_button"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginEnd="15dp" />
-
-            <include
-                android:id="@+id/btn_apply"
-                layout="@layout/view_filter_button"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginEnd="15dp" />-->
-
             <Button
                 android:id="@+id/btnReset"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/bg_button_color"
+                android:backgroundTint="@color/white"
                 android:onClick="onButtonClick"
                 android:text="Hapus Filter"
                 android:textColor="@color/blue"
@@ -231,7 +171,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:onClick="onButtonClick"
                 android:text="Terapkan" />
