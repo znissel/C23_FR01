@@ -288,4 +288,6 @@
     <!---->
     <string name="sms_to">Kirim SMS ke</string>
     <string name="otp_msg">Kode OTP Anda untuk FI$HKU:</string>
+    <string name="verivication_completed">Verifikasi Berhasil</string>
+    <string name="verivication_failed">Verifikasi Gagal</string>
 </resources>
