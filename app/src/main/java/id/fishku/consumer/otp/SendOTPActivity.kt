@@ -75,7 +75,7 @@ class SendOTPActivity : AppCompatActivity() {
     }
 
     private fun sendSmsOtp() {
-        //progress bar visible
+        isLoading(true)
         val user = saveToLocal.getDataUser()
         Log.d("BOSS", "OTP - user: ${user}")
         val number = "+" + user.phoneNumber.toString()
@@ -88,11 +88,14 @@ class SendOTPActivity : AppCompatActivity() {
             .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(p0: PhoneAuthCredential) {
                     //progress bar gone
+                    Toast.makeText(this@SendOTPActivity,getString(R.string.verivication_completed), Toast.LENGTH_SHORT).show()
                     Log.d("BOSS", "onVerificationCompleted:$p0")
                 }
 
                 override fun onVerificationFailed(p0: FirebaseException) {
                     //progress bar gone
+                    isLoading(false)
+                    Toast.makeText(this@SendOTPActivity,getString(R.string.verivication_failed), Toast.LENGTH_SHORT).show()
                     Log.w("BOSS", "onVerificationFailed", p0)
                 }
 
@@ -108,10 +111,12 @@ class SendOTPActivity : AppCompatActivity() {
 
     private fun startToVerifyOTP() {
         //progress bar visible
+        isLoading(true)
         val user = saveToLocal.getDataUser()
         if (user.phoneNumber != null) {
             val intent = Intent(this, VerifyOTPActivity::class.java)
             //progress bar gone
+            isLoading(false)
             startActivity(intent)
         }
     }

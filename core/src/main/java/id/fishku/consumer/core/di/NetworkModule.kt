@@ -42,6 +42,7 @@ class NetworkModule {
     fun provideMainApiService(client: OkHttpClient): MainApiService {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://apis.fishku.id") //BuildConfig.MAIN_BASE_URL
+            // /*TODO base url: https://fishku-mobile-default-rtdb.firebaseio.com*/
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

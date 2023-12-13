@@ -1,10 +1,13 @@
 package id.fishku.consumer.otp
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -56,6 +59,15 @@ class VerifyOTPActivity : AppCompatActivity() {
         Log.d("BOSS", "Activity: VerifyOTP")
 
         binding.btnVerify.setOnClickListener {
+            val inputMethodManager = getSystemService(
+                Context.INPUT_METHOD_SERVICE
+            ) as InputMethodManager
+
+            inputMethodManager.hideSoftInputFromWindow(
+                currentFocus?.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
+
             loadCheckCode()
         }
         binding.tvResend.setOnClickListener {
@@ -83,9 +95,16 @@ class VerifyOTPActivity : AppCompatActivity() {
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        isLoading(true)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    isLoading(false)
+                    Toast.makeText(
+                        this@VerifyOTPActivity,
+                        getString(R.string.verivication_completed),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     Log.d("BOSS", "signInWithCredential:success")
                     val state = saveToLocal.getStateAuth()
                     val user = saveToLocal.getDataUser()
@@ -93,13 +112,20 @@ class VerifyOTPActivity : AppCompatActivity() {
                     if (state) {
                         viewModelLogin.saveSession(user.token.toString(), user)
                         val intent = Intent(this, MainActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         finish()
                         startActivity(intent)
                     } else {
                         toRegisterFragment()
                     }
                 } else {
+                    isLoading(false)
+                    Toast.makeText(
+                        this@VerifyOTPActivity,
+                        getString(R.string.verivication_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     Log.d("BOSS", "signInWithCredential:failure", task.exception)
                     /*if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         // invalid
@@ -109,6 +135,8 @@ class VerifyOTPActivity : AppCompatActivity() {
     }
 
     private fun toRegisterFragment() {
+        /*TODO namanya masih register*/
+        isLoading(false)
         val intent = Intent(this, RegisterActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
@@ -117,6 +145,7 @@ class VerifyOTPActivity : AppCompatActivity() {
 
     private fun resendSmsOtp() {
         //progress bar visible
+        isLoading(true)
         val user = saveToLocal.getDataUser()
         Log.d("BOSS", "OTP - number: ${user}")
         val number = "+" + user.phoneNumber.toString()
@@ -129,16 +158,29 @@ class VerifyOTPActivity : AppCompatActivity() {
             .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(p0: PhoneAuthCredential) {
                     //progress bar gone
+                    //isLoading(false)
+                    Toast.makeText(
+                        this@VerifyOTPActivity,
+                        getString(R.string.verivication_completed),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     Log.d("BOSS", "onVerificationCompleted:$p0")
                 }
 
                 override fun onVerificationFailed(p0: FirebaseException) {
                     //progress bar gone
+                    isLoading(false)
+                    Toast.makeText(
+                        this@VerifyOTPActivity,
+                        getString(R.string.verivication_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     Log.w("BOSS", "onVerificationFailed", p0)
                 }
 
                 override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
                     //progress bar gone
+                    isLoading(false)
                     super.onCodeSent(p0, p1)
                     saveToLocal.setVerificationId(p0)
                 }
