@@ -6,7 +6,7 @@
         android:name="android.hardware.camera"
         android:required="false" />
     <!--
-<uses-feature
+    <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -68,25 +68,22 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".splash.SplashActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".detailshop.DetailShopActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar">
-
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
@@ -94,12 +91,13 @@
             android:name=".fishinformation.FishNutritionActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
-        <!--
+        <!--<activity
+            android:name=".fishrecipe.DetailFishRecipeActivity"
+            android:exported="false" />--> <!--TODO, memang ga ada?-->
         <activity
-            android:name=".detailshop.DetailShopActivity"
+            android:name=".fishinformation.FishNutritionActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
-        -->
         <activity
             android:name=".fishrecipe.FishRecipeActivity"
             android:exported="false"
@@ -108,27 +106,11 @@
             android:name=".fishinformation.FishInformationActivity"
             android:exported="false">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
-        <!--
-             TODO: Before you run your application, you need a Google Maps API key.
 
-             To get one, follow the directions here:
-
-                https://developers.google.com/maps/documentation/android-sdk/get-api-key
-
-             Once you have your API key (it starts with "AIza"), define a new property in your
-             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
-             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDdZNEjz55pX8bVwH9zSbLorVxlwReYEDg" />
+            android:value="AIzaSyB5OiUDMm5yBcty9LKchJ70KPY5viRlNOo" /> <!--TODO recheck, udah sesuai token dr CC/belum-->
 
         <activity
             android:name=".location.SetLocationActivity"
@@ -159,16 +141,8 @@
             android:name=".welcome.WelcomeActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" /> <!--TODO true/false-->
 
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
         <activity
             android:name=".editprofile.EditProfileActivity"
             android:exported="false"
@@ -178,6 +152,7 @@
             android:exported="false"
             android:label="@string/title_activity_address"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".livechat.ChatRoomActivity"
             android:exported="false"
@@ -186,6 +161,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".invoice.InvoiceActivity"
             android:exported="false"
@@ -213,17 +189,18 @@
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
+
         <activity
             android:name=".main.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".search.SearchActivity"
