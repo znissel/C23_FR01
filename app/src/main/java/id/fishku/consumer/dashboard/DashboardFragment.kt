@@ -239,7 +239,7 @@ class DashboardFragment : Fragment(), View.OnClickListener {
 
             //Perubahan pada toolbar dan action intent di navigation
             R.id.ivFaq -> v.findNavController()
-                .navigate(R.id.action_navigation_dashboard_to_faqActivity)
+                .navigate(R.id.action_navigation_dashboard_to_fishPriceActivity)
 
             R.id.btn_set_location -> v.findNavController()
                 .navigate(R.id.action_navigation_dashboard_to_setLocationActivity)
