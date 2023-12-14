@@ -41,8 +41,10 @@ class NetworkModule {
     @Provides
     fun provideMainApiService(client: OkHttpClient): MainApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://apis.fishku.id") //BuildConfig.MAIN_BASE_URL
-            // /*TODO base url: https://fishku-mobile-default-rtdb.firebaseio.com*/
+            .baseUrl("https://backend-dot-fishku-mobile.et.r.appspot.com/") //BuildConfig.MAIN_BASE_URL
+            //TODO firebase url:
+            // https://fishku-mobile-default-rtdb.firebaseio.com
+            // kalau base url fishku: apis.fishku.id
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -66,6 +68,7 @@ class NetworkModule {
             .create()
         val retrofit = Retrofit.Builder()
             .baseUrl("https://model.fishku.id") //BuildConfig.MODEL_BASE_URL
+            /*TODO model scanning: https://cloud-run-ukgzgnwgqq-et.a.run.app/freshness atau bukan?*/
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
