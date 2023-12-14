@@ -81,9 +81,7 @@ class AccountFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         val user = prefs.getDataUser()
         accountViewModel.userIsLinked(user.email!!).observe(viewLifecycleOwner){
             when(it){
-                is Resource.Loading -> {
-
-                }
+                is Resource.Loading -> {}
                 is Resource.Success -> {
                     accountViewModel.deleteUserLinked(user.id.toString())
                     accountViewModel.signOutWithGoogle(googleSignInClient)
@@ -158,7 +156,10 @@ class AccountFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     private fun setupAction() {
         binding?.toolbarAccount?.setOnMenuItemClickListener(this)
         binding?.btnEditProfile?.setOnClickListener {
+            val email = binding?.tvAccountPhoneNumber?.text.toString()
+
             val editProfileIntent = Intent(requireContext(), EditProfileActivity::class.java)
+            editProfileIntent.putExtra(email, EXTRA_PHONE)
             startActivity(editProfileIntent)
         }
     }
@@ -174,6 +175,8 @@ class AccountFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             R.string.tab_order,
             R.string.tab_order_history
         )
+
+        const val EXTRA_PHONE = "user_email"
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {

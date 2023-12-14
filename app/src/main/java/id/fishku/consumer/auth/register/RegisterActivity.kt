@@ -1,15 +1,18 @@
 package id.fishku.consumer.auth.register
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
+import id.fishku.consumer.auth.EnterNumberActivity
 import id.fishku.consumer.auth.login.LoginActivity
 import id.fishku.consumer.core.data.Resource
 import id.fishku.consumer.core.data.source.local.datastore.LocalData
@@ -40,7 +43,18 @@ class RegisterActivity : AppCompatActivity() {
         val nomor = saveToLocal.getNumber()
         binding.edtPhoneRegister.setText(nomor)
         binding.apply {
-            btnRegister.setOnClickListener { registerHandler() }
+            btnRegister.setOnClickListener {
+                val inputMethodManager = getSystemService(
+                    Context.INPUT_METHOD_SERVICE
+                ) as InputMethodManager
+
+                inputMethodManager.hideSoftInputFromWindow(
+                    currentFocus?.windowToken,
+                    InputMethodManager.HIDE_NOT_ALWAYS
+                )
+
+                registerHandler()
+            }
             btnLoginHere.setOnClickListener {
                 startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
             }
@@ -54,8 +68,9 @@ class RegisterActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     showLoading(false)
                     it.data?.message?.showMessage(this)
-                    binding.root.findNavController()
-                        .navigate(R.id.action_registerFragment_to_loginFragment)
+                    /*binding.root.findNavController()
+                        .navigate(R.id.action_registerFragment_to_loginFragment)*/
+                    startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
                 }
                 is Resource.Error -> {
                     showLoading(false)

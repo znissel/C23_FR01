@@ -1,7 +1,10 @@
 package id.fishku.consumer.search
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -31,11 +34,14 @@ class SearchActivity : AppCompatActivity() {
     private val searchViewModel: SearchViewModel by viewModels()
 
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
         initSearch()
         setupData()
@@ -97,7 +103,8 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun applyFilters() {
-        val locationFilter = null//TODO dapetin lokasi kota dari data SetLocationActivity
+        val locationFilter = sharedPreferences.getString("saved_address", "")
+        Log.d("BOSS", "lokasi: ${locationFilter}")
         val unfilteredResults = searchViewModel.result.value?.data ?: emptyList()
 
         val locationFilteredResults = if (locationFilter != null) {

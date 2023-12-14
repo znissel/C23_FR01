@@ -20,6 +20,7 @@ class SearchAdapter(private val onItemClick: (Fish) -> Unit) :
             binding.apply {
                 itemTvName.text = fish.name
                 itemTvPrice.text = fish.price.convertToRupiah()
+                itemTvLocation.text = fish.location
                 itemImgPhoto.loadFishImage(fish.photoUrl.addPhotoUrl())
                 root.setOnClickListener {
                     onItemClick(fish)

@@ -6,14 +6,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
+import id.fishku.consumer.account.AccountFragment
 import id.fishku.consumer.core.data.Resource
 import id.fishku.consumer.core.utils.showError
 import id.fishku.consumer.core.utils.showMessage
 import id.fishku.consumer.core.utils.uriToFile
 import id.fishku.consumer.databinding.ActivityEditProfileBinding
+import id.fishku.consumer.invoice.InvoiceActivity
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -35,7 +38,15 @@ class EditProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupToolbar()
+        setupField()
         setupAction()
+    }
+
+    //TAMBAHAN, TODO
+    private fun setupField() {
+        val phoneNumber = intent.getStringExtra(AccountFragment.EXTRA_PHONE)
+        /*TODO*/
+        binding.edtPhoneProfile.setText(phoneNumber)
     }
 
     private fun setupToolbar() {

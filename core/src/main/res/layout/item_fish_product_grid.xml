@@ -33,26 +33,47 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="@color/black"
+            android:textColor="@color/blue"
             android:textSize="16sp"
             tools:text="Ikan Tuna" />
 
-        <TextView
-            android:id="@+id/textView1"
-            style="@style/Text.Regular.Medium"
-            android:layout_marginHorizontal="8dp"
-            android:maxLines="1"
-            android:text="@string/kg"
-            android:textSize="12sp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_tv_price"
+                style="@style/Text.SemiBold"
+                android:layout_marginHorizontal="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                tools:text="Rp 97.000" />
+
+            <TextView
+                android:id="@+id/item_tv_weight"
+                style="@style/Text.Regular"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/kg"
+                android:textSize="12sp"
+                tools:text="@string/kg" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/item_tv_price"
-            style="@style/Text.Medium"
+            android:id="@+id/item_tv_location"
+            style="@style/Text.Regular.Medium"
+            android:layout_gravity="center"
             android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="4dp"
             android:layout_marginBottom="16dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            tools:text="Rp 97.000 - Rp 120.000" />
+            android:drawablePadding="4dp"
+            android:maxLines="1"
+            android:textSize="10sp"
+            app:drawableStartCompat="@drawable/ic_market_location"
+            tools:ignore="SmallSp"
+            tools:text="Jakarta" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

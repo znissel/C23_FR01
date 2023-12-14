@@ -1,6 +1,7 @@
 package id.fishku.consumer.auth.login
 
 import android.content.Intent
+import android.util.Log
 import androidx.lifecycle.*
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -57,6 +58,7 @@ class LoginViewModel @Inject constructor(
     }
 
     fun signWithGoogle(data: Intent?) {
+        Log.d("BOSS", "signWithGoogle di VM: ${data}")
         viewModelScope.launch {
             authUseCase.signWithGoogle(data).collect {
                 _user.value = it

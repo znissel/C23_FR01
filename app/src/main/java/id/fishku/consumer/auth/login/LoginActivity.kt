@@ -1,15 +1,19 @@
 package id.fishku.consumer.auth.login
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
 import id.fishku.consumer.auth.EnterNumberActivity
@@ -56,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
         signGoogleResult()
 
         binding.btnGoogleSign.setOnClickListener {
-            signGoogleAuth()
+            signGoogleAuth() /*TODO*/
         }
     }
 
@@ -82,7 +86,17 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.apply {
-            btnLogin.setOnClickListener { loginHandler() }
+            btnLogin.setOnClickListener {
+                val inputMethodManager = getSystemService(
+                    Context.INPUT_METHOD_SERVICE
+                ) as InputMethodManager
+
+                inputMethodManager.hideSoftInputFromWindow(
+                    currentFocus?.windowToken,
+                    InputMethodManager.HIDE_NOT_ALWAYS
+                )
+                loginHandler()
+            }
             btnRegisterHere.setOnClickListener {
                 //view?.findNavController()?.navigate(R.id.action_loginFragment_to_registerFragment)
                 startActivity(Intent(this@LoginActivity, EnterNumberActivity::class.java))
@@ -97,9 +111,11 @@ class LoginActivity : AppCompatActivity() {
                 is Resource.Loading -> {
                 }
                 is Resource.Success -> {
+                    Log.d("BOSS", "sign w/google: sukses")
                     userLinked(it.data?.email)
                 }
                 is Resource.Error -> {
+                    Log.d("BOSS", "sign w/google: error")
                 }
             }
         }
@@ -126,6 +142,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signGoogleAuth() {
+        Log.d("BOSS", "google: signGoogleAuth")
         val signIntent = googleSignInClient.signInIntent
         resultLauncher.launch(signIntent)
     }
@@ -136,6 +153,18 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.signWithGoogle(result.data)
             }
         }
+
+    //TAMBAHAN
+    /*val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .requestIdToken(getString(R.string.default_web_client_id))
+        .requestEmail()
+        .build()
+
+    val googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        resultLauncher.onActivityResult(requestCode, resultCode, data)
+    }*/
 
     private fun loginResult() {
         loginViewModel.result.observe(this) {
