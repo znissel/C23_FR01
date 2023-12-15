@@ -52,8 +52,8 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
             findMyLocation()
         }
 
-        val btnNavigateToDashboard: Button = findViewById(R.id.btn_save_adress)
-        btnNavigateToDashboard.setOnClickListener {
+        val btnSaveAddress: Button = findViewById(R.id.btn_save_adress)
+        btnSaveAddress.setOnClickListener {
             saveAndShowLocation()
         }
 
@@ -63,7 +63,10 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         val savedLatLng = loadSavedMarkerCoordinate()
-        Log.d("SavedLatLng", "Latitude: ${savedLatLng?.latitude}, Longitude: ${savedLatLng?.longitude}")
+        Log.d(
+            "SavedLatLng",
+            "Latitude: ${savedLatLng?.latitude}, Longitude: ${savedLatLng?.longitude}"
+        )
 
 
         setUpAction()
@@ -141,7 +144,6 @@ class SetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         return ""
     }
 
-    //tambahan
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()

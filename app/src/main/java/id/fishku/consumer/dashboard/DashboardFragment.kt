@@ -23,6 +23,7 @@ import id.fishku.consumer.core.ui.DashboardAdapter
 import id.fishku.consumer.core.utils.showMessage
 import id.fishku.consumer.databinding.FragmentDashboardBinding
 import id.fishku.consumer.faq.FaqActivity
+import id.fishku.consumer.fishprice.FishPriceActivity
 import id.fishku.consumer.location.SetLocationActivity
 
 @AndroidEntryPoint
@@ -52,12 +53,11 @@ class DashboardFragment : Fragment(), View.OnClickListener {
         searchFish()
         setupCart()
 
-        //tambahan baru
         faqAction()
         setLocationAction()
+        fishPriceAction()
     }
 
-    //function baru intent faq
     private fun faqAction() {
         val faqButton = view?.findViewById<ImageView>(R.id.ivFaq)
         faqButton?.setOnClickListener {
@@ -66,7 +66,14 @@ class DashboardFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    //function baru intent locationset
+    private fun fishPriceAction() {
+        val priceButton = view?.findViewById<ImageView>(R.id.iv_highlight_1)
+        priceButton?.setOnClickListener {
+            val intent = Intent(requireActivity(), FishPriceActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
     private fun setLocationAction() {
         //val chooseLocation = view?.findViewById<ImageView>(R.id.btn_set_location)
 
@@ -171,7 +178,6 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setupCart() {
-        //perubahan binding.ivcart
         val menuItem = binding?.ivCart
         val tvAmount = menuItem?.findViewById<TextView>(R.id.cart_badge)
         dashboardViewModel.cart.observe(viewLifecycleOwner) {
@@ -194,7 +200,6 @@ class DashboardFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setupAction() {
-        //perubahan binding.ivcart
         val menuItem = binding?.ivCart
         menuItem?.setOnClickListener(this)
         binding?.apply {
@@ -237,14 +242,19 @@ class DashboardFragment : Fragment(), View.OnClickListener {
             R.id.ivCart -> v.findNavController()
                 .navigate(R.id.action_navigation_dashboard_to_cartActivity)
 
-            //Perubahan pada toolbar dan action intent di navigation
             R.id.ivFaq -> v.findNavController()
-                .navigate(R.id.action_navigation_dashboard_to_fishPriceActivity)
+                .navigate(R.id.action_navigation_dashboard_to_faqActivity)
 
             /*R.id.btn_set_location -> v.findNavController()
                 .navigate(R.id.action_navigation_dashboard_to_setLocationActivity)*/
             //sampai sini
-
+          
+            R.id.iv_highlight_1 -> {
+                val toPriceActivity =
+                    DashboardFragmentDirections.actionNavigationDashboardToFishPriceActivity()
+                binding?.root?.findNavController()?.navigate(toPriceActivity)
+            }
+            
             R.id.btn_show_all_best -> {
                 val toSearchAcitivy =
                     DashboardFragmentDirections.actionNavigationDashboardToSearchActivity("")

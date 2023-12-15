@@ -47,12 +47,12 @@
                     android:id="@+id/ivFaq"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_qmark"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:contentDescription="@string/faq"
+                    android:src="@drawable/ic_qmark"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/dashboardToolbar"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:contentDescription="@string/faq" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/search_view_fish"
@@ -72,12 +72,12 @@
                     android:id="@+id/ivCart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_cart"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:contentDescription="@string/cart"
+                    android:src="@drawable/ic_cart"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:contentDescription="@string/cart" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -90,11 +90,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:layout_marginVertical="@dimen/activity_horizontal_margin"
+            android:backgroundTint="@color/light_gray"
             android:text="@string/set_location"
             android:textColor="@color/black_transparent"
             app:icon="@drawable/ic_location_2"
             app:iconTint="@null"
-            android:backgroundTint="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar_dashboard" />-->

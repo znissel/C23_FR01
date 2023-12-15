@@ -62,10 +62,6 @@ class FishNutritionAdapter(private val onItemClick: (String) -> Unit) :
         notifyDataSetChanged()
     }
 
-    fun getRecipeById(recipeId: String): FishNutrition? {
-        return fishListNutrition.find { it.id == recipeId }
-    }
-
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
     ): NutritionViewHolder {

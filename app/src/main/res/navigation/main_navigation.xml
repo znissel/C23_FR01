@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_navigation_dashboard_to_fishPriceActivity"
             app:destination="@id/fishPriceActivity" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_faqActivity"
+            app:destination="@id/faqActivity" />
 
     </fragment>
 
@@ -132,4 +135,9 @@
         android:name="id.fishku.consumer.fishprice.FishPriceActivity"
         android:label="activity_fish_price"
         tools:layout="@layout/activity_fish_price" />
+    <activity
+        android:id="@+id/faqActivity"
+        android:name="id.fishku.consumer.faq.FaqActivity"
+        android:label="activity_faq"
+        tools:layout="@layout/activity_faq" />
 </navigation>
