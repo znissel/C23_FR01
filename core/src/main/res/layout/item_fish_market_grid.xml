@@ -51,10 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="2dp"
-            android:drawableStart="@drawable/ic_tpi"
             android:drawablePadding="6dp"
-            android:drawableTint="@color/blue"
             android:singleLine="true"
+            app:drawableStartCompat="@drawable/ic_market_location"
             tools:targetApi="m"
             tools:text="TPI Jepara" />
 

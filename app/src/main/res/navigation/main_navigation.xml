@@ -23,9 +23,9 @@
             android:id="@+id/action_navigation_dashboard_to_cartActivity"
             app:destination="@id/cartActivity" />
 
-        <action
+        <!--<action
             android:id="@+id/action_navigation_dashboard_to_setLocationActivity"
-            app:destination="@id/setLocationActivity" />
+            app:destination="@id/setLocationActivity" />-->
         <action
             android:id="@+id/action_navigation_dashboard_to_detailShopActivity"
             app:destination="@id/detailShopActivity" />
@@ -120,11 +120,11 @@
         tools:layout="@layout/fragment_live_chat" />
 
 
-    <activity
+    <!--<activity
         android:id="@+id/setLocationActivity"
         android:name="id.fishku.consumer.location.SetLocationActivity"
         android:label="activity_set_location"
-        tools:layout="@layout/activity_set_location" />
+        tools:layout="@layout/activity_set_location" />-->
     <activity
         android:id="@+id/detailShopActivity"
         android:name="id.fishku.consumer.detailshop.DetailShopActivity"

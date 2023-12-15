@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.fishku.consumer.databinding.ViewFaqBinding
 
-//nanti perlu dipindah ke core mgkn kayak yg lain
+//TODO ke core
 class FaqAdapter(private val faqList: ArrayList<Questions>) :
-    RecyclerView.Adapter<FaqAdapter.FaqViewHolder>() { //ListAdapter<Questions, FaqAdapter.FaqViewHolder>() {
+    RecyclerView.Adapter<FaqAdapter.FaqViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FaqViewHolder {
         val binding = ViewFaqBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -45,7 +45,7 @@ class FaqAdapter(private val faqList: ArrayList<Questions>) :
         var linearLayout = binding.linearLayout
     }
 
-    /*companion object {
+    /*companion object { TODO
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Questions>() {
             override fun areItemsTheSame(oldItem: Questions, newItem: Questions): Boolean {
                 return oldItem == newItem
@@ -59,4 +59,5 @@ class FaqAdapter(private val faqList: ArrayList<Questions>) :
             }
         }
     }*/
+
 }

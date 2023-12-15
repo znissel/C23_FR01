@@ -7,23 +7,23 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import id.fishku.consumer.core.databinding.ItemFishMarketGridBinding
 import id.fishku.consumer.core.domain.model.Fish
-import id.fishku.consumer.core.utils.addPhotoUrl
-import id.fishku.consumer.core.utils.convertToRupiah
+import id.fishku.consumer.core.domain.model.Market
 import id.fishku.consumer.core.utils.loadFishImage
+import kotlin.reflect.KFunction1
 
-class MarketAdapter(private val onItemClick: (Fish) -> Unit) :
+class MarketAdapter(private val onItemClick: KFunction1<Fish, Unit>) :
     ListAdapter<Fish, MarketAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
     inner class ListViewHolder(private val binding: ItemFishMarketGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(fish: Fish) {
+        fun bind(market: Fish) { /*TODO Fish*/
             binding.apply {
-                itemTvName.text = fish.name
-                itemTvPrice.text = fish.price.convertToRupiah()
-                itemImgPhoto.loadFishImage(fish.photoUrl.addPhotoUrl())
-                itemTvPlace.text = fish.location
+                itemTvName.text = market.name
+                //itemImgPhoto.loadFishImage(fish.photoUrl.addPhotoUrl())
+                itemImgPhoto.loadFishImage(market.photoUrl) /*TODO loadFishImage*/
+                itemTvPlace.text = market.location
                 root.setOnClickListener {
-                    onItemClick(fish)
+                    onItemClick(market)
                 }
             }
         }
@@ -36,8 +36,8 @@ class MarketAdapter(private val onItemClick: (Fish) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val fish = getItem(position)
-        holder.bind(fish)
+        val market = getItem(position)
+        holder.bind(market)
     }
 
     companion object {

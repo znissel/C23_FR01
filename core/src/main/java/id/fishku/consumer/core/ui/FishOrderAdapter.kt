@@ -20,7 +20,8 @@ class FishOrderAdapter : ListAdapter<OrderDetail, FishOrderAdapter.ListViewHolde
                 itemTvNameOrder.text = orderDetail.fishName
                 itemTvWeightOrder.text = orderDetail.weight.convertToKilogram()
                 itemTvPriceOrder.text = orderDetail.fishPrice.convertToRupiah()
-                orderDetail.photoUrl?.addPhotoUrl()?.let { itemImgPhotoOrder.loadFishImage(it) }
+                //orderDetail.photoUrl?.addPhotoUrl()?.let { itemImgPhotoOrder.loadFishImage(it) }
+                orderDetail.photoUrl?.addPhotoUrl()?.let { itemImgPhotoOrder.loadFishImage(it) } /*TODO*/
             }
         }
     }

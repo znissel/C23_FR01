@@ -27,6 +27,10 @@ interface MainApiService {
     @GET("consumer/ikan/all")
     suspend fun getAllFish(): FishResponse
 
+    /*TAMBAHAN TODO*/
+    @GET("consumer/ikan/all")
+    suspend fun getAllMarket(): MarketResponse
+
     @GET("consumer/ikan/{namaIkan}")
     suspend fun searchFishes(
         @Path("namaIkan") query: String,

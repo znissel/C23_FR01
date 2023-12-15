@@ -3,6 +3,7 @@ package id.fishku.consumer.core.data.source.local
 import id.fishku.consumer.core.data.source.local.datastore.ActivtiyPreferences
 import id.fishku.consumer.core.data.source.local.datastore.UserPreferences
 import id.fishku.consumer.core.data.source.local.entity.FishEntity
+import id.fishku.consumer.core.data.source.local.entity.MarketEntity
 import id.fishku.consumer.core.data.source.local.entity.UserEntity
 import id.fishku.consumer.core.data.source.local.room.FishDao
 import kotlinx.coroutines.flow.Flow
@@ -35,6 +36,10 @@ class LocalDataSource @Inject constructor(
     suspend fun insertAllFish(fishes: List<FishEntity>) = fishDao.insertAllFish(fishes)
 
     fun getAllFish(): Flow<List<FishEntity>> = fishDao.getAllFish()
+
+    /*TAMBAHAN TODO*/
+    /*fun getAllMarket(): Flow<List<MarketEntity>> = fishDao.getAllMarket()
+    suspend fun insertAllMarket(markets: List<MarketEntity>) = fishDao.insertAllMarket(markets)*/
 
     suspend fun saveActivity() = activityPreferences.saveActivity()
 

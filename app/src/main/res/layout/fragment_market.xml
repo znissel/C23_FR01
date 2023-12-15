@@ -28,7 +28,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 app:menu="@menu/dashboard_menu"
-                app:title="@string/select_fish"
+                app:title="@string/title_market"
                 app:titleCentered="true"
                 app:titleTextAppearance="@style/Text.SemiBold.Big"
                 app:titleTextColor="@color/blue" />
@@ -58,7 +58,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_view_fish"
-
             app:spanCount="2"
             tools:listitem="@layout/item_fish_market_grid" />
 

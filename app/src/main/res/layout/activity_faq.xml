@@ -67,21 +67,5 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_faq"
             tools:listitem="@layout/view_faq" />
 
-        <!--<TextView
-            android:id="@+id/btn_address_setting"
-            style="@style/Text.Medium"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bg_clickable"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="24dp"
-            android:text="Ini Adalah Faq Fishku"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appbar_faq" />-->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

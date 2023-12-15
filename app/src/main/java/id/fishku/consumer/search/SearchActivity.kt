@@ -3,6 +3,7 @@ package id.fishku.consumer.search
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -16,6 +17,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
+import com.google.android.gms.maps.model.LatLng
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.consumer.R
 import id.fishku.consumer.cart.CartActivity
@@ -49,6 +51,7 @@ class SearchActivity : AppCompatActivity() {
         setupCart()
 
         setupToolbar()
+        setButtonClick()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -63,7 +66,7 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.dashboard_menu, menu)
-        return true
+        return super.onCreateOptionsMenu(menu)
     }
 
     private fun setupToolbar() {
@@ -85,10 +88,29 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    fun onButtonClick(view: View) {
-        when (view.id) {
-            R.id.btnReset -> resetFilterButtons()
-            R.id.btnApply -> applyFilters()
+    private fun setButtonClick() {
+        with(binding.drawerContent) {
+            btnReset.setOnClickListener {
+                Log.d("BOSS", "btnReset on clicked")
+                resetFilterButtons()
+            }
+            btnApply.setOnClickListener {
+                Log.d("BOSS", "btnApply on clicked")
+                applyFilters()
+            }
+            btnHighestPrice.setOnClickListener {
+                if (!btnHighestPrice.isActivated) {
+                    btnHighestPrice.isActivated = true
+                    btnLowestPrice.isActivated = false
+                }
+            }
+
+            btnLowestPrice.setOnClickListener {
+                if (!btnLowestPrice.isActivated) {
+                    btnLowestPrice.isActivated = true
+                    btnHighestPrice.isActivated = false
+                }
+            }
         }
     }
 
@@ -104,12 +126,18 @@ class SearchActivity : AppCompatActivity() {
 
     private fun applyFilters() {
         val locationFilter = sharedPreferences.getString("saved_address", "")
-        Log.d("BOSS", "lokasi: ${locationFilter}")
+        /*val latitudeStr = sharedPreferences.getString("saved_marker_latitude", null)
+        val longitudeStr = sharedPreferences.getString("saved_marker_longitude", null)
+        val currentLatLng = LatLng(latitudeStr!!.toDouble(), longitudeStr!!.toDouble())*/
+
         val unfilteredResults = searchViewModel.result.value?.data ?: emptyList()
 
         val locationFilteredResults = if (locationFilter != null) {
             unfilteredResults.filter { fish ->
-                fish.location == locationFilter
+                //fish.location == "TPI ${locationFilter}"
+                Log.d("BOSS", "nama: ${fish.name}")
+                Log.d("BOSS", "lokasi: ${fish.location}")
+                fish.location.contains(locationFilter, ignoreCase = true)
             }
         } else {
             unfilteredResults
@@ -117,13 +145,26 @@ class SearchActivity : AppCompatActivity() {
 
         val sortedResults = when {
             binding.drawerContent.btnNearest.isActivated -> {
-                locationFilteredResults.sortedByDescending { it.location }
+                /*val userLocation = currentLatLng
+                unfilteredResults.sortedBy { fish ->
+                    val fishLocation = LatLng(fish.latitude, fish.longitude)
+                    val results = FloatArray(1)
+                    Location.distanceBetween(
+                        userLocation.latitude, userLocation.longitude,
+                        fishLocation.latitude, fishLocation.longitude,
+                        results
+                    )
+                    results[0]
+                }*/
+                locationFilteredResults.sortedByDescending { it.name } /*TODO*/
             }
             //TODO button lainnya
             binding.drawerContent.btnHighestPrice.isActivated -> {
+                binding.drawerContent.btnLowestPrice.isActivated = false
                 unfilteredResults.sortedByDescending { it.price }
             }
             binding.drawerContent.btnLowestPrice.isActivated -> {
+                binding.drawerContent.btnHighestPrice.isActivated = false
                 unfilteredResults.sortedBy { it.price }
             }
             else -> {

@@ -95,4 +95,4 @@ inline fun <reified T : Parcelable> Intent.parcelableArrayList(key: String): Arr
 
 fun String.convertFishName(): String = "Ikan $this"
 
-fun String.addPhotoUrl(): String = "https://storage.fishku.id/photo/$this"
+fun String.addPhotoUrl(): String = "https://storage.fishku.id/photo/$this" /*TODO foto*/

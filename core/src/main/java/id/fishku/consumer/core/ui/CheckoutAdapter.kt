@@ -20,7 +20,8 @@ class CheckoutAdapter : ListAdapter<Cart, CheckoutAdapter.ListViewHolder>(DIFF_C
                 itemTvNameCheckout.text = cart.fishName
                 itemTvWeightCheckout.text = cart.weight.convertToKilogram()
                 itemTvPriceCheckout.text = cart.price.convertToRupiah()
-                itemImgPhotoCheckout.loadFishImage(cart.photoUrl.addPhotoUrl())
+                //itemImgPhotoCheckout.loadFishImage(cart.photoUrl.addPhotoUrl())
+                itemImgPhotoCheckout.loadFishImage(cart.photoUrl.addPhotoUrl()) /*TODO*/
             }
         }
     }
