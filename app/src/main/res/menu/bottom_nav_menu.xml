@@ -11,10 +11,10 @@
         android:icon="@drawable/ic_detection"
         android:title="@string/title_detection" />
 
-    <item
+    <!--<item
         android:id="@+id/navigation_market"
         android:icon="@drawable/ic_market"
-        android:title="@string/title_market" />
+        android:title="@string/title_market" />-->
 
     <item
         android:id="@+id/navigation_chat"

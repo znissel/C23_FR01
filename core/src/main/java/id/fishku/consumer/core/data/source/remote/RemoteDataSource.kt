@@ -95,6 +95,31 @@ class RemoteDataSource @Inject constructor(
         }
     }.flowOn(Dispatchers.IO)
 
+    /*TAMBAHAN TODO*/
+    suspend fun getAllMarket(): Flow<ApiResponse<List<MarketItem>>> = flow {
+        try {
+            val response = mainApiService.getAllMarket()
+            val markets = response.markets
+            if (!markets.isNullOrEmpty()) {
+                emit(ApiResponse.Success(markets))
+            } else {
+                emit(ApiResponse.Empty)
+            }
+        } catch (e: Exception) {
+            when (e) {
+                is HttpException -> {
+                    val message = e.getErrorMessage()
+                    if (message != null) {
+                        emit(ApiResponse.Error(message))
+                    }
+                }
+
+                else -> emit(ApiResponse.Error(e.message.toString()))
+            }
+        }
+    }.flowOn(Dispatchers.IO)
+    /*TAMBAHAN*/
+
     suspend fun searchFishes(query: String): Flow<ApiResponse<List<FishItem>>> = flow {
         try {
             val response = mainApiService.searchFishes(query)

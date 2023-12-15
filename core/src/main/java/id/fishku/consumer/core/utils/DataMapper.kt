@@ -3,6 +3,7 @@ package id.fishku.consumer.core.utils
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import id.fishku.consumer.core.data.source.local.entity.FishEntity
+import id.fishku.consumer.core.data.source.local.entity.MarketEntity
 import id.fishku.consumer.core.data.source.local.entity.UserEntity
 import id.fishku.consumer.core.data.source.remote.response.*
 import id.fishku.consumer.core.domain.model.*
@@ -61,6 +62,30 @@ object DataMapper {
         location = data.location ?: "",
         photoUrl = data.photoUrl ?: ""
     )
+
+    /*TAMBAHAN MARKET TODO*/
+    fun marketEntityToMarket(data: MarketEntity): Market = Market(
+        marketID = data.idMarket,
+        name = data.name,
+        location = data.location,
+        photoUrl = data.photoUrl
+    )
+
+    fun marketResponseToMarketEntity(data: MarketItem): MarketEntity = MarketEntity(
+        idMarket = data.marketID,
+        name = data.name,
+        location = data.location ?: "",
+        photoUrl = data.photoUrl ?: ""
+    )
+
+    fun marketResponsetoMarket(data: MarketItem): Market = Market(
+        marketID = data.marketID,
+        name = data.name,
+        location = data.location ?: "",
+        photoUrl = data.photoUrl ?: ""
+    )
+
+    /*TAMBAHAN MARKET TODO*/
 
     fun detailFishToFish(data: DetailFishItem): Fish = Fish(
         fishID = data.fishID,

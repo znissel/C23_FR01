@@ -34,7 +34,7 @@ class CartAdapter(private val onItemClick: (Cart) -> Unit) :
             binding.apply {
                 itemTvNameCart.text = cart.fishName
                 itemTvPriceCart.text = cart.price.convertToRupiah()
-                itemImgPhotoCart.loadFishImage(cart.photoUrl.addPhotoUrl())
+                //itemImgPhotoCart.loadFishImage(cart.photoUrl.addPhotoUrl()) /*TODO*/
                 itemTvWeightCart.text = cart.weight.convertToKilogram()
                 itemImgPhotoCart.loadFishImage(cart.photoUrl)
                 root.setOnClickListener {

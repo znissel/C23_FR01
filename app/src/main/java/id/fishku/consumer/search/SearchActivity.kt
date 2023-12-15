@@ -134,7 +134,9 @@ class SearchActivity : AppCompatActivity() {
 
         val locationFilteredResults = if (locationFilter != null) {
             unfilteredResults.filter { fish ->
-                //fish.location == locationFilter
+                //fish.location == "TPI ${locationFilter}"
+                Log.d("BOSS", "nama: ${fish.name}")
+                Log.d("BOSS", "lokasi: ${fish.location}")
                 fish.location.contains(locationFilter, ignoreCase = true)
             }
         } else {
@@ -146,9 +148,6 @@ class SearchActivity : AppCompatActivity() {
                 /*val userLocation = currentLatLng
                 unfilteredResults.sortedBy { fish ->
                     val fishLocation = LatLng(fish.latitude, fish.longitude)
-                    // Calculate distance using Haversine formula or Location.distanceBetween()
-                    // Replace 'distance' with the actual calculation
-                    // For example, using Location.distanceBetween():
                     val results = FloatArray(1)
                     Location.distanceBetween(
                         userLocation.latitude, userLocation.longitude,
@@ -157,7 +156,7 @@ class SearchActivity : AppCompatActivity() {
                     )
                     results[0]
                 }*/
-                locationFilteredResults.sortedByDescending { it.location }
+                locationFilteredResults.sortedByDescending { it.name } /*TODO*/
             }
             //TODO button lainnya
             binding.drawerContent.btnHighestPrice.isActivated -> {

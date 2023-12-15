@@ -46,6 +46,7 @@
                 android:id="@+id/item_tv_price"
                 style="@style/Text.SemiBold"
                 android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="8dp"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textColor="@color/black"
@@ -55,6 +56,7 @@
             <TextView
                 android:id="@+id/item_tv_weight"
                 style="@style/Text.Regular"
+                android:layout_marginBottom="8dp"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="@string/kg"
@@ -63,7 +65,7 @@
 
         </LinearLayout>
 
-        <TextView
+        <!--<TextView
             android:id="@+id/item_tv_location"
             style="@style/Text.Regular.Medium"
             android:layout_gravity="center"
@@ -74,6 +76,6 @@
             android:textSize="10sp"
             app:drawableStartCompat="@drawable/ic_market_location"
             tools:ignore="SmallSp"
-            tools:text="Jakarta" />
+            tools:text="Jakarta" />-->
     </LinearLayout>
 </androidx.cardview.widget.CardView>

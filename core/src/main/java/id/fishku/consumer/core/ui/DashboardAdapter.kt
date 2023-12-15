@@ -21,7 +21,8 @@ class DashboardAdapter(private val onItemClick: (Fish) -> Unit) :
                 itemTvName.text = fish.name
                 itemTvLocation.text = fish.location
                 itemTvPrice.text = fish.price.convertToRupiah()
-                itemImgPhoto.loadFishImage(fish.photoUrl.addPhotoUrl())
+                //itemImgPhoto.loadFishImage(fish.photoUrl.addPhotoUrl()) TODO
+                itemImgPhoto.loadFishImage(fish.photoUrl)
                 root.setOnClickListener {
                     onItemClick(fish)
                 }

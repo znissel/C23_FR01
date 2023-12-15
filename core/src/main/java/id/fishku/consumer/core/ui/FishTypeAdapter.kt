@@ -19,7 +19,8 @@ class FishTypeAdapter(private val onItemClick: (FishType) -> Unit) :
         fun bind(fish: FishType) {
             binding.apply {
                 itemTvName.text = fish.name.convertFishName()
-                itemImgPhoto.loadFishImage(fish.photoUrl.addPhotoUrl())
+                //itemImgPhoto.loadFishImage(fish.photoUrl.addPhotoUrl())
+                itemImgPhoto.loadFishImage(fish.photoUrl) /*TODO*/
                 root.setOnClickListener {
                     onItemClick(fish)
                 }

@@ -8,9 +8,11 @@ import id.fishku.consumer.core.data.source.remote.network.ApiResponse
 import id.fishku.consumer.core.data.source.remote.request.OtpRequest
 import id.fishku.consumer.core.data.source.remote.response.DetectionFishResponse
 import id.fishku.consumer.core.data.source.remote.response.FishItem
+import id.fishku.consumer.core.data.source.remote.response.MarketItem
 import id.fishku.consumer.core.data.source.remote.response.OtpResponse
 import id.fishku.consumer.core.domain.model.Fish
 import id.fishku.consumer.core.domain.model.FishType
+import id.fishku.consumer.core.domain.model.Market
 import id.fishku.consumer.core.domain.repository.IFishRepository
 import id.fishku.consumer.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
@@ -48,6 +50,30 @@ class FishRepository @Inject constructor(
                 localDataSource.insertAllFish(fishes)
             }
         }.asFlow()
+
+    /*TAMBAHAN TODO*/
+    /*override fun getAllMarket(): Flow<Resource<List<Market>>> =
+        object : NetworkBoundResource<List<Market>, List<MarketItem>>() {
+            override fun loadFromDB(): Flow<List<Market>> =
+                localDataSource.getAllMarket().map { marketEntities ->
+                    marketEntities.map {
+                        DataMapper.marketEntityToMarket(it)
+                    }
+                }
+
+            override fun shouldFetch(data: List<Market>?): Boolean =
+                data == null || data.isEmpty()
+
+            override suspend fun createCall(): Flow<ApiResponse<List<MarketItem>>> =
+                remoteDataSource.getAllMarket()
+
+            override suspend fun saveCallResult(data: List<MarketItem>) {
+                val markets = data.map {
+                    DataMapper.marketResponseToMarketEntity(it)
+                }
+                localDataSource.insertAllMarket(markets)
+            }
+        }.asFlow()*/
 
     override fun searchFishes(query: String): Flow<Resource<List<Fish>>> = flow {
         emit(Resource.Loading())

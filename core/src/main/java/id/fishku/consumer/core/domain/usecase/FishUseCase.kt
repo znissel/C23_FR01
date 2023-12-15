@@ -6,11 +6,13 @@ import id.fishku.consumer.core.data.source.remote.response.DetectionFishResponse
 import id.fishku.consumer.core.data.source.remote.response.OtpResponse
 import id.fishku.consumer.core.domain.model.Fish
 import id.fishku.consumer.core.domain.model.FishType
+import id.fishku.consumer.core.domain.model.Market
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
 
 interface FishUseCase {
     fun getAllFish(): Flow<Resource<List<Fish>>>
+    //fun getAllMarket(): Flow<Resource<List<Market>>>
     fun searchFishes(query: String): Flow<Resource<List<Fish>>>
     fun getDetailFish(fishID: Int): Flow<Resource<Fish>>
     fun uploadImageDetection(
