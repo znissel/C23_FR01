@@ -28,8 +28,8 @@ interface MainApiService {
     suspend fun getAllFish(): FishResponse
 
     /*TAMBAHAN TODO*/
-    @GET("consumer/ikan/all")
-    suspend fun getAllMarket(): MarketResponse
+    @GET("consumer/seller/all")
+    suspend fun getAllMarket(): FishResponse /*TODO*/
 
     @GET("consumer/ikan/{namaIkan}")
     suspend fun searchFishes(

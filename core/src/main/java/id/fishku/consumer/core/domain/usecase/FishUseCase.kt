@@ -12,7 +12,7 @@ import okhttp3.MultipartBody
 
 interface FishUseCase {
     fun getAllFish(): Flow<Resource<List<Fish>>>
-    //fun getAllMarket(): Flow<Resource<List<Market>>>
+    //fun getAllMarket(): Flow<Resource<List<Market>>> TODO
     fun searchFishes(query: String): Flow<Resource<List<Fish>>>
     fun getDetailFish(fishID: Int): Flow<Resource<Fish>>
     fun uploadImageDetection(

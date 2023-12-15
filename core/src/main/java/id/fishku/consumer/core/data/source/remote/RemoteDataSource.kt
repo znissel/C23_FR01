@@ -96,7 +96,7 @@ class RemoteDataSource @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
     /*TAMBAHAN TODO*/
-    suspend fun getAllMarket(): Flow<ApiResponse<List<MarketItem>>> = flow {
+    /*suspend fun getAllMarket(): Flow<ApiResponse<List<MarketItem>>> = flow {
         try {
             val response = mainApiService.getAllMarket()
             val markets = response.markets
@@ -117,7 +117,7 @@ class RemoteDataSource @Inject constructor(
                 else -> emit(ApiResponse.Error(e.message.toString()))
             }
         }
-    }.flowOn(Dispatchers.IO)
+    }.flowOn(Dispatchers.IO)*/
     /*TAMBAHAN*/
 
     suspend fun searchFishes(query: String): Flow<ApiResponse<List<FishItem>>> = flow {
