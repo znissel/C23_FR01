@@ -135,7 +135,7 @@ class SearchActivity : AppCompatActivity() {
         val locationFilteredResults = if (locationFilter != null) {
             unfilteredResults.filter { fish ->
                 //fish.location == "TPI ${locationFilter}"
-                Log.d("BOSS", "nama: ${fish.name}")
+                //Log.d("BOSS", "nama: ${fish.name}")
                 Log.d("BOSS", "lokasi: ${fish.location}")
                 fish.location.contains(locationFilter, ignoreCase = true)
             }
@@ -156,7 +156,8 @@ class SearchActivity : AppCompatActivity() {
                     )
                     results[0]
                 }*/
-                locationFilteredResults.sortedByDescending { it.name } /*TODO*/
+                //locationFilteredResults.sortedByDescending { it.location } /*TODO*/
+                unfilteredResults.sortedByDescending { it.name } /*TODO*/
             }
             //TODO button lainnya
             binding.drawerContent.btnHighestPrice.isActivated -> {

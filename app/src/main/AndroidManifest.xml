@@ -48,11 +48,11 @@
             android:name=".fishprice.FishPriceActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".fishrecipe.FishRecipeDetailActivity"
@@ -68,15 +68,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".splash.SplashActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".detailshop.DetailShopActivity"
@@ -138,7 +136,6 @@
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:launchMode="singleInstance" /> <!--TODO true/false-->
-
         <activity
             android:name=".editprofile.EditProfileActivity"
             android:exported="false"
@@ -192,11 +189,11 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".search.SearchActivity"
