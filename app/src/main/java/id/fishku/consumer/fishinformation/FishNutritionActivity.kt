@@ -1,8 +1,7 @@
 package id.fishku.consumer.fishinformation
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,7 +31,7 @@ class FishNutritionActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        nutritionAdapter = FishNutritionAdapter { 
+        nutritionAdapter = FishNutritionAdapter {
         }
 
         binding.rvFishNutrition.apply {

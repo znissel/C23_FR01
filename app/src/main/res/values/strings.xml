@@ -207,12 +207,16 @@
         <item> Bagaimana cara memesan produk di Fishku? </item>
         <item> Bagaimana cara mengelola akun di Fishku? </item>
         <item> Bagaimana cara mengelola pesanan saya di Fishku? </item>
+        <item> Bagaimana cara Mencari Informasi Ikan? </item>
+        <item> Bagaimana cara Melakukan Deteksi Kesegaran Ikan? </item>
     </string-array>
     <string-array name="data_answer">
-        <item>Fishku Adalah</item>
-        <item>Cara Memesan Produk Di fishku Adalah</item>
-        <item>Cara Mengelola akun di Fishku Adalah</item>
-        <item>Cara Mengelola Pesanan Saya di Fishku Adalah</item>
+        <item>Fishku Adalah E-commerce untuk memudahkan penjualan Ikan. dengan fitur seperti jual beli ikan, deteksi kesegaran ikan, dan penyediaan informasi ikan seperti kandungan nilai gizi ikan, resep olahan ikan, demand ikan dan prediksi harga ikan</item>
+        <item>Cara Memesan Produk Di fishku Adalah, pertama anda cari ikan yang anda inginkan di pasar, ketiga gunakan fitur filtering untuk menyaring ikan yang anda inginkan, keempat pilih ikan yang di inginkan, kelima lakukan komunikasi dengan seller untuk ketersediaan ikan, kemudian setelah anda mendapatkan ikan yang anda inginkan klik keranjang atau beli sekarang</item>
+        <item>Cara Mengelola akun di Fishku Adalah anda pergi ke halaman akun untuk melakukan pengisian data seperti nama, nomor telepon, dan alamat pengantaran </item>
+        <item>Untuk Mengetahui pesanan yang anda order bisa anda lihat proses nya di halaman akun untuk memantau pesanan anda sudah sampai ditahap mana </item>
+        <item>Untuk Mencari Informasi Ikan Anda dapat pergi ke bagian Deteksi Ikan -> dibagian atas ada Ikon buku informasi untuk mengakses fishPedia.</item>
+        <item>pergi ke halaman deteksi ikan -> pilih jenis ikan yang ingin anda deteksi kesegarannya -> pilih bagian ikan yang untuk di deteksi -> ambil foto ikan dari kamera atau galeri -> kemudian klik tombol deteksi kesegaran </item>
     </string-array>
 
     <!--Fish Information Description-->
