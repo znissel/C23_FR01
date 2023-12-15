@@ -1,7 +1,6 @@
 <!-- drawer_content.xml -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -53,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
                 android:layout_marginStart="10dp"
-                android:text="Berdasarkan kategori:"
+                android:text="@string/filter_category"
                 android:textColor="@color/blue"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -72,14 +71,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="Terdekat" />
+                android:text="@string/nearest" />
 
             <id.fishku.consumer.search.FilterButtonView
                 android:id="@+id/btn_best"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="Terlaris" />
+                android:text="@string/bestseller" />
 
         </LinearLayout>
 
@@ -95,7 +94,7 @@
                 android:id="@+id/btn_newest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Terbaru" />
+                android:text="@string/newest" />
 
         </LinearLayout>
 
@@ -113,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
                 android:layout_marginStart="10dp"
-                android:text="Berdasarkan harga:"
+                android:text="@string/filter_price"
                 android:textColor="@color/blue"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -132,13 +131,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="Tertinggi" />
+                android:text="@string/highest" />
 
             <id.fishku.consumer.search.FilterButtonView
                 android:id="@+id/btn_lowest_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Terendah" />
+                android:text="@string/lowest" />
 
         </LinearLayout>
 
@@ -150,7 +149,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="right"
+            android:gravity="end|bottom"
             android:orientation="horizontal">
 
             <Button
@@ -161,8 +160,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
-                android:onClick="onButtonClick"
-                android:text="Hapus Filter"
+                android:text="@string/reset_filter"
                 android:textColor="@color/blue"
                 android:textStyle="bold" />
 
@@ -173,8 +171,7 @@
                 android:layout_gravity="bottom"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:onClick="onButtonClick"
-                android:text="Terapkan" />
+                android:text="@string/apply_filter" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

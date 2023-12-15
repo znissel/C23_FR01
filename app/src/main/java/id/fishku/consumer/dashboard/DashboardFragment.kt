@@ -68,9 +68,9 @@ class DashboardFragment : Fragment(), View.OnClickListener {
 
     //function baru intent locationset
     private fun setLocationAction() {
-        val faqButton = view?.findViewById<Button>(R.id.btn_set_location)
+        //val chooseLocation = view?.findViewById<ImageView>(R.id.btn_set_location)
 
-        faqButton?.setOnClickListener {
+        binding?.btnSetLocation?.setOnClickListener {
             val intent = Intent(requireActivity(), SetLocationActivity::class.java)
             startActivity(intent)
         }
@@ -241,8 +241,8 @@ class DashboardFragment : Fragment(), View.OnClickListener {
             R.id.ivFaq -> v.findNavController()
                 .navigate(R.id.action_navigation_dashboard_to_fishPriceActivity)
 
-            R.id.btn_set_location -> v.findNavController()
-                .navigate(R.id.action_navigation_dashboard_to_setLocationActivity)
+            /*R.id.btn_set_location -> v.findNavController()
+                .navigate(R.id.action_navigation_dashboard_to_setLocationActivity)*/
             //sampai sini
 
             R.id.btn_show_all_best -> {

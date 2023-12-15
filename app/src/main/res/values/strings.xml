@@ -285,7 +285,7 @@
     <string name="account_register">Daftar Akun</string>
     <string name="already_have_account">Sudah punya akun?</string>
 
-    <!---->
+    <!--OTP-->
     <string name="sms_to">Kirim SMS ke</string>
     <string name="otp_msg">Kode OTP Anda untuk FI$HKU:</string>
     <string name="verivication_completed">Verifikasi Berhasil</string>
@@ -306,4 +306,15 @@
     <string name="text_price4"> Harga 4 </string>
     <string name="text_price5"> Harga 5 </string>
     <string name="text_price6"> Harga 6 </string>
+
+    <!--Filtering-->
+    <string name="reset_filter">Hapus Filter</string>
+    <string name="apply_filter">Terapkan</string>
+    <string name="highest">Tertinggi</string>
+    <string name="lowest">Terendah</string>
+    <string name="newest">Terbaru</string>
+    <string name="nearest">Terdekat</string>
+    <string name="bestseller">Terlaris</string>
+    <string name="filter_category">Berdasarkan kategori:</string>
+    <string name="filter_price">Berdasarkan harga:</string>
 </resources>

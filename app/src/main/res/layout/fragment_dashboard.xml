@@ -37,6 +37,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:dividerColor="@color/gray_10"
+                    app:layout_constraintBottom_toBottomOf="@id/dashboardToolbar" />
+
                 <ImageView
                     android:id="@+id/ivFaq"
                     android:layout_width="wrap_content"
@@ -78,11 +84,12 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <Button
+        <!--<Button
             android:id="@+id/btn_set_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_horizontal_margin"
             android:text="@string/set_location"
             android:textColor="@color/black_transparent"
             app:icon="@drawable/ic_location_2"
@@ -90,7 +97,19 @@
             android:backgroundTint="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appbar_dashboard" />
+            app:layout_constraintTop_toBottomOf="@+id/appbar_dashboard" />-->
+        <ImageView
+            android:id="@+id/btn_set_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_horizontal_margin"
+            android:src="@drawable/choose_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_dashboard"
+            android:contentDescription="@string/set_location" />
+
 
         <ImageView
             android:id="@+id/iv_highlight_1"
